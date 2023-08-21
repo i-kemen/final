@@ -1,0 +1,12 @@
+namhoondb_high = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-chuncheon-1.oraclecloud.com))(connect_data=(service_name=g87817c58142d47_namhoondb_high.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+namhoondb_low = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-chuncheon-1.oraclecloud.com))(connect_data=(service_name=g87817c58142d47_namhoondb_low.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+namhoondb_medium = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-chuncheon-1.oraclecloud.com))(connect_data=(service_name=g87817c58142d47_namhoondb_medium.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+namhoondb_tp = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-chuncheon-1.oraclecloud.com))(connect_data=(service_name=g87817c58142d47_namhoondb_tp.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+namhoondb_tpurgent = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-chuncheon-1.oraclecloud.com))(connect_data=(service_name=g87817c58142d47_namhoondb_tpurgent.adb.oraclecloud.com))(security=(ssl_server_dn_match=yes)))
+
+
+

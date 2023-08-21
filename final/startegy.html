@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전략 선택 페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .strategy-selector {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .strategy-card {
+            width: 150px;
+            height: 150px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .strategy-card:hover {
+            background-color: #e0e0e0;
+        }
+
+        .strategy-content {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .strategy-box {
+            border: 1px solid crimson;
+        }
+
+
+        /* Hide other contents by default except theme content */
+        #sectorContent, #personalContent, #expertsContent {
+            display: none;
+        }
+
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .option-box {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .option-box:hover {
+            background-color: #f0f0f0;
+        }
+
+        .clicked {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <select id="strategySelector">
+        <option value="strategy">전략 선택</option>
+        <option value="vault">전략 보관함</option>
+    </select>
+</div>
+
+<div class="strategy-selector">
+    <div class="strategy-card" id="themeCard">
+        테마 전략
+    </div>
+    <div class="strategy-card" id="sectorCard">
+        업종 전략
+    </div>
+    <div class="strategy-card" id="personalCard">
+        나만의 전략
+    </div>
+    <div class="strategy-card" id="expertsCard">
+        대가들의 투자 전략
+    </div>
+</div>
+
+<div class="strategy-content">
+    <div id="themeContent">
+        <div>
+            <button>하나 ONE Pick</button>
+            <button>하나 ONE 테마</button>
+        </div>
+        <div>
+            '하나One Pick' 프리셋이란?
+        </div>
+        <div class="strategy-box">
+            <div class="strategy-title">
+                K-반도체 담당 소부장(Active)
+            </div>
+            <div class="strategy-description">
+                반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                소부장 (소재, 부품, 장비) 대표 기업들에 투자
+            </div>
+            <div class="strategy-performance">
+                <div>3개월 수익률: 10%</div>
+                <div>수익률: 25%</div>
+            </div>
+            <div class="strategy-details">
+                <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                <!--                전략 선택 버튼 누르면 모달 팝업-->
+                <button class="strategy-select" onclick="showModal()">전략 선택</button>
+            </div>
+        </div>
+
+    </div>
+    <div id="sectorContent">
+        업종 전략 내용
+    </div>
+    <div id="personalContent">
+        나만의 전략 내용
+    </div>
+    <div id="expertsContent">
+        대가들의 투자 전략 내용
+    </div>
+</div>
+<!-- 모달 코드 추가 -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <h2>편집 방법 선택</h2>
+
+        <div class="option-box" onclick="selectOption(this)">
+            <h3>프리셋(PRE-SET) 투자</h3>
+            제공된 전략을 편집에 대한 고민 없이 그대로 <br>
+            내 투자에 적용할 수 있습니다.
+
+        </div>
+
+        <div class="option-box" onclick="selectOption(this)">
+            <h3>간편 투자</h3>
+            최소한의 선택으로 쉽고 빠르게 투자 전략을 <br>
+            편집할 수 있습니다.
+
+        </div>
+
+        <div class="option-box" onclick="selectOption(this)">
+            <h3>프로(PRO) 투자</h3>
+            전문가를 위한 디테일한 메뉴들이 제공되어 <br>
+            투자 전략을 상세히 편집할 수 있습니다.
+        </div>
+
+        <!-- 전략 선택 옵션을 추가하세요. -->
+        <button onclick="hideModal()">취소</button>
+        <button onclick="selectStrategy()">선택 완료</button>
+    </div>
+</div>
+
+<script>
+    const strategySelector = document.getElementById('strategySelector');
+    const themeCard = document.getElementById('themeCard');
+    const sectorCard = document.getElementById('sectorCard');
+    const personalCard = document.getElementById('personalCard');
+    const expertsCard = document.getElementById('expertsCard');
+    const themeContent = document.getElementById('themeContent');
+    const sectorContent = document.getElementById('sectorContent');
+    const personalContent = document.getElementById('personalContent');
+    const expertsContent = document.getElementById('expertsContent');
+    const modal = document.getElementById('modal');
+    // Show theme content by default
+    themeContent.style.display = 'block';
+
+    themeCard.addEventListener('click', () => {
+        hideAllContents();
+        themeContent.style.display = 'block';
+    });
+
+    sectorCard.addEventListener('click', () => {
+        hideAllContents();
+        sectorContent.style.display = 'block';
+    });
+
+    personalCard.addEventListener('click', () => {
+        hideAllContents();
+        personalContent.style.display = 'block';
+    });
+
+    expertsCard.addEventListener('click', () => {
+        hideAllContents();
+        expertsContent.style.display = 'block';
+    });
+
+    //전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동
+    function showStrategyDetailsPage() {
+        const strategyDetailsURL = 'URL_OF_YOUR_STRATEGY_DETAILS_PAGE';
+        window.location.href = strategyDetailsURL;
+    }
+
+    function hideAllContents() {
+        themeContent.style.display = 'none';
+        sectorContent.style.display = 'none';
+        personalContent.style.display = 'none';
+        expertsContent.style.display = 'none';
+    }
+
+    // 모달을 표시하는 함수
+    function showModal() {
+        modal.style.display = 'block';
+    }
+
+    // 모달을 닫는 함수
+    function hideModal() {
+        modal.style.display = 'none';
+    }
+
+    // 전략 선택 버튼을 누를 때 호출되는 함수
+    function selectStrategy() {
+        // 선택된 전략에 따라 작업 수행
+        // 여기에 필요한 로직을 추가하세요.
+        // 모달을 닫을 수도 있습니다.
+        hideModal();
+    }
+
+    let selectedOption = null;
+
+    // 옵션 박스 클릭 이벤트 처리 함수
+    function selectOption(optionBox) {
+        // 이전에 선택된 옵션 박스의 clicked 클래스 제거
+        if (selectedOption !== null) {
+            selectedOption.classList.remove('clicked');
+        }
+
+        // 새로 선택된 옵션 박스에 clicked 클래스 추가
+        optionBox.classList.add('clicked');
+        selectedOption = optionBox;
+    }
+
+</script>
+</body>
+</html>
