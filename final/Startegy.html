@@ -262,11 +262,32 @@
 
     // 전략 선택 버튼을 누를 때 호출되는 함수
     function selectStrategy() {
-        // 선택된 전략에 따라 작업 수행
-        // 여기에 필요한 로직을 추가하세요.
-        // 모달을 닫을 수도 있습니다.
+        if (selectedOption !== null) {
+            const optionText = selectedOption.textContent;
+
+            switch (true) {
+                case optionText.includes("간편 투자"):
+                    window.location.href = "Edit.html";
+                    break;
+                case optionText.includes("프리셋"):
+                    // 프리셋 투자 옵션에 대한 동작 추가
+
+                    window.location.href = "Edit.html";
+                    break;
+                case optionText.includes("프로"):
+                    // 프로 투자 옵션에 대한 동작 추가
+
+                    window.location.href = "Edit.html";
+                    break;
+                default:
+                    console.error("No option selected.");
+                    break;
+            }
+        }
+
         hideModal();
     }
+
 
     let selectedOption = null;
 
