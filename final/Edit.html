@@ -3,21 +3,425 @@
 <head>
     <meta charset="UTF-8">
     <title>간편편집</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        /* 모달 스타일링 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 <div class="frame">
+    <div class="step-info">
+        <h1> 간편편집 <span class="step">1</span>/3단계</h1>
+    </div>
     <div class="select-vector">
         <div class="vector-gachi">
+            <h2>가치</h2>
+            저평가된 종목들 기준으로<br>
+            <button>상위 0~60%</button>
+            <button>상위 0~40%</button>
+            <button>상위 0~20%</button>
+        </div>
 
+        <div class="vector-growth">
+            <h2>가치</h2>
+            성장동력이 높은 기준으로<br>
+            <button>상위 0~60%</button>
+            <button>상위 0~40%</button>
+            <button>상위 0~20%</button>
+        </div>
+        <div class="vector-quality">
+            <h2>퀄리티</h2>
+            이익의 질이 높은 기준으로<br>
+            <button>상위 0~60%</button>
+            <button>상위 0~40%</button>
+            <button>상위 0~20%</button>
+        </div>
+
+        <div class="vector-surprise">
+            <h2>어닝 서프라이즈</h2>
+            실적 상승을 기준으로<br>
+            <button>상위 0~60%</button>
+            <button>상위 0~40%</button>
+            <button>상위 0~20%</button>
+        </div>
+
+        <div class="vector-baedang">
+            <h2>배당</h2>
+            고배당 기준으로<br>
+            <button>상위 0~60%</button>
+            <button>상위 0~40%</button>
+            <button>상위 0~20%</button>
+        </div>
+
+        <div class="vector-siga">
+            <h2>시가총액&자산규모</h2>
+            시가총액과 자산규모가 큰 기준으로<br>
+            <button>상위 0~60%</button>
+            <button>상위 0~40%</button>
+            <button>상위 0~20%</button>
+        </div>
+
+        <div class="vector-byundong">
+            <h2>변동성</h2>
+            변동성이 낮은 기준으로<br>
+            <button>상위 0~60%</button>
+            <button>상위 0~40%</button>
+            <button>상위 0~20%</button>
+        </div>
+
+        <div class="vector-market">
+            <h2>시장 민감도</h2>
+            시장 민감도가 높은 기준으로<br>
+            <button>상위 0~60%</button>
+            <button>상위 0~40%</button>
+            <button>상위 0~20%</button>
+        </div>
+
+        <div class="vector-sugb">
+            <h2>수급</h2>
+            수급 및 유동성 개선을 기준으로<br>
+            <button>상위 0~60%</button>
+            <button>상위 0~40%</button>
+            <button>상위 0~20%</button>
+        </div>
+
+        <button class="next-btn" data-current="select-vector">다음</button>
+    </div>
+
+
+    <div class="edit-strategy hidden">
+        *투자 금액, 최적화 옵션, 리밸런싱 주기, 백테스트 시작일을 원하는 대로 설정해보세요.<br>
+        <div>투자금액
+            <button class="amount" onclick="showModalAmount()">금액</button>
+        </div>
+        <div>최적화 옵션
+            <button class="option" onclick="showModalOption()">옵션</button>
+        </div>
+        <div>리밸런싱 주기
+            <button class="rebalancing" onclick="showModalRebalancing()">주기</button>
+        </div>
+        <div>백테스트 시작일
+            <button class="backtest" onclick="showModalBacktest()">시작일</button>
+        </div>
+
+
+        <div>
+            <p>* 제공되는 전략은 실시간 시가 반영이 아닌 '전 영업일 종가'를 적용하며, 투자 금액 수준에 따라<br>
+                단가가 높은 종목은 체결되지 않을 수 있어 실제 수익률과 차이가 발생할 수 있습니다.</p>
+            <p>* 상기 내용에 포함되어 있는 전략이 실현된다는 보장은 없으며, 그 전략에 기초한 투자결정과<br>
+                투자 결과에 관하여 당사가 이를 보장하지 않습니다.</p>
+        </div>
+        <div>
+            <p>* 관리종목, 거래정지 종목, 투자주의/경고/위험 종목은 자동으로 <br>
+                사전에 제외한 후 포트폴리오를 설계합니다.</p>
+            <p>* 설정한 투자 금액이 적으면 전략이 온전히 반영되지 않습니다.<br>
+                프리셋(Pre-set)전략은 1억원 기준입니다.</p>
+        </div>
+
+        <button class="prev-btn" data-current="edit-strategy">이전</button>
+        <button class="next-btn" data-current="edit-strategy">다음</button>
+    </div>
+
+
+    <div class="edit-result hidden">
+
+        <button class="prev-btn" data-current="edit-result">이전</button>
+    </div>
+</div>
+
+
+<!-- 투자금액 모달 내용 -->
+<div id="modalAmount" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModalAmount()">&times;</span>
+        <div>
+            <h2>투자금액 설정</h2>
+            <p>* 설정한 투자 금액이 적으면 전략이 온전히 반영되지 않습니다.<br>
+                프리셋(Pre-set) 전략은 1억원 기준입니다.</p>
+        </div>
+        <div class="amount-option direct-input" onclick="showDirectInputModal()">직접입력</div>
+        <div class="amount-option">100만원</div>
+        <div class="amount-option">200만원</div>
+        <div class="amount-option">300만원</div>
+        <div class="amount-option">400만원</div>
+        <div class="amount-option">500만원</div>
+        <div class="amount-option">600만원</div>
+        <div class="amount-option">700만원</div>
+        <div class="amount-option">800만원</div>
+        <div class="amount-option">900만원</div>
+        <div class="amount-option">1,000만원</div>
+    </div>
+</div>
+
+
+<div id="directInputModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeDirectInputModal()">&times;</span>
+        <h2>직접 투자금액 입력</h2>
+        <input type="text" id="directInvestmentInput" placeholder="">
+        <button onclick="applyDirectInput()">확인</button>
+    </div>
+</div>
+
+
+<div id="modalOption" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModalOption()">&times;</span>
+        <!-- 최적화 옵션 모달 내용 -->
+        <div>
+            <h2>최적화 옵션</h2>
+            <p>투자 전략에 따라 추출된 종목들의 비중을 설정하는 방법을 선택해주세요.<br>
+                *일부 전략의 프리셋 수익률은 동일비중 최적화를 바탕으로 제공합니다.</p>
+        </div>
+
+        <div class="option1">
+            <h3>동일비중 최적화</h3>
+            <p>모든 종목에 각각 동일한 비중을 배정하는 방법입니다.</p>
+        </div>
+
+        <div class="option2">
+            <h3>시가총액 최적화</h3>
+            <p>시가총액의 비율대로 종목 비중을 배정하는 방법입니다.</p>
+        </div>
+
+        <div class="option3">
+            <h3>위험균형 최적화</h3>
+            <p>모든 종목이 포트폴리오에 동일한 변동성을 기여하게끔 비중을 배정하는 방법입니다.</p>
         </div>
     </div>
-    <div class="edit-strategy">
-
-    </div>
-    <div class="edit-result">
-
-    </div>
-    <button class="daum"></button>
 </div>
+
+<div id="modalRebalancing" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModalRebalancing()">&times;</span>
+        <!-- 리밸런싱 주기 모달 내용 -->
+        <div>
+            <h2>리밸런싱 주기</h2>
+            <p>투자 전략에 맞추어 포트폴리오 내 종목 비중을 재조정할 주기를 설정해주세요.</p>
+        </div>
+
+        <div class="rebalancing1">
+            <h3>리밸런싱 없음</h3>
+        </div>
+        <div class="rebalancing2">
+            <h3>1개월에 한 번</h3>
+        </div>
+        <div class="rebalancing3">
+            <h3>3개월에 한 번</h3>
+        </div>
+        <div class="rebalancing4">
+            <h3>6개월에 한 번</h3>
+        </div>
+    </div>
+</div>
+
+<div id="modalBacktest" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModalBacktest()">&times;</span>
+        <!-- 백테스트 시작일 모달 내용 -->
+        <h2>백테스트 시작일 설정</h2>
+
+    </div>
+</div>
+
+
+<script>
+    const prevButtons = document.querySelectorAll(".prev-btn");
+    const nextButtons = document.querySelectorAll(".next-btn");
+    const stepInfo = document.querySelector(".step");
+    let currentStep = 1; // 초기 단계를 1로 설정
+
+
+    function showSection(section) {
+        section.classList.remove("hidden");
+    }
+
+    function hideSection(section) {
+        section.classList.add("hidden");
+    }
+
+    function updateStep(step) {
+        stepInfo.textContent = step;
+    }
+
+    nextButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            const currentSection = this.getAttribute("data-current");
+            const nextSection = this.parentElement.nextElementSibling;
+
+            if (nextSection) {
+                hideSection(document.querySelector("." + currentSection));
+                showSection(nextSection);
+                currentStep++; // 다음 버튼을 누를 때 단계 증가
+                updateStep(currentStep);
+            }
+        });
+    });
+
+    prevButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            const currentSection = this.getAttribute("data-current");
+            const prevSection = this.parentElement.previousElementSibling;
+
+            if (prevSection) {
+                hideSection(document.querySelector("." + currentSection));
+                showSection(prevSection);
+                currentStep--; // 이전 버튼을 누를 때 단계 감소
+                updateStep(currentStep);
+            }
+        });
+    });
+
+
+    // 모달 열기 함수
+    // 투자금액 모달 열기 함수
+    function showModalAmount() {
+        const modal = document.getElementById("modalAmount");
+        modal.style.display = "block";
+    }
+
+    // 최적화 옵션 모달 열기 함수
+    function showModalOption() {
+        const modal = document.getElementById("modalOption");
+        modal.style.display = "block";
+    }
+
+    // 리밸런싱 주기 모달 열기 함수
+    function showModalRebalancing() {
+        const modal = document.getElementById("modalRebalancing");
+        modal.style.display = "block";
+    }
+
+    // 백테스트 시작일 모달 열기 함수
+    function showModalBacktest() {
+        const modal = document.getElementById("modalBacktest");
+        modal.style.display = "block";
+    }
+
+    // 모달 닫기 함수
+    // 각 모달 닫기 함수
+    function closeModalAmount() {
+        const modal = document.getElementById("modalAmount");
+        modal.style.display = "none";
+    }
+
+    function closeModalOption() {
+        const modal = document.getElementById("modalOption");
+        modal.style.display = "none";
+    }
+
+    function closeModalRebalancing() {
+        const modal = document.getElementById("modalRebalancing");
+        modal.style.display = "none";
+    }
+
+    function closeModalBacktest() {
+        const modal = document.getElementById("modalBacktest");
+        modal.style.display = "none";
+    }
+
+    function setInvestmentAmount(amount) {
+        const directInvestmentInput = document.getElementById("directInvestmentInput");
+        directInvestmentInput.value = amount;
+        // "투자금액" 텍스트도 변경
+        const investmentButton = document.querySelector(".amount");
+        investmentButton.textContent = amount;
+        closeModalAmount();
+    }
+
+
+    document.querySelectorAll("#modalAmount .amount-option").forEach(amountDiv => {
+        amountDiv.addEventListener("click", function () {
+            const amountText = this.textContent.trim();
+            setInvestmentAmount(amountText);
+            closeModalAmount();
+        });
+    });
+
+    function showDirectInputModal() {
+        const directInputModal = document.getElementById("directInputModal");
+        directInputModal.style.display = "block";
+    }
+
+    function closeDirectInputModal() {
+        const directInputModal = document.getElementById("directInputModal");
+        directInputModal.style.display = "none";
+    }
+
+    function applyDirectInput() {
+        const directInvestmentInput = document.getElementById("directInvestmentInput");
+        const investmentAmount = directInvestmentInput.value;
+
+        if (investmentAmount.trim() !== "") {
+            setInvestmentAmount(investmentAmount);
+            closeModalAmount();
+            closeDirectInputModal();
+        }
+    }
+
+    // 최적화 옵션
+    document.querySelectorAll(".modal-content .option1, .modal-content .option2, .modal-content .option3").forEach(optionDiv => {
+        optionDiv.addEventListener("click", function () {
+            const optionText = this.querySelector("h3").textContent;
+            updateOptionButton(optionText);
+            closeModalOption();
+        });
+    });
+
+    function updateOptionButton(optionText) {
+        const optionButton = document.querySelector(".option");
+        optionButton.textContent = optionText;
+    }
+
+    // 리밸런싱 주기
+    document.querySelectorAll(".modal-content .rebalancing1, .modal-content .rebalancing2, .modal-content .rebalancing3, .modal-content .rebalancing4").forEach(optionDiv => {
+        optionDiv.addEventListener("click", function () {
+            const optionText = this.querySelector("h3").textContent;
+            updateRebalancingButton(optionText);
+            closeModalRebalancing();
+        });
+    });
+
+    function updateRebalancingButton(optionText) {
+        const optionButton = document.querySelector(".rebalancing");
+        optionButton.textContent = optionText;
+    }
+
+</script>
 </body>
 </html>
