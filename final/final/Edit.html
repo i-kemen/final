@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <title>간편편집</title>
     <style>
@@ -42,6 +43,9 @@
             cursor: pointer;
         }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 </head>
 <body>
 <div class="frame">
@@ -159,8 +163,44 @@
 
 
     <div class="edit-result hidden">
+        <div>
+            * 구성된 종목 리스트에서 종목을 제외하거나, + 버튼을 눌러 제외한 종목을 리스트에 재편입시킬 수 있습니다.
+        </div>
+        <div>
+            <h2>제외 종목</h2>
+        </div>
+        <div class="bbam">
+            제외된 종목이 없습니다.
+        </div>
+        <div>
+            <h2>종목 리스트</h2>
+            <p>* 제공되는 전략은 실시간 시가 반영이 아닌 "전 영업일 종가"를 적용하며, 투자금액 수준에 따라 단가가 높은 종목은 체결되지 않을 수 있어 실제 수익률과 차이가 발생할 수
+                있습니다.</p>
+            <p>* 상기 내용에 포함되어 있는 전략이 실현된다는 보장은 없으며, 그 전략에 기초한 투자결정과 투자결과에 관하여 당사가 이를 보장하지 않습니다.</p>
+            <p>* 설정한 투자 금액이 적으면 전략이 온전히 반영되지 않습니다.</p>
+            <p>* 프리셋(Pre-set)전략은 1억원 기준입니다.</p>
+        </div>
+        <div>
+            <button>원래 비중대로</button>
+            <button>종목 추가</button>
+        </div>
+        <div>
+            총 n개(비중 편집 시, 구성 종목이 추가되거나 제외될 수 있습니다.)
+        </div>
+        <div>
+            <table>
+                <th>종목명
+                </th>
 
+                <th>비중
+                </th>
+
+                <th>제외
+                </th>
+            </table>
+        </div>
         <button class="prev-btn" data-current="edit-result">이전</button>
+        <button class="backtest-go">완료</button>
     </div>
 </div>
 
@@ -249,13 +289,16 @@
         </div>
     </div>
 </div>
-
 <div id="modalBacktest" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModalBacktest()">&times;</span>
         <!-- 백테스트 시작일 모달 내용 -->
         <h2>백테스트 시작일 설정</h2>
-
+        <button onclick="setDateOneYearAgo()">1년 전</button>
+        <button onclick="setDateThreeYearsAgo()">3년 전</button>
+        <br>
+        <input type="text" id="startDatePicker" placeholder="날짜 선택">
+        <button onclick="applyStartDate()">확인</button>
     </div>
 </div>
 
@@ -421,6 +464,54 @@
         const optionButton = document.querySelector(".rebalancing");
         optionButton.textContent = optionText;
     }
+
+    flatpickr("#startDatePicker", {
+        dateFormat: "Y-m-d", // 날짜 형식을 지정합니다.
+        onClose: function (selectedDates, dateStr, instance) {
+            // 날짜가 선택되면 해당 날짜를 가져와서 사용하면 됩니다.
+            console.log("Selected date:", dateStr);
+        }
+    });
+
+    // 시작일 입력 필드
+    const startDatePicker = document.getElementById('startDatePicker');
+
+    // 1년 전 버튼 클릭 시 실행되는 함수
+    function setDateOneYearAgo() {
+        const today = new Date();
+        const oneYearAgo = new Date(today.getFullYear() - 1, today.getMonth(), today.getDate());
+        startDatePicker.value = formatDate(oneYearAgo);
+    }
+
+    // 3년 전 버튼 클릭 시 실행되는 함수
+    function setDateThreeYearsAgo() {
+        const today = new Date();
+        const threeYearsAgo = new Date(today.getFullYear() - 3, today.getMonth(), today.getDate());
+        startDatePicker.value = formatDate(threeYearsAgo);
+    }
+
+    // 날짜를 'yyyy-MM-dd' 형식으로 변환하는 함수
+    function formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+
+    function applyStartDate() {
+        const selectedDate = startDatePicker.value;
+        const backtestButton = document.querySelector('.backtest');
+        backtestButton.textContent = selectedDate;
+        closeModalBacktest(); // 모달 닫기
+    }
+
+    var button = document.querySelector(".backtest-go");
+
+    // 버튼 클릭 시 실행할 함수를 정의합니다.
+    button.addEventListener("click", function () {
+        // Backtest.html로 이동합니다.
+        window.location.href = "Backtest.html";
+    });
 
 </script>
 </body>

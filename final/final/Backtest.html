@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /* 모달 스타일 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .bar {
+            width: 20px;
+            background-color: blue;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <button class="edit-cancle" onclick="showCancleModal()">편집 취소</button>
+</div>
+<div class="strategy-title">
+    <h1>K-반도체 담당 소부장(Active)</h1>
+</div>
+<div class="strategy-performance">
+    <h2>누적수익률</h2>
+    <!--3개월-->
+    <div>기준일자: <span class="three-date"></span></div>
+    <div>3개월 수익률: 10%</div>
+    <div>수익률: 25%</div>
+</div>
+<div class="strategy-style">
+    <h2>전략 스타일 분석
+        <button>설명</button>
+    </h2>
+    <div>기준일자: <span class="index-date"></span></div>
+    <div>
+        나의 전략 프리셋
+    </div>
+    <div>
+        <p>* 제공되는 전략은 실시간 시가 반영이 아닌 "전 영업일 종가"를 적용하며, 투자금액 수준에 따라 단가가 높은 종목은 체결되지 않을 수 있어 실제 수익률과 차이가 발생할 수
+            있습니다.</p>
+        <p>* 상기 내용에 포함되어 있는 전략이 실현된다는 보장은 없으며, 그 전략에 기초한 투자결정과 투자결과에 관하여 당사가 이를 보장하지 않습니다.</p>
+        <p>* 설정한 투자 금액이 적으면 전략이 온전히 반영되지 않습니다.</p>
+        <p>* 프리셋(Pre-set)전략은 1억원 기준입니다.</p>
+    </div>
+</div>
+<div class="profit">
+    <!--4개월-->
+    <h2>수익 분석</h2>
+    <div>현재 날짜: <span class="three-date"></span></div>
+    <ul class="option">
+
+        <button id="button1" onclick="showModal()">지수 선택</button>
+
+        <button id="button2">전체기간</button>
+
+    </ul>
+    <div class="profit-graph"></div>
+    <div class="profit-table"></div>
+    <div class="sector">
+        <h2>섹터/업종 구성
+            <button>설명</button>
+        </h2>
+        <div>기준일자: <span class="index-date"></span></div>
+    </div>
+    <div class="">
+        <h2>종목구성(Top5)
+            <button>설명</button>
+        </h2>
+        <div>기준일자: <span class="index-date"></span></div>
+        <button>종목 구성 더보기</button>
+    </div>
+
+    <div>
+        <h2>리밸런싱 내역
+            <button>설명</button>
+        </h2>
+        <div>기준일자: <span class="four-date"></span></div>
+    </div>
+
+</div>
+<div>
+    <button class="re-edit" onclick="returnEdit()">다시 편집하기</button>
+    <button class="edit-save" onclick="showSaveModal()">전략저장</button>
+</div>
+<!-- 모달 코드 추가 -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <h2>지수 선택</h2>
+        <ul class="index-list">
+            <div onclick="selectIndex('KOSPI')">KOSPI</div>
+            <div onclick="selectIndex('KOSPI200')">KOSPI200</div>
+            <div onclick="selectIndex('KOSDAQ')">KOSDAQ</div>
+            <div onclick="selectIndex('KOSDAQ150')">KOSDAQ150</div>
+            <div onclick="selectIndex('KRX300')">KRX300</div>
+        </ul>
+        <div onclick="closeModal()">취소</div>
+    </div>
+</div>
+
+<div id="cancleModal" class="modal">
+    <div class="modal-content">
+        <h2>편집 취소</h2>
+        <p>편집한 내용을 저장하지 않고 나가시겠습니까?</p>
+        <button class="real-cancle">취소</button>
+        <button class="real-confirm">확인</button>
+    </div>
+</div>
+
+<div id="saveModal" class="modal">
+    <div class="modal-content">
+        <h2>전략 저장</h2>
+        <p>전략명: <span id="strategyTitle"></span></p>
+        <p>저장할 전략명을 입력해주세요. (최대 50자 이내)</p>
+        <input type="text" id="strategyNameInput" maxlength="50" placeholder="전략명을 입력하세요...">
+        <span id="strategyNameCount">0 / 50</span>
+        <div>
+            <button class="cancle-save">취소</button>
+            <button class="real-save">저장</button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // 전략명을 저장하는 변수
+    let strategyName = "";
+
+    // 페이지 로딩 시 전략명 설정
+    window.addEventListener('load', () => {
+        // 현재 페이지의 <h1> 태그 내용을 전략명으로 설정
+        const h1Element = document.querySelector('h1');
+        if (h1Element) {
+            strategyName = h1Element.textContent;
+        }
+    });
+
+    const strategyTitleElement = document.getElementById('strategyTitle');
+    const strategyNameInput = document.getElementById('strategyNameInput');
+    const strategyNameCount = document.getElementById('strategyNameCount');
+
+    // 전략명 입력 시
+    strategyNameInput.addEventListener('input', () => {
+        const inputText = strategyNameInput.value;
+        strategyTitleElement.textContent = inputText; // 전략명 업데이트
+
+        // 글자 수 카운트 업데이트
+        const currentCount = inputText.length;
+        strategyNameCount.textContent = `${currentCount} / 50`;
+    });
+
+    // 오늘날짜
+    const currentDateElements = document.querySelectorAll('.index-date, .three-date, .four-date');
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth() + 1;
+    const currentDay = currentDate.getDate() - 1;
+
+    // 3개월 전 날짜 계산
+    const threeMonthsAgo = new Date(currentDate);
+    threeMonthsAgo.setMonth(currentDate.getMonth() - 3);
+    const threeMonthsAgoYear = threeMonthsAgo.getFullYear();
+    const threeMonthsAgoMonth = threeMonthsAgo.getMonth() + 1;
+    const threeMonthsAgoDay = threeMonthsAgo.getDate() - 1;
+
+    // 4개월 전 날짜 계산
+    const fourMonthsAgo = new Date(currentDate);
+    fourMonthsAgo.setMonth(currentDate.getMonth() - 4);
+    const fourMonthsAgoYear = fourMonthsAgo.getFullYear();
+    const fourMonthsAgoMonth = fourMonthsAgo.getMonth() + 1;
+    const fourMonthsAgoDay = fourMonthsAgo.getDate() - 1;
+
+    currentDateElements.forEach(element => {
+        if (element.classList.contains('index-date')) {
+            element.textContent = `${currentYear}/${currentMonth < 10 ? '0' + currentMonth : currentMonth}/${currentDay < 10 ? '0' + currentDay : currentDay}`;
+        } else if (element.classList.contains('three-date')) {
+            element.textContent = `${threeMonthsAgoYear}/${threeMonthsAgoMonth < 10 ? '0' + threeMonthsAgoMonth : threeMonthsAgoMonth}/${threeMonthsAgoDay < 10 ? '0' + threeMonthsAgoDay : threeMonthsAgoDay}`
+                + ` ~ ${currentYear}/${currentMonth < 10 ? '0' + currentMonth : currentMonth}/${currentDay < 10 ? '0' + currentDay : currentDay}`;
+        } else if (element.classList.contains('four-date')) {
+            element.textContent = `${fourMonthsAgoYear}/${fourMonthsAgoMonth < 10 ? '0' + fourMonthsAgoMonth : fourMonthsAgoMonth}/${fourMonthsAgoDay < 10 ? '0' + fourMonthsAgoDay : fourMonthsAgoDay}`
+                + ` ~ ${currentYear}/${currentMonth < 10 ? '0' + currentMonth : currentMonth}/${currentDay < 10 ? '0' + currentDay : currentDay}`;
+        }
+    });
+
+
+    // 모달을 표시하는 함수
+    const modal = document.getElementById('modal');
+
+    function showModal() {
+        modal.style.display = 'block';
+    }
+
+
+    // 모달을 닫는 함수
+    function closeModal() {
+        modal.style.display = 'none';
+    }
+
+    // 선택된 지수를 처리하는 함수
+    function selectIndex(index) {
+        console.log('선택된 지수:', index);
+        closeModal(); // 모달 닫기
+    }
+
+    // 버튼 클릭 시 모달 표시
+    const button1 = document.getElementById('button1');
+    button1.addEventListener('click', () => {
+        showModal();
+    });
+
+    //그래프 예시 데이터
+    const indexData = {
+        'KOSPI': [10, 20, 30, 25, 35],
+        'KOSPI200': [15, 25, 35, 30, 40],
+        // ... Add data for other indices here
+    };
+    // 처음 시작 시, KOSPI 데이터로 설정
+    window.addEventListener('load', () => {
+        selectIndex('KOSPI');
+    });
+
+
+    //테이블 예시 데이터
+    const indexTableData = {
+        'KOSPI': [
+            {date: '2023-01-01', value: 100},
+            {date: '2023-01-02', value: 105},
+            // ... Add more data for the KOSPI index
+        ],
+        'KOSPI200': [
+            {date: '2023-01-01', value: 150},
+            {date: '2023-01-02', value: 155},
+            // ... Add more data for the KOSPI200 index
+        ],
+        // ... Add data for other indices here
+    };
+
+
+    function selectIndex(index) {
+        console.log('선택된 지수:', index);
+        closeModal(); // 모달 닫기
+        const button1 = document.getElementById('button1');
+        button1.textContent = index; // 버튼 텍스트 업데이트
+
+        // 예시: 선택한 지수에 해당하는 그래프 컨테이너 업데이트
+        const graphContainer = document.querySelector('.profit-graph');
+        // Example: Create a simple bar chart
+        const indexValues = indexData[index];
+
+        const graphContent = `
+        <h2>${index} 그래프</h2>
+        <div class="bar-chart">
+            ${indexValues.map(value => `
+                <div class="bar" style="height: ${value}px;"></div>
+            `).join('')}
+        </div>
+    `;
+
+        graphContainer.innerHTML = graphContent;
+
+
+        // 테이블
+        const tableContainer = document.querySelector('.profit-table');
+        // 테이블 생성
+        const tableContent = document.createElement('table');
+        const tableHeader = document.createElement('thead');
+        tableHeader.innerHTML = `
+        <tr>
+            <th>날짜</th>
+            <th>값</th>
+        </tr>
+    `;
+        const tableBody = document.createElement('tbody');
+        for (const row of indexTableData[index]) {
+            const tableRow = document.createElement('tr');
+            tableRow.innerHTML = `
+            <td>${row.date}</td>
+            <td>${row.value}</td>
+        `;
+            tableBody.appendChild(tableRow);
+        }
+
+        tableContent.appendChild(tableHeader);
+        tableContent.appendChild(tableBody);
+
+        // 기존 테이블 내용 지우고 새로운 테이블 추가
+        tableContainer.innerHTML = '';
+        tableContainer.appendChild(tableContent);
+
+    }
+
+    // 모달을 표시하는 함수
+    const cancleModal = document.getElementById('cancleModal');
+
+    function showCancleModal() {
+        cancleModal.style.display = 'block';
+    }
+
+    // 취소 모달을 닫는 함수
+    function closeCancleModal() {
+        cancleModal.style.display = 'none';
+    }
+
+    // "취소" 버튼 클릭 시 모달 닫기
+    const cancleButton = document.querySelector('.real-cancle');
+    cancleButton.addEventListener('click', () => {
+        closeCancleModal();
+    });
+
+    // "확인" 버튼 클릭 시 동작 추가 (이동 등)
+    const confirmButton = document.querySelector('.real-confirm');
+    confirmButton.addEventListener('click', () => {
+        window.location.href = 'Strategy.html'; // 이동하고자 하는 경로로 수정
+        closeCancleModal();
+    });
+
+    function returnEdit() {
+        window.location.href = 'Edit.html';
+    };
+
+    // 모달을 표시하는 함수 (전략 저장 모달)
+    const saveModal = document.getElementById('saveModal');
+
+    function showSaveModal() {
+        // 전략명 설정
+        document.getElementById('strategyTitle').textContent = strategyName;
+        saveModal.style.display = 'block';
+    }
+
+    // 전략 저장 모달을 닫는 함수
+    function closeSaveModal() {
+        saveModal.style.display = 'none';
+    }
+
+    const cancleSaveButton = document.querySelector('.cancle-save');
+    cancleSaveButton.addEventListener('click', () => {
+        closeSaveModal();
+    });
+
+
+    const realSaveButton = document.querySelector('.real-save');
+    realSaveButton.addEventListener('click', () => {
+        window.location.href = 'Mystrategy.html'; // 이동하고자 하는 경로로 수정
+        closeSaveModal();
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Wallet_namhoonDB">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/final/wallet/Wallet_namhoonDB.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
