@@ -1,0 +1,6215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible"/>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="증권, 주식거래, 금융상품, 재테크 및 투자, 자산관리 정보, 주식시세 " name="description"/>
+    <meta content="증권, 주식, 증권, 인터넷뱅킹, 트레이딩, 주식시세, 주문, 자산관리, 코스피, 코스닥, 해외주식, 금융상품, 선물, 옵션, 채권, 펀드, CMA, RP, 신탁, Wrap, ELS, 재테크, 리서치, HTS, 실전투자대회" name="keywords"/>
+    <meta content="South Korea" name="Location"/>
+    <meta content="global" name="Distribution"/>
+    <meta content="Hana Financial Investment Co.,Ltd." name="author"/>
+    <meta content="width=1024" name="viewport"/>
+    <link href="/common/img/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+    <script type="text/javascript">
+        //========================================================================================================
+
+        var __POLLING_DOMAIN = "https://polling.hanaw.com:444";
+
+        var __WEBSOCKET_IP = "wsocket.hanaw.com";
+
+        var __WEBSOCKET_PORT = "80";
+
+
+
+        var __XECURE_IP = "null";   //제큐어
+
+
+
+        var __SESSION_ID = "NXzoWMZtxp2I90uB6f40H5mrkjo2c4MQLbCbO5oDQxkYF9Bix4r0txTa1mvfIsW8.ZWJpel9wcm9kL2hvbWUyMQ==";
+
+
+
+        /*여기에 선언된 변수들을 직접 사용하지말고 common.js에 정의된 getter를 이용하여 사용  (ex : get__USER_DN())*/
+
+        //SSL_DOMAIN [get__SSL_DOMAIN <--getter 함수]
+
+        var __SSL_DOMAIN = "https://www.hanaw.com";
+
+
+
+        var __ISLOGIN = ("false"==="true");
+
+
+
+        //로그인 사용자 USERDN [get__USER_DN <--getter 함수]
+
+        var __USER_DN = "";
+
+
+
+        //로그인 사용자 USERID [get__USER_ID <--getter 함수]
+
+        var __USER_ID = "";
+
+
+
+        //로그인 사용자 USERNAME [get__USER_NAME <--getter 함수]
+
+        var __USER_NAME = "";
+
+
+
+        //로그인 사용자 USERIP [get__USER_IP <--getter 함수]
+
+        var __USER_IP = "1.216.37.175";
+
+
+
+        //로그인 사용자 로그레벨 [get__USER_AUTH <--getter 함수]
+
+        var __USER_AUTH = "";
+
+
+
+        //로그인 사용자 CERT_ERROR_COUNT [get__USER_IP <--getter 함수]
+
+        var __CERT_ERROR_CNT = "0";
+
+
+
+        //appfree 공동인증 발급 CERTRELAY SERVER
+
+        var __APPFREE_CERTRELAY = "210.107.66.12";
+
+
+
+        //appfree AUTOINDEX값 저장 [get__APPFREE_AUTOINDEX <--getter함수]
+
+        var _APPFREE_AUTOINDEX = encodeURIComponent("");
+
+
+
+        var __SELECTED_MENU_ID ="CS_020100_P";
+
+
+
+        var __YAKGWAN ="null";
+
+
+
+        //2014.02.26 도메인 추가
+
+        var __DOMAIN = "www.hanaw.com";
+
+
+
+        //2015.01.12 디바이스 추가
+
+        var __DEVICE ="pc";
+
+
+
+        var __LOGIN_PUSH_KEY = "";
+
+
+
+        //mtsotp
+
+        var __MTSOTPTMID = "";
+
+
+
+        function get__DEVICE(){
+
+            return __DEVICE;
+
+        }
+
+
+
+        function get__DOMAIN(){
+
+            return __DOMAIN;
+
+        }
+
+
+
+        function get__SSL_DOMAIN(){
+
+            return __SSL_DOMAIN;
+
+        }
+
+
+
+        function get__USER_AUTH(){
+
+            return __USER_AUTH;
+
+        }
+
+
+
+        function get__APPFREE_CERTRELAY(){
+
+            return __APPFREE_CERTRELAY;
+
+        }
+
+
+
+        function get__APPFREE_AUTOINDEX(){
+
+            return _APPFREE_AUTOINDEX;
+
+        }
+
+
+
+        function get__WEBSOCKET_IP(){
+
+            return __WEBSOCKET_IP;
+
+        }
+
+
+
+        function get__WEBSOCKET_PORT(){
+
+            return __WEBSOCKET_PORT;
+
+        }
+
+
+
+        function get__USER_DN(){
+
+            return __USER_DN;
+
+        }
+
+
+
+        function set__USER_DN(dn){
+
+            __USER_DN = dn;
+
+        }
+
+
+
+        function get__USER_ID(){
+
+            return __USER_ID;
+
+        }
+
+
+
+        function get__USER_NAME(){
+
+            return __USER_NAME;
+
+        }
+
+
+
+        function get__USER_IP(){
+
+            return __USER_IP;
+
+        }
+
+
+
+        function get__CERT_ERROR_CNT(){
+
+            return __CERT_ERROR_CNT;
+
+        }
+
+
+
+        function set__CERT_ERROR_CNT(count){
+
+            __CERT_ERROR_CNT = count;
+
+        }
+
+
+
+        function get__SESSION_ID(){
+
+            return __SESSION_ID;
+
+        }
+
+
+
+        function get__XECURE_IP(){
+
+            return __XECURE_IP;
+
+        }
+
+
+
+        function get__ISLOGIN(){
+
+            return __ISLOGIN;
+
+        }
+
+
+
+        function get__YAKGWAN(){
+
+            return __YAKGWAN;
+
+        }
+
+
+
+        function get__POLLING_DOMAIN(){
+
+            return __POLLING_DOMAIN;
+
+        }
+
+
+
+        function get__LOGIN_PUSH_KEY(){
+
+            return __LOGIN_PUSH_KEY;
+
+        }
+
+        //========================================================================================================
+    </script>
+    <script src="/common/js/DupConn.common.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        //콘솔지원 안하는 브라우저에서 사용안함
+
+        if (typeof console === "undefined") {
+
+            console = {};
+
+            console.log = function() {
+
+                return;
+
+            };
+
+        }
+
+
+
+        //IE7 service 불가:S
+
+        function getIeCheckBrowser(){
+
+            var browser = undefined;
+
+
+
+            var ua =  navigator.userAgent.toLowerCase(),
+
+                rwebkit = /(webkit)[ \/]([\w.]+)/,
+
+                ropera = /(opera)(?:.*version)?[ \/]([\w.]+)/,
+
+                rmsie = /(msie) ([\w.]+)/,
+
+                rmozilla = /(mozilla)(?:.*? rv:([\w.]+))?/;
+
+            var match = rwebkit.exec( ua ) ||ropera.exec( ua ) || rmsie.exec( ua ) || ua.indexOf("compatible") < 0 && rmozilla.exec( ua ) || [];
+
+
+
+            browser = match[1];
+
+            if(browser == "msie"){
+
+                //호환성보기를 무시하고 브라우저 버전을 체크 할수있다. IE8부터 유저정보에 추가
+
+                var trident = navigator.userAgent.match(/Trident\/(\d.\d)/i);
+
+                if(trident != null){
+
+                    var version = (trident[1]+"");
+
+                    if(version == "7.0"){
+
+                        browser = "IE11";
+
+                    }else if(version == "6.0"){
+
+                        browser = "IE10";
+
+                    }else if(version == "5.0"){
+
+                        browser = "IE9";
+
+                    }else if(version == "4.0"){
+
+                        browser = "IE8";
+
+                    } else{
+
+                        browser = "IE7";
+
+                    }
+
+                }else{
+
+                    browser = "IE7";
+
+                }
+
+            }
+
+            return browser;
+
+        }
+
+
+
+        if(getIeCheckBrowser()=="IE7"){
+
+            location.href="/main/view/ie7.html";
+
+        }
+
+        //IE7 service 불가:E
+
+
+
+
+
+        //PC버전 보기, MOBILE버전 보기:S
+
+        try{
+
+            (function(){
+
+                var __IS_MOBILE = false;
+
+
+
+
+
+                var __USER_SELECT_DEVICE = "null";
+
+                var __MOBILE_DOMAIN      = "m.hanaw.com:444";
+
+                var __PC_DOMAIN          = "www.hanaw.com";
+
+
+
+                var hostport = location.port;
+
+                var hostname = location.hostname + (hostport == "" ? "" : ":"+hostport);
+
+                var protocol = location.protocol;
+
+                var needLocationHref = false;
+
+                //1.http 접속인경우 https로 변경
+
+                if(protocol=="http:"||protocol.indexOf("http:")==0){
+
+                    needLocationHref = true;
+
+                    protocol = "https:";
+
+                    console.log('http >> https redirect.. ', location.href);
+
+                }
+
+
+
+                if(__PC_DOMAIN !="local.hanaw.com"){//개발피시의 경우 리다이렉트 X
+
+                    console.log('__IS_MOBILE ::: ' + __IS_MOBILE );
+
+                    //2.모바일 접속인경우 모바일 URL로 팅김 [ www.hanaw.com ==> m.hanaw.com ]
+
+                    if(__IS_MOBILE){
+
+                        if(__USER_SELECT_DEVICE=="tablet"){
+
+                            if(hostname != __PC_DOMAIN){
+
+                                needLocationHref = true;
+
+                                hostname = __PC_DOMAIN;
+
+                            }
+
+                        }else if(__USER_SELECT_DEVICE=="mobile"){
+
+                            if(hostname != __MOBILE_DOMAIN){
+
+                                console.log(hostname,__MOBILE_DOMAIN);
+
+                                needLocationHref = true;
+
+                                hostname = __MOBILE_DOMAIN;
+
+                            }
+
+                        }else{//아무 설정이 없는경우 모바일은 모바일 사이트로 이동
+
+                            if(hostname != __MOBILE_DOMAIN){
+
+                                needLocationHref = true;
+
+                                hostname = __MOBILE_DOMAIN;
+
+                            }
+
+                        }
+
+                    }else{
+
+                        //console.log( '=======' );
+
+                        //console.log( 'device값 :: ' + __USER_SELECT_DEVICE );
+
+                        //console.log( 'hostname :: ' + hostname );
+
+                        //console.log( 'user_select_device :: ' + __USER_SELECT_DEVICE );
+
+                        //console.log( '__MOBILE_DOMAIN :: ' + __MOBILE_DOMAIN );
+
+                        //console.log( 'pathname :: ' + location.pathname );
+
+                        //console.log( 'search :: ' + location.search );
+
+                        //console.log( '=======' );
+
+                        if(__USER_SELECT_DEVICE=="tablet"){
+
+                            if(hostname != __PC_DOMAIN){
+
+                                needLocationHref = true;
+
+                                hostname = __PC_DOMAIN;
+
+                            }
+
+                        }else if(__USER_SELECT_DEVICE=="mobile"){
+
+                            if(hostname != __MOBILE_DOMAIN){
+
+                                needLocationHref = true;
+
+                                hostname = __MOBILE_DOMAIN;
+
+                            }
+
+                        }else{
+
+                            if(hostname != __PC_DOMAIN){
+
+                                needLocationHref = true;
+
+                                hostname = __PC_DOMAIN;
+
+                            }
+
+                        }
+
+                    }
+
+
+
+                }//end of __PC_DOMAIN !="local.hanaw.com"
+
+
+
+                if(needLocationHref){
+
+                    //console.log("[__IS_MOBILE : "+__IS_MOBILE+"]",protocol,hostname);
+
+                    //response.encodeURL("urlSessionResult.jsp");
+
+                    location.href="https://"+hostname+location.pathname+location.search;
+
+                }
+
+                /* 약관 동의 안한 고객 로그인시 약관 동의 안할시 자동 로그아웃 - 2015.02.02 김민정대리 요청으로 처리*/
+
+                /*  if(""=='N'){
+
+            alert("온라인 증권거래약관을 동의하셔야 홈페이지 이용이 가능합니다.");
+
+            location.href="/main/customer/login/logout.cmd";
+
+        }  */
+
+
+
+                // console.log("document.referrer", document.referrer);
+
+                function realTimeUrl() {
+
+                    var rtSetUrl = ['WT_410100_P','WT_410200_P'];
+
+                    var rtCnt = 0;
+
+                    rtSetUrl.map(function(val) {
+
+                        if(window.location.pathname.indexOf(val) > -1) {
+
+                            rtCnt++;
+
+                        }
+
+                    });
+
+                    if(rtCnt > 0) return;
+
+
+
+                    rtSetUrl.map(function(val) {
+
+                        if(document.referrer.indexOf(val) > -1) {
+
+                            DupConn.common.LoginPushRgst(get__LOGIN_PUSH_KEY() , get__WEBSOCKET_IP(), get__WEBSOCKET_PORT(), null, "N");
+
+                        }
+
+                    });
+
+                }
+
+                realTimeUrl();
+
+            })();
+
+
+
+        }catch(e){console.log('http >> https redirect error.. ', e);}
+
+        //PC버전 보기, MOBILE버전 보기:E
+
+
+
+
+
+        //중복로그인 체크 기능:S
+    </script>
+    <script>
+        try{
+
+            window.onerror = function(e) {
+
+                try {
+
+                    var params = {
+
+                        url : location.href,
+
+                        fileName : arguments[1],
+
+                        lineNo : arguments[2],
+
+                        message : arguments[0],
+
+                        time : new Date().getTime(),
+
+                        userAgent : navigator.userAgent
+
+                    }
+
+
+
+                    try {
+
+                        params['device'] = getDevice();
+
+                    } catch (ex) {
+
+                    }
+
+
+
+                    try {
+
+                        params['userId'] = __USER_ID;
+
+                    } catch (ex) {
+
+                    }
+
+
+
+                    $.ajax({
+
+                        type : 'post',
+
+                        url : "/common/common/writeScriptError.cmd",
+
+                        data : $.param(params, true)
+
+                    });
+
+                } catch (ignore) {/*전송하다 에러가 발생하면 다시 onerror를 탈까봐 try catch로 감쌈*/
+
+                }
+
+            };
+
+        } catch (e) {
+
+        }
+    </script>
+    <link href="/WEB-APP/webponent/thirdParty/jquery/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css"/>
+    <link href="/common/security/transkey11/transkey/transkey.css" rel="stylesheet" type="text/css"/>
+    <link href="/WEB-APP/webponent/css/common.css" rel="stylesheet" type="text/css"/>
+    <link href="/WEB-APP/webponent/css/common.pc.css" rel="stylesheet" type="text/css"/>
+    <link href="/WEB-APP/webponent/css/grid/grid.base.css" rel="stylesheet" type="text/css"/>
+    <link href="/WEB-APP/webponent/css/grid/grid.pc.css" rel="stylesheet" type="text/css"/>
+    <link href="/WEB-APP/webponent/number/number-input.css" rel="stylesheet" type="text/css"/>
+    <link href="/WEB-APP/webponent/number/number-input.pc.css" rel="stylesheet" type="text/css"/>
+    <link href="/WEB-APP/webponent/calender/calendar.css" rel="stylesheet" type="text/css"/>
+    <link href="/WEB-APP/webponent/box/box.pc.css" rel="stylesheet" type="text/css"/>
+    <link href="/WEB-APP/webponent/grid/ci.grid.css" rel="stylesheet" type="text/css"/>
+    <link href="/WEB-APP/webponent/tab/tab.css" rel="stylesheet" type="text/css"/>
+    <link href="/WEB-APP/webponent/dialog/dialog.css" rel="stylesheet" type="text/css"/>
+    <link href="/WEB-APP/webponent/dialog/layerlink.css" rel="stylesheet" type="text/css"/>
+    <link href="/templets/main/css/hanaw.font.css?20200110" rel="stylesheet" type="text/css"/>
+    <link href="/templets/main/css/hanaw.common.css?20230713" rel="stylesheet" type="text/css"/>
+    <link href="/templets/main/css/hanaw.layout.css?20200110" rel="stylesheet" type="text/css"/>
+    <link href="/templets/main/css/hanaw.cs.css?20230713" rel="stylesheet" type="text/css"/>
+    <link href="/templets/main/css/hanaw.header.css?20220630" rel="stylesheet" type="text/css"/>
+    <link href="/templets/main/css/hanaw.quicknavi.css?20200110" rel="stylesheet" type="text/css"/>
+    <link href="/templets/main/css/hanaw.sidebar.css?20230810" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript">
+        function getDevice(){
+            return "pc";
+        }
+    </script>
+    <script src="/WEB-APP/webponent/thirdParty/jquery/jquery-1.9.1.min.js" type="text/javascript">
+    </script>
+    <script src="/WEB-APP/webponent/thirdParty/jquery/jquery-ui-1.10.2.custom.js" type="text/javascript">
+    </script>
+    <script src="/common/js/hanaw.util.js?r=20210617" type="text/javascript">
+    </script>
+    <script src="/common/js/hanaw.ajax.js" type="text/javascript">
+    </script>
+    <script src="/common/security/ahnlab/aosmgr_common.js" type="text/javascript">
+    </script>
+    <script src="/common/js/hanaw.installUtil.js?r=20200110" type="text/javascript">
+    </script>
+    <script src="/common/security/SignKorea_NA/library/json3.min.js" type="text/javascript">
+    </script>
+    <script src="/common/security/SignKorea_NA/vestsign.js?revision=74693ed_20230131" type="text/javascript">
+    </script>
+    <script src="/common/security/SignKorea_NA/js/koscom.js?revision=74693ed_20230131" type="text/javascript">
+    </script>
+    <script src="/common/security/SignKorea_NA/activexAdp.js?revision=74693ed_20230131" type="text/javascript">
+    </script>
+    <script src="/common/security/SignKorea_NA/library/dragiframe.js?revision=74693ed_20230131" type="text/javascript">
+    </script>
+    <script src="/common/security/SignKorea_NA/signkorea_hanaw.js?revision=74693ed_20230131" type="text/javascript">
+    </script>
+    <script src="/common/security/AOS2/astx2/astx2_custom.js" type="text/javascript">
+    </script>
+    <script src="/common/security/AOS2/astx2/astx2.min.js?r=191001" type="text/javascript">
+    </script>
+    <script src="/common/security/AOS2/astx2/astx2_jq.min.js?r=191001" type="text/javascript">
+    </script>
+    <script src="/common/security/AOS2/page.js" type="text/javascript">
+    </script>
+    <script src="/common/security/transkey11/transkey/transkey.js" type="text/javascript">
+    </script>
+    <script src="/common/security/security.js?revision=74693ed_20191028" type="text/javascript">
+    </script>
+    <script src="/common/security/astCall.js?revision=74693ed_20230131" type="text/javascript">
+    </script>
+    <script src="/WEB-APP/webponent/ci/agent.js" type="text/javascript">
+    </script>
+    <script src="/WEB-APP/webponent/ci/ui.js" type="text/javascript">
+    </script>
+    <script src="/WEB-APP/webponent/ci/util.js" type="text/javascript">
+    </script>
+    <script src="/WEB-APP/webponent/ci/DataSet.js" type="text/javascript">
+    </script>
+    <script src="/WEB-APP/webponent/config/config.home.js" type="text/javascript">
+    </script>
+    <script src="/WEB-APP/webponent/number/number-input.js" type="text/javascript">
+    </script>
+    <script src="/WEB-APP/webponent/calender/calendar.js" type="text/javascript">
+    </script>
+    <script src="/WEB-APP/webponent/thirdParty/jquery/plugins/jquery.nicescroll.js" type="text/javascript">
+    </script>
+    <script src="/WEB-APP/webponent/grid/ci.grid.js" type="text/javascript">
+    </script>
+    <script src="/WEB-APP/webponent/grid/ci.grid.mini.js" type="text/javascript">
+    </script>
+    <script src="/WEB-APP/webponent/tab/tab.js" type="text/javascript">
+    </script>
+    <script src="/WEB-APP/webponent/dialog/dialog.js" type="text/javascript">
+    </script>
+    <script src="/WEB-APP/webponent/dialog/layerlink.js" type="text/javascript">
+    </script>
+    <script src="/WEB-APP/webponent/loader/loader.js" type="text/javascript">
+    </script>
+    <script src="/WEB-APP/webponent/thirdParty/wookmark/jquery.wookmark.js" type="text/javascript">
+    </script>
+    <script src="/WEB-APP/webponent/scrollable/scrollable.js" type="text/javascript">
+    </script>
+    <script src="/templets/main/js/hanaw.skipnavi.js" type="text/javascript">
+    </script>
+    <script src="https://developers.kakao.com/sdk/js/kakao.min.js" type="text/javascript">
+    </script>
+    <script src="/WEB-APP/webponent/thirdParty/kakaolink/kakao.link.js?dev=20220804" type="text/javascript">
+    </script>
+    <script src="/corebbs5/inc/js/common.js" type="text/javascript">
+    </script>
+    <script src="/corebbs5/inc/js/file.js" type="text/javascript">
+    </script>
+    <script src="/corebbs5/inc/js/gallery.js" type="text/javascript">
+    </script>
+    <script src="/corebbs5/inc/lib/ckeditor/ckeditor.js" type="text/javascript">
+    </script>
+    <script src="/corebbs5/inc/lib/jquery.form.min.js" type="text/javascript">
+    </script>
+    <script src="/common/nice/nice.nuguya.oivs.crypto.js" type="text/javascript">
+    </script>
+    <script src="/common/nice/nice.nuguya.oivs.msg.js" type="text/javascript">
+    </script>
+    <script src="/common/nice/nice.nuguya.oivs.util.js" type="text/javascript">
+    </script>
+    <script src="/common/js/cs.common.js" type="text/javascript">
+    </script>
+    <script src="/templets/main/js/hanaw.globalnavi.js?20200110" type="text/javascript">
+    </script>
+    <script src="/templets/main/js/hanaw.quicknavi.js?20200110" type="text/javascript">
+    </script>
+    <script src="/templets/main/js/hanaw.sidebar.js?20200110" type="text/javascript">
+    </script>
+    <!--h:s-->
+    <meta charset="utf-8"/>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible"/>
+    <title>
+        로그인 : 하나증권
+    </title>
+    <script charset="UTF-8" src="/templets/openAccount/js/netfunnel.js" type="text/javascript">
+    </script>
+    <script>
+        try{
+
+            NetFunnel_Action({action_id:"HP_LOGIN"},function(ev,ret){
+
+
+
+            });
+
+        }catch(e){
+
+
+
+        }
+    </script>
+    <script type="text/javascript">
+        var userIp = "1.216.37.175";
+
+        var device = getDevice();
+
+
+
+        //$(window).load(function(){
+
+        $(document).ready(function() {
+
+            var requireMode = '';
+
+            if(requireMode == 'certLogin'){
+
+                var userId = get__USER_ID();
+
+                var userDN = get__USER_DN();
+
+                if(userId!=""){
+
+                    $(document.frm).hide();
+
+                    if(userDN != ""){
+
+                        var interval = setInterval(function(){
+
+                            if ( npIsStarted ){
+
+                                clearInterval( interval );
+
+                                changeToRegularMember(userId,userDN,"",{"link":'',"fromRequireMode":"true"});
+
+                            } else {
+
+                            }
+
+                        },500);
+
+                    }
+
+                }
+
+            }
+
+
+
+            if(requireMode == 'normalLogin'){
+
+                $(document.frm).hide();
+
+            }
+
+
+
+            if(requireMode == 'certLogin' || requireMode == 'normalLogin'){
+
+                $('button.j-GoMainBtn').click(function(){
+
+                    location.href = "/main/main/index.cmd";
+
+                });
+
+            }
+
+
+
+            if(device == "pc"){
+
+                //2014.08.05  xecureweb 세션 신규 생성
+
+                //EndSession();
+
+                //get_sid() ;
+
+            }
+
+
+
+
+
+            //alert("abcd");
+
+
+
+            var nowdate = new Date();
+
+            var noticeStart = new Date('2022', '02', '26', '01', '00');
+
+            var noticeEnd = new Date('2022', '02', '26', '01', '10');
+
+            if(noticeStart < nowdate && nowdate < noticeEnd) {
+
+                ci.dialog.open({
+
+                    id : 'otpInfoLayer',
+
+                    title : "일부 서비스 일시중단 안내",
+
+                    dom : $('.dia-optInfo'),
+
+                    focus : $(this),
+
+                    width: 450,
+
+                    height: 570,
+
+                    modal:true,
+
+                    closebutton : false,
+
+                    buttons : [
+
+                        {
+
+                            text : '확인',
+
+                            'class' : 'btn btn-green md',
+
+                            click : function () {
+
+                                $(this).dialog('close');
+
+                            }
+
+                        }
+
+                    ]
+
+                });
+
+            }
+
+        });
+
+
+
+        var paramRedirect = "";
+
+        var nowUrl = "";
+
+        var loginType = "";
+
+
+
+        if(nowUrl.indexOf('redirect=') > -1){
+
+            paramRedirect = nowUrl.substring(nowUrl.indexOf('redirect=')+9);
+
+        }
+
+
+
+
+
+        $(document).ready(function() {
+
+            var f = document.frm;
+
+            var $f = $(f);
+
+            setSecurityInput($f);//E2E, 키패드 적용
+
+            // 페이지 리로드 설정
+
+            if(device=="pc"){
+
+                function checkSt(){
+
+                    xSubmitAjax(null,{
+
+                        url:"/common/common/checkSt.cmd",
+
+                        success:function(data){
+
+                            if ( get__SESSION_ID() !=  data.st){
+
+                                location.reload();
+
+                            }
+
+                        }
+
+                    });
+
+                }
+
+                // 세션 상태 체크
+
+                checkSt();
+
+                setInterval(function(){
+
+                    checkSt();
+
+                }, 5000 ); // 5초마다 체크
+
+            }
+
+
+
+
+
+            $('#maxtime').val('10');
+
+            $('#maxtime_full').val('10');
+
+
+
+
+
+            //로그아웃 시간 수정 2015.01.07
+
+            $('#maxtime_full').change(function(){
+
+                $('#maxtime').val(this.value);
+
+            });
+
+
+
+            $('#maxtime').change(function(){
+
+                $('#maxtime_full').val(this.value);
+
+            });
+
+
+
+            //인증서 로그인 버튼 클릭
+
+            $('#certLoginBtn').click(function(){
+
+                f.autoIndex.value = "";
+
+                f.authLevel.value = "20";
+
+                loginType = "1";
+
+                $("#buttonOn").val("C");
+
+
+
+                var plainText = "인증로만 로그인 key_71ot3knfh8zCtGeTeW9enyRzZjqrCbGCTSt1BeBmqEs=";
+
+                if(device == "pc"){
+
+                    if (typeof $ASTX2 !== 'undefined'){
+
+                        $ASTX2.getPCLOGData(null, // reserved
+
+                            function onSuccess(data) {
+
+                                /// debuger.printf('ASTX.getPCLOGData() success');
+
+                                $ASTX2.setPCLOGData(f, data);
+
+                                // document.pclog.submit();
+
+                            },
+
+                            function onFailure() {
+
+                                // debuger.printf('ASTX.getE2EData() failure: errno='+$ASTX2.getLastError());
+
+                            }
+
+                        );
+
+                    }
+
+                    var userDN = get__USER_DN();  //준회원 접속 후 인증 필요할 경우 해당 사용자인지 dn검증이 필요하다.
+
+                    loginMakeSign(userDN, plainText, "", function(signData){
+
+                        if(signData != "" && signData != null && signData != undefined || signData.length != 0){
+
+                            terminalLoad(function(terminal){
+
+                                // var terminal = terminalLoad();  //signkorea_object.js;
+
+                                f.CLIENT_MAC.value = terminal["macaddr"];
+
+                                f.CLIENT_HDD.value = terminal["hddno"];
+
+                                signData = signData.replace(/\r|\n|\r\n/g, "");//13:Carriage Return (CR) 10:Line Feed (LF) 제거
+
+                                f.se_signdata.value = signData;
+
+                                login(signData);
+
+                            });
+
+                        } else {
+
+                            var errorCode = CertManX.GetLastErrorCode();
+
+                            // 인증서 로그인은 비밀번호 조회 무한반복
+
+                            if( errorCode  == 2417){
+
+                                $('#certLoginBtn').click();
+
+                            }
+
+                        }
+
+                    });
+
+                } else {
+
+                    //앱프리 가동
+
+                    appfreeExec("full_dn",'start', plainText,
+
+                        function(signData,resultObj){
+
+                            f.autoIndex.value = resultObj["autoIndex"];
+
+                            f.se_signdata.value = signData;
+
+                            login(resultObj["fullSign"]);
+
+                        },function(){
+
+                            //alert("사용자에 의해 취소되었습니다.");
+
+                        }
+
+                    );
+
+                }
+
+            });
+
+
+
+            var $loginIdPassBtn = $('#loginIdPassBtn');
+
+            //로그인 버튼 클릭
+
+            $loginIdPassBtn.click(function(){
+
+
+
+                if(device == "pc"){
+
+                    // 로그인 버튼 클릭시 포커스 아웃 처리
+
+                    // bh.doFocusOut();
+
+                }
+
+
+
+                var userid = $('#userid');
+
+                if(userid.val() == ''){
+
+                    alert("고객님의 ID를 입력해 주시기 바랍니다");
+
+                    userid.focus();
+
+                    return false;
+
+                }
+
+
+
+                var passwd = $('#pass_wd');
+
+                if(passwd.val() == ''){
+
+                    alert("고객님의 비밀번호를 입력해 주시기 바랍니다");
+
+                    passwd.focus();
+
+                    return false;
+
+                }
+
+
+
+                f.autoIndex.value = "";
+
+                f.authLevel.value = "10";
+
+                loginType = "2";
+
+                $("#buttonOn").val("I");
+
+
+
+                if(device == "pc"){
+
+                    // var terminal = terminalLoad();//signkorea_object.js;
+
+                    terminalLoad(function(terminal){
+
+                        f.CLIENT_MAC.value = terminal["macaddr"];
+
+                        f.CLIENT_HDD.value = terminal["hddno"];
+
+
+
+                        $('[name^="i_"]:hidden').appendTo(f);   //FDS 단말정보세팅
+
+
+
+                        xSubmitAjax(f,{
+
+                            dataType:'json',
+
+                            beforeSend : function() {
+
+                                Loader.show();
+
+                            },
+
+                            complete : function() {
+
+                                Loader.hide();
+
+                            },
+
+                            success:function(data){
+
+
+
+                                if(data.result == 'success'){
+
+                                    //globalVar.jsp
+
+                                    __USER_ID = data["userid"];
+
+                                    __USER_DN = data["dn"];
+
+                                    __CERT_ERROR_CNT = data["dn_pw_errcnt"]!==undefined ? data["dn_pw_errcnt"] : "0";//globalVar.jsp
+
+
+
+                                    //sessionStorage를 셋팅안하고 다른페이지로 리다이렉트 되면 중복로그인으로
+
+                                    //튕기므로 여기서 sessionStorage값을 세팅
+
+
+
+                                    if(window.sessionStorage){
+
+                                        window.sessionStorage.sessionID = get__SESSION_ID();
+
+                                    }
+
+
+
+                                    if($('#regularMember').hasClass('on')){
+
+                                        if ($("#certUse").is(":checked")){
+
+                                            var device = getDevice();
+
+                                            if(__USER_DN==""){ // ID/PW로그인 후 인증서 정보가 없으면
+
+                                                alert('유효한 인증서가 없습니다.\n인증서 재발급 또는 타기관 인증서 등록 후 이용하시기 바랍니다.');
+
+                                                if(device!="pc"){
+
+                                                    location.href="/main/main/index.cmd";
+
+                                                }else{
+
+                                                    goIssueCertMain("C");
+
+                                                }
+
+                                                return;
+
+                                            }
+
+                                            if(__CERT_ERROR_CNT>4){//인증 패스워드 오류횟수 설정
+
+                                                alert('유효한 인증서가 없습니다. (인증서 비밀번호 5회 오류)'+
+
+                                                    '\n인증서 재발급 또는 타기관 인증서 등록 후 이용하시기 바랍니다.');
+
+                                                if(device!="pc"){
+
+                                                    location.href="/main/main/index.cmd";
+
+                                                }else{
+
+                                                    location.href="/main/customer/certificate/CS_030000_M.cmd";
+
+                                                }
+
+                                                return;
+
+                                            }
+
+
+
+                                            changeToRegularMember(__USER_ID, __USER_DN, "", data);
+
+                                        } else {
+
+                                            afterIdLogin(f,data,10);
+
+                                            return;
+
+                                        }
+
+                                    }else{
+
+                                        afterIdLogin(f,data,10);
+
+                                    }
+
+                                }else if(data.result == 'watchlist'){
+
+                                    layerPopUp();
+
+                                }else if(data.result == 'reenterance'){
+
+                                    alert(data.errorMsg);
+
+                                    location.href="/main/customer/certificate/CS_030000_M.cmd";
+
+                                }else  if(data.result == 'duplication'){
+
+                                    var result = confirm(data.errorMsg);
+
+                                    if(result != true){
+
+                                        return;
+
+                                    }else{
+
+                                        //이중 접속 끊기
+
+                                        xSubmitAjax(null,{
+
+                                            url:"medialogout.cmd",
+
+                                            data:data.setData,
+
+                                            success:function(){
+
+                                                location.href = "/main/customer/login/index.cmd";
+
+                                            }
+
+                                        });
+
+                                    }
+
+                                }else{
+
+                                    if(data.errorCode == "AM0083" && $('#regularMember').hasClass('on')) {
+
+                                        var pwErrMsg = "<div class=''><p class='f15 mt30'>ID 비밀번호 <span class='txtimp2 b'>5회 오류</span>입니다<br/><br/>ID 비밀번호를 <span class='txtpoint b'>재등록</span> 하시려면 확인을 눌러주시기 바랍니다.</p></div>";
+
+                                        ci.dialog.open({
+
+                                            id : 'OB_600200_T1S1L_1',
+
+                                            title : "로그인 에러",
+
+                                            msg: pwErrMsg,
+
+                                            focus : $(this),
+
+                                            width : 600,
+
+                                            height : 260,
+
+                                            modal : true,
+
+                                            closebutton : false,
+
+                                            buttons : [{
+
+                                                text : '확인',
+
+                                                'class' : 'btn btn-green',
+
+                                                click : function () {
+
+                                                    ci.dialog.close();
+
+                                                    location.href = "/main/customer/member/CS_020302_S1.cmd";
+
+                                                }
+
+
+
+                                            },{
+
+                                                text : '취소',
+
+                                                'class' : 'btn btn-default',
+
+                                                click : function () {
+
+                                                    ci.dialog.close();
+
+                                                    return;
+
+                                                }
+
+                                            }]
+
+                                        });
+
+                                    } else {
+
+                                        alert(data.errorMsg);
+
+                                    }
+
+                                }
+
+                            }
+
+                        });
+
+                    });
+
+                } else {
+
+                    xSubmitAjax(f,{
+
+                        dataType:'json',
+
+                        beforeSend : function() {
+
+                            Loader.show();
+
+                        },
+
+                        complete : function() {
+
+                            Loader.hide();
+
+                        },
+
+                        success:function(data){
+
+                            if(data.result == 'success'){
+
+                                //globalVar.jsp
+
+                                __USER_ID = data["userid"];
+
+                                __USER_DN = data["dn"];
+
+                                __CERT_ERROR_CNT = data["dn_pw_errcnt"]!==undefined ? data["dn_pw_errcnt"] : "0";//globalVar.jsp
+
+
+
+                                //sessionStorage를 셋팅안하고 다른페이지로 리다이렉트 되면 중복로그인으로
+
+                                //팅기므로 여기서 sessionStorage값을 세팅
+
+                                if(window.sessionStorage){
+
+                                    window.sessionStorage.sessionID = get__SESSION_ID();
+
+                                }
+
+
+
+                                if($('#regularMember').hasClass('on')){
+
+                                    var device = getDevice();
+
+
+
+                                    if(__USER_DN==""){ // ID/PW로그인 후 인증서 정보가 없으면
+
+                                        alert('유효한 인증서가 없습니다.\n인증서 재발급 또는 타기관 인증서 등록 후 이용하시기 바랍니다.');
+
+                                        if(device!="pc"){
+
+                                            location.href="/main/main/index.cmd";
+
+                                        }else{
+
+                                            goIssueCertMain("C");
+
+                                        }
+
+                                        return;
+
+                                    }
+
+                                    if(__CERT_ERROR_CNT>4){//인증 패스워드 오류횟수 설정
+
+                                        alert('유효한 인증서가 없습니다. (인증서 비밀번호 5회 오류)'+
+
+                                            '\n인증서 재발급 또는 타기관 인증서 등록 후 이용하시기 바랍니다.');
+
+                                        if(device!="pc"){
+
+                                            location.href="/main/main/index.cmd";
+
+                                        }else{
+
+                                            location.href="/main/customer/certificate/CS_030000_M.cmd";
+
+                                        }
+
+                                        return;
+
+                                    }
+
+
+
+                                    if(device=="pc" && f.signPwd.value ==""){
+
+                                        afterIdLogin(f,data,10);
+
+                                        return;
+
+                                    }
+
+
+
+                                    var signPwd = data["signPwd"];//가상키패드 때문에 ... f.signPwd.value사용 불가
+
+                                    changeToRegularMember(__USER_ID,__USER_DN,signPwd,data);
+
+                                }else{
+
+                                    afterIdLogin(f,data,10);
+
+                                }
+
+                            }else if(data.result == 'watchlist'){
+
+                                layerPopUp();
+
+                            }else if(data.result == 'reenterance'){
+
+                                alert(data.errorMsg);
+
+                                location.href="/main/customer/certificate/CS_030000_M.cmd";
+
+                            }else  if(data.result == 'duplication'){
+
+                                var result = confirm(data.errorMsg);
+
+                                if(result != true){
+
+                                    return;
+
+                                }else{
+
+                                    //이중 접속 끊기
+
+                                    xSubmitAjax(null,{
+
+                                        url:"medialogout.cmd",
+
+                                        data:data.setData,
+
+                                        success:function(){
+
+                                            location.href = "/main/customer/login/index.cmd";
+
+                                        }
+
+                                    });
+
+                                }
+
+                            }else{
+
+                                alert(data.errorMsg);
+
+                            }
+
+                        }
+
+                    });
+
+                }
+
+            });
+
+
+
+            //비밀번호 엔터 로그인
+
+            $('#pass_wd').keypress(function(event){
+
+                if(event.keyCode == 13){
+
+                    $loginIdPassBtn.click();
+
+                }
+
+            });
+
+
+
+            //인증 엔터 로그인
+
+            $('#signPwd').keypress(function(event){
+
+                if(event.keyCode == 13){
+
+                    $loginIdPassBtn.click();
+
+                }
+
+            });
+
+
+
+            if(device == "mobile"){
+
+                var realTimeState = ci.util.getCookie("wts_state_realtime");
+
+                if (realTimeState == "false") {
+
+                    $("#real-time-check").prop("checked",false);
+
+                }
+
+
+
+                $("#real-time-check").on("change",function(){
+
+                    if(this.checked){
+
+                        ci.util.setCookie("wts_state_realtime","true");
+
+                    }else{
+
+                        ci.util.setCookie("wts_state_realtime","false");
+
+                    }
+
+                });
+
+
+
+                var idSave = ci.util.getCookie("mobile_id_save");
+
+                if(idSave==""){
+
+                    $("#save-login-id-check").prop("checked",false);
+
+                }else{
+
+                    $("#save-login-id-check").prop("checked",true);
+
+                    f.userid.value = idSave;
+
+                }
+
+
+
+                //텝 초기화는 모든 이벤트 바인드 후에 해야함.. 안보이는tab은 detach되기 때문에 노드에 접근할 수 없음
+
+                // ci.tab.init($('.mobile-login-tab'));
+
+                // 2016-10-25 아이폰에서 앱프리 실행 문제 해결 처리
+
+                var idx = Number("0");
+
+                ci.tab.init($('.mobile-login-tab'), {
+
+                    defaultTabIndex : idx,
+
+                    panelOpen : function(e, s, p) {
+
+                        if (s.hasClass('j-tab2')) {
+
+                            // 아이폰 사용자에게 팝업 차단 해제 요청 처리(앱프리 실행 안됨)
+
+                            var agent = navigator.userAgent;
+
+                            if (agent.indexOf('iPhone') > -1){
+
+                                alert('아이폰 사용자 고객님은 하단의 팝업차단해제 안내를 확인하시고 \n'+
+
+                                    '사파리 설정의 팝업차단을 해제 후에 사용하셔야 정상 인증이 가능합니다');
+
+                            }
+
+                        }
+
+                        if( idx == 1){
+
+                            changeMember(idx);
+
+                        }
+
+                    },
+
+                    panelClose : function(e, s, p) {
+
+                    }
+
+                });
+
+            }
+
+        });
+
+
+
+
+
+        function processLoginAfter(data, loginType){
+
+            var f = document.frm;
+
+
+
+            if(window.sessionStorage){
+
+                window.sessionStorage.sessionID = get__SESSION_ID();
+
+            }
+
+
+
+            if(device!="mobile"){
+
+                //자동로그아웃 시간
+
+                ci.util.setCookie("loginMaxtime", f.maxtime.value);
+
+            }else{
+
+                if(loginType=="2" && typeof(f.userid) != 'undefined' &&f.userid.value != ""){//ID/PW로그인
+
+                    if($("#save-login-id-check").is(":checked")){
+
+                        ci.util.setCookie("mobile_id_save",f.userid.value);
+
+                    }else{
+
+                        ci.util.setCookie("mobile_id_save","");
+
+                    }
+
+                }
+
+            }
+
+
+
+            //appfree autoIndex저장
+
+            if(f.autoIndex.value!=""){
+
+                saveAutoIndex(f.autoIndex.value);
+
+            }
+
+
+
+            //ps컨설팅 처리
+
+            if(data["psDrct"] == "Y"){
+
+                layer(paramRedirect);
+
+                /* }else{
+
+        consentCheck(paramRedirect); */
+
+            }
+
+
+
+            if(data.lastLoginInfo) {
+
+
+
+                if('000000' != data.lastLoginInfo.HEADER_TR_ERR_CODE) {
+
+                    consentCheck(paramRedirect);
+
+                    return false;
+
+                }
+
+
+
+                var pwExpire = (data.pwExpire && data.pwExpire == 'YES') ? true : false;
+
+                var closeToday = ci.util.getCookie('closeToday');
+
+                closeToday = closeToday == 'true' ? true : false;
+
+                console.log(pwExpire);
+
+                console.log(closeToday);
+
+                var h = 400;
+
+                var _lastLoginInfo = '';
+
+                _lastLoginInfo += '<div class="dia-content lh22">';
+
+                _lastLoginInfo += ' <h4 class="title-2dep mt20">고객님의 최근 접속 정보는 다음과 같습니다.</h4>';
+
+                _lastLoginInfo += ' <dl class="dl-layout one mt30 mb30">';
+
+                _lastLoginInfo += '   <dt class="first-line">접속일자</dt>';
+
+                _lastLoginInfo += '   <dd class="first-line txtbasic">' + data.lastLoginInfo.LAST_CNN_DT + '</dd>';
+
+                _lastLoginInfo += '   <dt>접속시각</dt>';
+
+                _lastLoginInfo += '   <dd class="txtbasic">' + data.lastLoginInfo.LAST_CNN_HR + '</dd>';
+
+                _lastLoginInfo += '   <dt>접속채널</dt>';
+
+                _lastLoginInfo += '   <dd>' + data.lastLoginInfo.COMM_MDIA_NM + '</dd>';
+
+                _lastLoginInfo += ' </dl>';
+
+
+
+                if (data.nowLoginInfoList[0].HEADER_TR_ERR_CODE == '000000' && data.nowLoginInfoList[0].cnt != '0'){
+
+                    _lastLoginInfo += ' <h4 class="title-2dep mt30">현재 접속중인 단말정보</h4>';
+
+                    _lastLoginInfo += ' <div class="table-default thac mt30" overflow: auto;"> ';
+
+                    _lastLoginInfo += '<table><caption>현재 접속중인 단말정보</caption><colgroup><col style="width:*%" />';
+
+                    _lastLoginInfo += '<col style="width:33%" /><col style="width:33%" /></colgroup>';
+
+                    _lastLoginInfo += '<thead><tr><th class="tdfirst b">접속단말</th><th scope="col" class="b">단말 IP</th>';
+
+                    _lastLoginInfo += '<th scope="col" class="tdlast b">접속일시</th></tr></thead>';
+
+                    _lastLoginInfo += '<tbody>';
+
+                    var listCnt = Number(data.nowLoginInfoList[0].count);
+
+                    for ( var k =0; k < listCnt; k++){
+
+                        _lastLoginInfo += '<tr><td scope="row" class="tdfirst txtbasic">'+data.nowLoginInfoList[k].COMM_MDIA_NM+'</td>';
+
+                        _lastLoginInfo += '<td scope="row" class="txtbasic">'+data.nowLoginInfoList[k].LGIN_IP_ADDR+'</td>';
+
+                        _lastLoginInfo += '<td scope="row" class="tdlast txtbasic">'+data.nowLoginInfoList[k].CUST_CNN_STRT_DTM+'</td></tr>';
+
+                    }
+
+                    _lastLoginInfo += '</tbody></table></div>';
+
+                    h += 150 + (listCnt - 1) * 40;
+
+                }
+
+
+
+                if (pwExpire && !closeToday) {
+
+                    h += 180;
+
+                    _lastLoginInfo += '<h4 class="title-2dep mt30">ID 비밀번호 변경 안내</h4>';
+
+                    _lastLoginInfo += '<div class="box-instruction-hj f15">';
+
+                    _lastLoginInfo += '<span class="j-opencont2">고객님께서는 <span class="b">동일한 ID비밀번호를 장기간 사용하고</span> 계십니다.<br/>';
+
+                    _lastLoginInfo += '<span class="b">안전한 금융거래를</span> 위해 <span class="txtimp2">ID비밀번호를 주기적으로 변경</span>하시기 바랍니다.<br/><br/>';
+
+                    _lastLoginInfo += '지금 새로운 ID비밀번호로 변경하시겠습니까?</span>';
+
+                    _lastLoginInfo += '</div>';
+
+                    _lastLoginInfo += '<div class="tac mt20">';
+
+                    _lastLoginInfo += '<button type="button" id="nextTime" class="btn btn-default md w200 tac">다음(90일 후)에 변경하기</button><button type="button" id="nowChange" class="ml10 btn btn-green md w200 tac">ID비밀번호 변경하기</button>';
+
+                    _lastLoginInfo += '</div>';
+
+                    _lastLoginInfo += '<div class="tar mt20"><input type="checkbox" id="closeToday"><label for="closeToday">오늘 하루 보지 않기</label></div>';
+
+                }
+
+                _lastLoginInfo += '</div>';
+
+
+
+                if (pwExpire && !closeToday) {
+
+                    ci.dialog.open({
+
+                        id : 'lastLoginInfo',
+
+                        title : '최근 접속 정보',
+
+                        dom : $(_lastLoginInfo),
+
+                        width : 600,
+
+                        height : h,
+
+                        focus : $(this),
+
+                        modal : true,
+
+                        closebutton : false,
+
+                        close : function() {
+
+                            if ( typeof NetFunnel_Complete != "undefined") { NetFunnel_Complete(); }	// 유량제어 종료
+
+                            consentCheck(paramRedirect);
+
+                        }
+
+                    });
+
+                } else {
+
+                    ci.dialog.open({
+
+                        id : 'lastLoginInfo',
+
+                        title : '최근 접속 정보',
+
+                        dom : $(_lastLoginInfo),
+
+                        width : 600,
+
+                        height : h,
+
+                        focus : $(this),
+
+                        modal : true,
+
+                        closebutton : false,
+
+                        buttons : [{
+
+                            'text' : '확인',
+
+                            'class' : 'btn-green',
+
+                            'click' : function() {
+
+                                ci.dialog.close('lastLoginInfo');
+
+                            }
+
+                        }],
+
+                        close : function() {
+
+                            if ( typeof NetFunnel_Complete != "undefined") { NetFunnel_Complete(); }	// 유량제어 종료
+
+                            consentCheck(paramRedirect);
+
+                        }
+
+                    });
+
+                }
+
+
+
+                $('body').on('click', '#nextTime', function() {
+
+                    xSubmitAjax(null, {
+
+                        url : '/main/customer/member/EXTEND_PW_EXPIRATION.cmd',
+
+                        beforeSend : function() {
+
+                            Loader.show();
+
+                        },
+
+                        complete : function() {
+
+                            Loader.hide();
+
+                        },
+
+                        success : function(data) {
+
+                            var output = data.output;
+
+                            if(output.HEADER_TR_ERR_CODE == '000000') {
+
+                                ci.dialog.close('lastLoginInfo');
+
+                            } else {
+
+                                alert(output.HEADER_TR_ERR_MSG);
+
+                            }
+
+                        }
+
+                    });
+
+                });
+
+
+
+                $('body').on('click', '#nowChange', function() {
+
+                    location.href = '/main/bank/personalMng/OB_020102_T2.cmd';
+
+                });
+
+
+
+                $('body').on('click', '#closeToday', function() {
+
+                    var cookieExpirationDate = new Date();
+
+                    cookieExpirationDate.setDate(cookieExpirationDate.getDate() + 1);
+
+                    cookieExpirationDate.setHours('00', '00', '00', '00');
+
+                    document.cookie = 'closeToday=true; path=/; expires=' + cookieExpirationDate.toGMTString() + ';';
+
+                    ci.dialog.close('lastLoginInfo');
+
+                });
+
+
+
+            } else {
+
+                consentCheck(paramRedirect);
+
+            }
+
+        }
+
+
+
+        //공인 인증 로그인
+
+        function login(signData){
+
+            var f = document.frm;
+
+            $('[name^="i_"]:hidden').appendTo(f);  //FDS 단말정보세팅
+
+            xSubmitAjax(f,{
+
+                url:"/main/customer/login/loginSign.cmd",
+
+                dataType:'json',
+
+                beforeSend : function() {
+
+                    Loader.show();
+
+                },
+
+                complete : function() {
+
+                    Loader.hide();
+
+                },
+
+                success:function(data){
+
+                    if(data.result == 'success'){
+
+                        set__CERT_ERROR_CNT(0);
+
+                        processLoginAfter(data,1);
+
+                    }else if(data.result == 'watchlist'){
+
+                        layerPopUp();
+
+                    }else if(data.result == 'reenterance'){
+
+                        alert(data.errorMsg);
+
+                        set__CERT_ERROR_CNT(5);
+
+                        location.href="/main/customer/certificate/CS_030000_M.cmd";
+
+                    }else if(data.result == 'duplication'){
+
+                        var result = confirm(data.errorMsg);
+
+                        if(result != true){
+
+                            return;
+
+                        }else{
+
+                            //이중 접속 끊기
+
+                            xSubmitAjax(null,{
+
+                                url:"medialogout.cmd",
+
+                                data:data.setData,
+
+                                success:function(){
+
+                                    location.href = "/main/customer/login/index.cmd";
+
+                                }
+
+                            });
+
+                        }
+
+                    }else{
+
+                        alert(data.errorMsg);
+
+                        location.reload();
+
+                    }
+
+                }
+
+            });
+
+        }
+
+
+
+        //ID 패스워드 처리후 로직
+
+        function afterIdLogin(f,data,authCode){
+
+            var f = document.frm;
+
+
+
+            if(authCode==25){
+
+                xSubmitAjax(null,{
+
+                    url:"verifySignData.cmd",
+
+                    data:"se_signdata="+encodeURIComponent(f.se_signdata.value),
+
+                    success:function(innerData){
+
+                        if(innerData.resultMsg && innerData.resultMsg!=""){
+
+                            alert(innerData.resultMsg);
+
+                            location.href="/main/customer/login/logout.cmd";//로그아웃 처리
+
+                        }else{
+
+                            processLoginAfter(data,2);
+
+                        }
+
+                    }
+
+                });
+
+            }else{
+
+                processLoginAfter(data,2);
+
+            }
+
+        }
+
+
+
+        // 로그인시 사인데이터 생성 함수
+
+        function loginMakeSign(userDN, plainText, password, callback) {
+
+            // 인증서 검증 규칙 변경 (2018/03/22 by 이재학)
+
+            var newSignContextParam = 4096 + 256 + 0 + 1;
+
+
+
+            // 더블클릭시 로직 중단
+
+            if (CertManX.doubleClickBlock(arguments.callee)) return;
+
+            CertManX.SetAntiReplayAttack(true); // 서명데이터 재사용 방지처리
+
+            CertManX.UnSetMatchedContext(function(){
+
+                CertManX.SetPolicyFilter(1+16,"1.2.410.200004.5.1.1.9;1.2.410.200004.5.1.1.10;");
+
+                //갱신 alert 삭제
+
+                CertManX.SetExipreCheckSkip(1);
+
+                CertManX.SetMatchedContextExt(userDN, "", password, newSignContextParam, function (setMatchedRet) {
+
+
+
+                    var checkType = CertManX.GetToken(setMatchedRet, "result");
+
+                    checkDn = CertManX.GetToken(setMatchedRet, "dn");
+
+                    checkSerial = CertManX.GetToken(setMatchedRet, "serial");
+
+
+
+                    if (checkType == "nok" || checkType == "" || setMatchedRet == "") {
+
+                        var errorCode = CertManX.GetLastErrorCode();
+
+                        var errorMsg = CertManX.GetLastErrorMsg();
+
+                        if( errorCode  == 2417 ){
+
+                            var _count = 0;
+
+                            xSubmitAjax(null,{
+
+                                url:"/main/customer/login/setCertErrorCount2.cmd",
+
+                                data:"checkDn="+checkDn+"&checkSerial="+checkSerial+"&TR_PRCS_DVSN=F",
+
+                                async:false,//동기로 해야 아래 makeSign에서 리턴이 가능..
+
+                                success:function(data){
+
+                                    var output = data.output;
+
+                                    if ("000000" == output.HEADER_TR_ERR_CODE){
+
+                                        if ( "" != output.CTFC_PWD_ERR_NBTM && null != output.CTFC_PWD_ERR_NBTM && undefined != output.CTFC_PWD_ERR_NBTM){
+
+                                            var count = output.CTFC_PWD_ERR_NBTM;
+
+                                            _count = parseInt(count);
+
+                                            set__CERT_ERROR_CNT(_count);
+
+                                            // 5회 오류시 페이지 이동 수정 2014.02.07
+
+                                            if(_count >= 5){
+
+                                                alert("인증 비밀번호 오류 횟수가 5회 초과하였습니다.\n\n인증서를 재발급 받으셔야 합니다");
+
+                                                goIssueCertMain("C");
+
+                                                return;
+
+                                            }else{
+
+                                                alert("인증 비밀번호 오류 횟수 : "+_count+"회 \n\n(5회 오류시 인증서를 재발급 받으셔야 합니다)");
+
+                                                callback("");
+
+                                                return;
+
+                                            }
+
+                                        }else {
+
+                                            alert(output.HEADER_TR_ERR_MSG);
+
+                                            callback("");
+
+                                            return;
+
+                                        }
+
+                                    } else {
+
+                                        alert(output.HEADER_TR_ERR_MSG);
+
+                                        callback("");
+
+                                        return;
+
+                                    }
+
+                                }
+
+                            });
+
+                        } else {
+
+                            alert("["+errorCode+"] "+errorMsg);
+
+                            return;
+
+                        }
+
+                    } else {
+
+                        CertManX.SignDataB64(password, plainText, 1, function (fullSign) {
+
+                            if (fullSign == "") {
+
+                                onCertManError(userDN, plainText, password, true);
+
+                                callback("");
+
+                                return;
+
+                            }else{
+
+                                checkRenew( function(reNew){
+
+                                    // var reNew = checkRenew();
+
+                                    //갱신시 팝업       process
+
+                                    if(reNew && ci.util.getCookie("renewHide")!="Y"){
+
+                                        renewPop = true;
+
+                                        hanaw.util.renewLayer(fullSign, setLogin);
+
+                                    }else{
+
+                                        try{
+
+                                            /* //하나증권 인증서 성공시 ErrorCount 초기화
+
+                                    var userId = get__USER_ID();
+
+                                    if( userId != "" ){
+
+                                        xSubmitAjax(null,{
+
+                                            url:"/main/customer/login/setCertErrorCount.cmd",
+
+                                            data:"b_user_id="+userId+"&TR_PRCS_DVSN=S",
+
+                                            async:false,
+
+                                            success:function(count){
+
+                                                set__CERT_ERROR_CNT(count);//globalVar.jsp
+
+                                            }
+
+                                        });
+
+                                    } */
+
+                                        }catch(e){}
+
+                                        signData = CertManX.GetToken(fullSign, "data");
+
+                                        callback(signData);
+
+                                        return;
+
+                                    }
+
+                                });
+
+                            }
+
+                        });
+
+                    }
+
+                });
+
+            }); // 선택정보 초기화
+
+        }
+
+
+
+        //갱신 여부 체크
+
+        var chToData = null;
+
+        var renewPop = false;
+
+
+
+        //갱신 팝업시 로그인 진행
+
+        function setLogin(fullSign) {
+
+            var signData = "";
+
+            signData = CertManX.GetToken(fullSign, "data");
+
+            //로그인 진행
+
+            var f = document.frm;
+
+            // var terminal = terminalLoad();//signkorea_object.js;
+
+            terminalLoad(function(terminal){
+
+                f.CLIENT_MAC.value = terminal["macaddr"];
+
+                f.CLIENT_HDD.value = terminal["hddno"];
+
+                signData = signData.replace(/\r|\n|\r\n/g, "");//13:Carriage Return (CR) 10:Line Feed (LF) 제거
+
+                f.se_signdata.value = signData;
+
+
+
+                if(loginType == "1"){
+
+                    //인증서 로그인
+
+                    login(signData);
+
+                }else if(loginType == "2"){
+
+                    //ID/pwd/인증 로그인
+
+                    afterIdLogin(f,chToData,25);
+
+                }
+
+            }); //signkorea_object
+
+        };
+
+
+
+
+
+        //준회원을 정회원으로 변경시켜주는 로직
+
+        function changeToRegularMember(userId,userDN,password,data){
+
+            var f = document.frm;
+
+
+
+            chToData = data;
+
+
+
+            var plainText = "ID인증로그인 "+userId+userIp+userDN;
+
+            if(device == "pc"){
+
+                if (password != "" && password != null && password != undefined){
+
+                    loginMakeSign(userDN, plainText, password, function(signData){
+
+                        if(signData != "" && signData != null && signData != undefined){
+
+                            terminalLoad(function(terminal){
+
+                                // var terminal = terminalLoad();  //signkorea_object.js;
+
+                                f.CLIENT_MAC.value = terminal["macaddr"];
+
+                                f.CLIENT_HDD.value = terminal["hddno"];
+
+                                signData = signData.replace(/\r|\n|\r\n/g, "");//13:Carriage Return (CR) 10:Line Feed (LF) 제거
+
+                                f.se_signdata.value = signData;
+
+                                afterIdLogin(f,data,25);
+
+                            });
+
+                        } else {
+
+                            changeToRegularMember(userId, userDN, "", data);
+
+                        }
+
+                    });
+
+                } else {
+
+                    if (CertManX.doubleClickBlock(arguments.callee)) return;
+
+                    CertManX.SetAntiReplayAttack(true); // 서명데이터 재사용 방지처리
+
+                    CertManX.UnSetMatchedContext(function(){
+
+                        CertManX.SetPolicyFilter(1+16,"1.2.410.200004.5.1.1.9;1.2.410.200004.5.1.1.10;");
+
+                        //갱신 alert 삭제
+
+                        CertManX.SetExipreCheckSkip(1);
+
+                        makeSign(userDN, plainText, "", undefined, function(signData){
+
+                            // loginMakeSign(userDN, plainText, "", function(signData){
+
+                            if(signData != "" && signData != null && signData != undefined){
+
+                                // var terminal = terminalLoad();  //signkorea_object.js;
+
+                                terminalLoad(function(terminal){
+
+                                    f.CLIENT_MAC.value = terminal["macaddr"];
+
+                                    f.CLIENT_HDD.value = terminal["hddno"];
+
+                                    signData = signData.replace(/\r|\n|\r\n/g, "");//13:Carriage Return (CR) 10:Line Feed (LF) 제거
+
+                                    f.se_signdata.value = signData;
+
+                                    afterIdLogin(f,data,25);
+
+                                });
+
+                            } else {
+
+                                var errorCode = CertManX.GetLastErrorCode();
+
+                                if( errorCode  == 2417){
+
+                                    // 비밀번호 5회 틀리기 전까지 반복
+
+                                    if ( get__CERT_ERROR_CNT() < 5 ){
+
+                                        changeToRegularMember(userId, userDN, "", data);
+
+                                    } else {
+
+                                        // 5회 이상 틀릴 경우는 반복 중지
+
+
+
+                                    }
+
+                                } else {
+
+                                    if(!renewPop){
+
+                                        if(data["fromRequireMode"]=="true"){
+
+                                            console.log("이경우는 권한이 부족하여 인증 추가 페이지를 왔으나 취소등 인증 오류 발생인경우");
+
+                                        }else{
+
+                                            var errorCode = CertManX.GetLastErrorCode();
+
+                                            if(errorCode  == 2501 || errorCode == 1000){//비밀번호 입력 취소인경우는 로그인 성공
+
+                                                afterIdLogin(f, data, 10);
+
+                                            }else{
+
+                                                //다른 문제인경우 logout
+
+                                                //alert(errorCode+":"+CertMan.GetLastErrorCode());
+
+                                                location.href="/main/customer/login/logout.cmd";
+
+
+
+                                            }
+
+                                        }
+
+                                    }
+
+                                }
+
+                            }
+
+                        });
+
+                    });
+
+                }
+
+            }else{
+
+                if($("#real-time-check").is(":checked")){
+
+                    // 준회원 로그인으로 끝
+
+                    Loader.hide();
+
+                    //location.href = "/main/main/index.cmd";
+
+                    consentCheck(paramRedirect);
+
+                }else{
+
+                    //앱프리 가동
+
+                    appfreeExec("full_dn",'start', plainText,
+
+                        function(signData,resultObj){
+
+                            f.autoIndex.value = resultObj["autoIndex"];
+
+                            f.se_signdata.value = signData;
+
+                            //appfree autoIndex저장
+
+                            if(f.autoIndex.value!=""){
+
+                                saveAutoIndex(f.autoIndex.value);
+
+                            }
+
+                            //alert(resultObj["dn"]+"\n"+userDN);
+
+                            if(resultObj["dn"]==userDN){
+
+                                afterIdLogin(f,data,25);
+
+                            }else{
+
+                                alert('선택된 인증서 정보가 올바르지 않습니다.');
+
+                            }
+
+                        },function(){
+
+                            if(data["fromRequireMode"]=="true"){
+
+                                console.log("이경우는 권한이 부족하여 인증 추가 페이지를 왔으나 취소등 인증 오류 발생인경우");
+
+                            }else{
+
+                                afterIdLogin(f,data,10);
+
+                            }
+
+                        }
+
+                    );
+
+                }
+
+            }
+
+        }
+
+
+
+        //정회원, 준회원 선택
+
+        function changeMember(type){
+
+            //type - 0:정회원,1:준회원
+
+
+
+            var selectedMem = "";
+
+            var noSelectedMem = "";
+
+            var pwcertDiv = $('#pwcertDiv');
+
+            var regularMemberText = $('#regularMemberText');
+
+            var associateMemberText = $('#associateMemberText');
+
+
+
+
+
+            if(type == 0){
+
+                selectedMem = $('#regularMember');
+
+                noSelectedMem = $('#associateMember');
+
+
+
+                regularMemberText.show();
+
+                associateMemberText.hide();
+
+                pwcertDiv.show();
+
+            }else{
+
+                selectedMem = $('#associateMember');
+
+                noSelectedMem = $('#regularMember');
+
+
+
+                associateMemberText.show();
+
+                regularMemberText.hide();
+
+                pwcertDiv.hide();
+
+            }
+
+
+
+            selectedMem.addClass("on");
+
+            selectedMem.append('<span class="none">선택</span>');
+
+
+
+            noSelectedMem.removeClass("on");
+
+            noSelectedMem.find('span').remove();
+
+        }
+
+
+
+        function layer(redirect){
+
+            if(getDevice() != 'mobile'){
+
+                //ps컨설팅 처리
+
+                if(ci.util.getCookie("closeConsultPopup")!="Y"){ //24시간동안 열지 않기
+
+                    window.open("/main/customer/event/CS_110300.jsp","new", "width=700,height=253,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,copyhistory=no,resizable=no");
+
+                } else {
+
+                    ci.util.setCookie("closeConsultPopup","N","1");
+
+                }
+
+            }else{
+
+                go_url(redirect);
+
+            }
+
+            //go_url(redirect);
+
+        }
+
+
+
+        function layerPopUp(){
+
+            ci.dialog.open({
+
+                id : 'watchLayer',
+
+                title : "고객 안내문",
+
+                dom : $('.dia-content'),
+
+                focus : $(this),
+
+                width: 500,
+
+                height: 370,
+
+                modal:true,
+
+                closebutton : false,
+
+                buttons : [
+
+                    {
+
+                        text : '확인',
+
+                        'class' : 'btn btn-green md',
+
+                        click : function () {
+
+                            $(this).dialog('close'); // 이런식으로 dialog메서드 호출 가능
+
+                            location.href="/main/main/index.cmd";
+
+                        }
+
+                    }
+
+                ]
+
+            });
+
+        }
+
+
+
+        function consentCheck(redirect){
+
+            if(getDevice()!='mobile'){
+
+                var input = new DataSet();
+
+
+
+                /*   sc000048 : 투자자 정보
+
+            (ASIS) sc000008 : 잔고통보처 및 거래 통보처 변경안내
+
+                             개인정보의 수집/이용/제공 동의서
+
+            (TOBE) OAM0152Q06 : 홈페이지개인신용정보팝업여부조
+
+        */
+
+                var pop1=""; //투자자정보
+
+                var pop2=""; //cdd
+
+                var pop3=""; //edd
+
+                var pop4=""; //잔고통보처 및 거래통보처
+
+                var pop5=""; //개인신용정보
+
+                var pop6=""; //FATCA
+
+                var pop7=""; //착오거래 구제제도
+
+                var pop8="";//개인신용정보제공 미동의 계좌 (2016년5월31일 삭제 예정)
+
+                var pop9="";//문자 서비스 제한 팝업
+
+                var pop10=""; //올커버론
+
+                var pop11=""; //부정접속ID
+
+                var expireDate = ""; //올커버론 만료일
+
+                var pop1ExpireDate = ""; //투자자정보 만료일
+
+                var browserCheck = ""; //IE9 이하 브라우저 사용자 확인
+
+
+
+                if ( ci.agent.os.version == "WindowsXP" ){
+
+                    browserCheck = "Y";
+
+                }
+
+
+
+                hanaw.ajax.executeBLD('/main/customer/login/OAM0151Q02.bld', input, function() {
+
+
+
+                    var output = this.output;
+
+                    if(output.bb_counsel_info_yn=="Y"&&output.bb_tendency_cnfm_yn=="Y"&&output.bb_tendency_need_yn=="N"){
+
+                        pop1 = "M";
+
+                        if(output.bb_tendency_expr_dt != "") {
+
+                            var year = output.bb_tendency_expr_dt.substring(0, 4);
+
+                            var month = output.bb_tendency_expr_dt.substring(4, 6);
+
+                            var day = output.bb_tendency_expr_dt.substring(6, 8);
+
+                            pop1ExpireDate = year+"년 "+month+"월 "+day+"일 ";
+
+
+
+                        }
+
+                    }
+
+                    if((output.bb_tendency_need_yn!="" && output.bb_tendency_expr_dt.length!=0)&&(output.bb_tendency_cnfm_yn=="Y"&&output.bb_tendency_need_yn=="Y")){
+
+                        pop1 = "Y";
+
+                    }
+
+                    if(output.bb_tendency_need_yn =="F"){
+
+                        pop1 = "F";
+
+                    }
+
+
+
+                    var cddFlag = output.bb_cdd_expr_yn;
+
+                    if(cddFlag!="N"){
+
+                        // C.CDD재이행, E.EDD재이행 , N.해당없음 , A.CDD 미이행 edd , B.CDD이행+EDD미이행(고위험)
+
+                        // 국적이 대한민국이 아닌 사람 F.CDD재이행 G.EDD재이행
+
+//             	if(cddFlag == "C" || cddFlag == "E") {
+
+                        if(cddFlag == "C" || cddFlag == "E" || cddFlag == "F" || cddFlag == "G") {
+
+                            var cddViewOk = true;
+
+                            var d = new Date();
+
+                            var today = d.getFullYear().toString()+(d.getMonth()+1).toString()+d.getDate().toString();
+
+                            var cddRipmStdrDt = output.CDD_RIPM_STDR_DT;
+
+                            if(cddRipmStdrDt != "") {
+
+                                $("#cddRipmStdrDt").val(" (재이행 기준일 : "+cddRipmStdrDt.substring(0, 4)+"년 "+cddRipmStdrDt.substring(4, 6)+"월 "+cddRipmStdrDt.substring(6, 8)+"일)");
+
+                            }
+
+
+
+                            // 30일 체크
+
+                            if(ci.util.getCookie("checkReCddEddHide") == "Y"){
+
+                                cddViewOk = false;
+
+                            }
+
+
+
+                            //오늘 이후확인
+
+                            if(cddViewOk && (today <= cddRipmStdrDt)) {
+
+                                //당일 3일구분
+
+                                if(output.CDD_RIPM_AVNT_YN == "N") {
+
+                                    cddViewOk = false;
+
+                                }
+
+                            }
+
+
+
+                            if(!cddViewOk) {
+
+                                cddFlag = "N";
+
+                            }
+
+                        }
+
+
+
+                        if(cddFlag=="C" || cddFlag=="A" || cddFlag=="F"){
+
+                            //if(cddFlag=="A"){
+
+                            pop2=cddFlag;
+
+                        }else if(cddFlag=="E" || cddFlag=="B" || cddFlag=="G"){
+
+                            //}else if(cddFlag=="B"){
+
+                            pop3=cddFlag;
+
+                        }
+
+                    }
+
+
+
+                    if(output.bb_ftc_reg_yn =="Y"){
+
+                        pop6 ="Y";
+
+                    }
+
+
+
+                    if(output.bb_mist_trde_desc_yn =="Y"){
+
+                        pop7 ="Y";
+
+                    }
+
+                    /*
+
+            if(output.bb_crdagree_yn =="Y"){
+
+                pop8 ="Y";
+
+            }
+
+              */
+
+                    if(output.bb_htel_flaw_yn =="Y"){
+
+                        pop9 ="Y";
+
+                    }
+
+
+
+                }, false);
+
+
+
+                hanaw.ajax.executeBLD('/main/customer/login/OAM0152Q06.bld', input, function() {        //old : sc000008
+
+
+
+                    var output = this.output;
+
+                    if(output.bb_mail_chg_yn=="Y"){
+
+                        pop4="Y";
+
+                    }
+
+
+
+                    if(output.bb_cus_info_yn=="Y"){
+
+                        pop5="Y";
+
+                    }
+
+                },false);
+
+
+
+                hanaw.ajax.executeBLD('/main/customer/login/OAM0152Q08.bld', input, function() {        //old : sc000008
+
+                    var output = this.output;
+
+                    if (output.block4.length > 0){
+
+                        var allcoberRegChk = output.block4[0].ACVL_RQS_YN;
+
+                        var allcoberPopChk = output.block4[0].ACVL_PUP_YN;
+
+                        if(allcoberRegChk=='Y' && allcoberPopChk=='Y'){
+
+                            pop10="Y";
+
+                            if(output.block4[0].ACVL_CTRC_EXP_DT !=""){
+
+                                var year = output.block4[0].ACVL_CTRC_EXP_DT.substring(0, 4);
+
+                                var month = output.block4[0].ACVL_CTRC_EXP_DT.substring(4, 6);
+
+                                var day = output.block4[0].ACVL_CTRC_EXP_DT.substring(6, 8);
+
+                                expireDate = year+"년 "+month+"월 "+day+"일 ";
+
+                            }
+
+                        } else {
+
+                            pop10="";
+
+                        }
+
+                    } else {
+
+                        pop10="";
+
+                    }
+
+                },false);
+
+
+
+                hanaw.ajax.executeBLD('/main/customer/login/OCS2820U01.bld', input, function() {        //old : sc000008
+
+                    var output = this.output;
+
+                    if(output.NRML_RSPN_YN=="Y") {
+
+                        pop11="Y";
+
+                    }
+
+                },false);
+
+
+
+                if(pop1==""&&pop2==""&&pop3==""&&pop4==""&&pop5==""&&pop6==""&&pop7==""&&pop8==""/* &&pop9=="" */ &&pop10==""&&browserCheck==""&&pop11==""){
+
+                    go_url(redirect);
+
+                } else if ( 'Event191213' == '' ) {
+
+                    go_url(redirect);
+
+                }else{
+
+                    $("#pop1").val(pop1);
+
+                    $("#pop2").val(pop2);
+
+                    $("#pop3").val(pop3);
+
+                    $("#pop4").val(pop4);
+
+                    $("#pop5").val(pop5);
+
+                    $("#pop6").val(pop6);
+
+                    $("#pop7").val(pop7);
+
+                    $("#pop8").val(pop8);
+
+                    //$("#pop9").val(pop9);
+
+                    $("#pop10").val(pop10);
+
+                    $("#pop11").val(pop11);
+
+                    $("#browserCheck").val(browserCheck);
+
+                    $("#expireDate").val(expireDate);
+
+                    $("#pop1ExpireDate").val(pop1ExpireDate);
+
+                    $("#redirect").val(decodeURI(redirect));
+
+                    $("#agreeFrm").submit();
+
+                }
+
+            }else{
+
+                go_url(redirect);
+
+            }
+
+        }
+
+
+
+        function go_url(redirect){
+
+            if( redirect != "" ){
+
+                location.href = redirect.replace(/http(s)?:/g,"");
+
+            }else{
+
+                location.href = "/main/main/index.cmd";
+
+            }
+
+        }
+
+
+
+        var os = ci.agent.os.name;
+
+        var bw = ci.agent.product.name;
+
+        var version = ci.agent.version;
+
+        var e2e = false;
+
+        if (getDevice() == "pc"){
+
+            jQuery(document).on("nppfs-after-startup", function(event){
+
+                if ( npPfsCtrl.isSupport() ){
+
+                    e2e = true;
+
+                }
+
+                npPfsCtrl.isVirtualMachine(function(result){
+
+                    xSubmitAjax(null,{
+
+                        url:"/main/customer/login/setUserInfo.cmd",
+
+                        data:"os="+os+"&bw="+bw+"&version="+version+"&e2e="+e2e+"&vm="+result,
+
+                        async:false,
+
+                        success:function(){
+
+                        }
+
+                    });
+
+                    // NOS 보안모듈이 E2E 지원 가능한지 체크
+
+                    if ( !npPfsCtrl.isSupport() || result || npPfsDefine.mac){
+
+                        ci.dialog.open({
+
+                            id : 'CS_020100_L',
+
+                            title : "이용시 주의 사항",
+
+                            url : '/main/customer/member/CS_020100_L.jsp',
+
+                            //msg: "에러",
+
+                            focus : $(this),
+
+                            width : 500,
+
+                            height : 400,
+
+                            modal : true,
+
+                            closebutton : false,
+
+                            buttons : [{
+
+                                text : '확인',
+
+                                'class' : 'btn btn-green',
+
+                                click : function () {
+
+                                    ci.dialog.close();
+
+                                }},{
+
+                                text : '취소',
+
+                                'class' : 'btn btn-default',
+
+                                click : function () {
+
+                                    ci.dialog.close();
+
+                                    location.href = "/main/main/index.cmd";
+
+                                    return;
+
+                                }
+
+                            }]
+
+                        });
+
+                    }
+
+                });
+
+            });
+
+        } else {
+
+            xSubmitAjax(null,{
+
+                url:"/main/customer/login/setUserInfo.cmd",
+
+                data:"os="+os+"&bw="+bw+"&version="+version+"&vm=false",
+
+                async:false,
+
+                success:function(){
+
+                }
+
+            });
+
+        }
+
+
+
+        var device = getDevice();
+
+        if (device == "tablet"){
+
+            ci.dialog.open({
+
+                id : 'CS_020100_L2',
+
+                title : "홈페이지 모바일기기 이용안내",
+
+                url : '/main/customer/member/CS_020100_L2.jsp',
+
+                focus : $(this),
+
+                width : 500,
+
+                height : 330,
+
+                modal : true,
+
+                closebutton : false,
+
+                buttons : [{
+
+                    text : '확인',
+
+                    'class' : 'btn btn-green',
+
+                    click : function () {
+
+                        ci.dialog.close();
+
+                    }
+
+                }]
+
+            });
+
+        }
+    </script>
+    <!--h:e-->
+    <script>
+        if (ci.agent.productVersion === 'ie7') {
+
+            alert('인터넷 익스프로러는 8버전 이상부터 지원합니다.');
+
+            //history.back(-1);
+
+        }
+    </script>
+    <script>
+        if ( typeof CertManX == "object" ){
+
+            if ( $.type( CertManX ) == "object" ){
+
+                CertManX.UnSetMatchedContext(function(){});
+
+            }
+
+        }
+    </script>
+</head>
+<body>
+<div class="wrap templetWrap">
+    <!-- skipNavigation -->
+    <ul class="skipNavigation">
+        <li>
+            <a href="#access-quickmemu">
+                빠른메뉴 바로가기
+            </a>
+        </li>
+        <li>
+            <a class="go-to-content" href="#access-contents">
+                본문 바로가기[4]
+            </a>
+        </li>
+        <li>
+            <a href="#access-personal">
+                개인메뉴 바로가기
+            </a>
+        </li>
+        <li>
+            <a href="#access-footer">
+                주요서비스메뉴 바로가기
+            </a>
+        </li>
+    </ul>
+    <!-- //skipNavigation -->
+    <!-- Layer Popup -->
+    <!--// Layer Popup -->
+    <!-- INCLUDE : HANAW HEADER -->
+    <div id="header">
+        <div class="inner">
+            <h1>
+                <a href="/main/main/index.cmd">
+                    하나증권
+                </a>
+            </h1>
+            <ul class="memberlink">
+                <li>
+                    <a href="/main/customer/login/index.cmd">
+        <span>
+         로그인
+        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/main/customer/member/CS_020200_P.cmd">
+                        ID 등록
+                    </a>
+                </li>
+                <li>
+                    <a href="/main/customer/certificate/CS_030000_M.cmd">
+                        인증센터
+                    </a>
+                </li>
+            </ul>
+            <form action="/main/main/search.cmd" id="templetSearchForm" method="post" onsubmit="return checktempletSearch()">
+                <fieldset>
+                    <legend>
+                        통합검색
+                    </legend>
+                    <div class="topsrch">
+                        <input id="templetSearchInput" maxlength="20" name="query" style="width: 105px" title="검색어 입력" type="text"/>
+                        <!-- 20200305 수정 -->
+                        <input alt="검색" id="btnSearch" src="/common/img/icon_srch.gif" type="image"/>
+                    </div>
+                </fieldset>
+                <script type="text/javascript">
+                    function emrtest() {
+
+                        alert("제휴wts 비상테스트");
+
+                        $.ajax({
+
+                            url : "/common/common/getEmrIssKey.cmd",
+
+                            success : function(data) {
+
+                                console.log(data);
+
+                                window.open("https://local.hanaw.com:8445/afwts/login/login/emrLogin.cmd?afwtsCode="+data.afwtsCode+"&data="+data.encData);
+
+
+
+                            }
+
+                        });
+
+
+
+
+
+
+
+
+
+                    }
+
+                    function checktempletSearch(){
+
+                        var regExp = /[^0-9a-zA-Zㄱ-힣\s]/;
+
+                        var icssQuery = document.getElementById("templetSearchInput");
+
+                        var keyword = icssQuery.value;
+
+                        if (keyword.search(regExp) != -1) {
+
+                            alert("특수문자는 사용할 수 없습니다.");
+
+                            icssQuery.focus();
+
+                            return false;
+
+                        }
+
+
+
+                        return true;
+
+                    }
+                </script>
+            </form>
+            <ul class="sns-header">
+                <li>
+                    <a href="https://www.facebook.com/hanadtpage" target="_blank" title="하나증권 페이스북 새창열기">
+                        <img alt="페이스북" src="/common/img/icon_facebook_light.gif"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://blog.naver.com/hanadtsec" target="_blank" title="하나증권 블로그 새창열기">
+                        <img alt="블로그" src="/common/img/icon_blog_light.gif"/>
+                    </a>
+                </li>
+            </ul>
+            <ul class="toplink">
+                <li id="co-menu-wrap">
+                    <a href="/main/company/company/CO_000000_M.cmd">
+                        회사소개
+                    </a>
+                </li>
+                <!-- li>
+
+            <a href="http://www.hanaib.com/main/hanaib/index.htm">
+
+            <img src="/common/img/btn_toplink.gif" alt="투자은행부문" />
+
+            </a>
+
+            </li-->
+            </ul>
+        </div>
+        <div id="gnb-area">
+            <!-- GNB : START -->
+            <div id="gnb-wrap">
+                <ul id="gnb">
+                    <li class="gnb_01">
+                        <a class="depth1-link" href="/main/bank/online/index.cmd">
+                        </a>
+                    </li>
+                    <li class="gnb_02">
+                        <a class="depth1-link" href="/main/finance/fund/FP_000000_M.cmd">
+                        </a>
+                    </li>
+                    <li class="gnb_03">
+                        <a class="depth1-link" href="/main/wts/main/index.cmd">
+                        </a>
+                    </li>
+                    <li class="gnb_04">
+                        <a class="depth1-link" href="/main/wts/foreign/index.cmd">
+                        </a>
+                    </li>
+                    <li class="gnb_04">
+                        <a class="depth1-link" href="/main/research/research/RC_000000_M.cmd">
+                        </a>
+                    </li>
+                    <li class="gnb_05">
+                        <a class="depth1-link selected" href="/main/customer/customer/CS_000000_M.cmd">
+                        </a>
+                    </li>
+                    <li class="gnb_06">
+                        <a class="depth1-link" href="/main/customer/customer/CS_000001_M.cmd">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- GNB : END -->
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $.ajax({
+
+                url : "/pub/view/gnb.htm",
+
+                dataType :'html',
+
+                success : function(data) {
+
+                    $('#gnb').html(data);
+
+
+
+
+
+                    $(function() {
+
+                        $('#gnb .depth1-link:eq(5)').addClass('selected');
+
+                    });
+
+
+
+                    GlobalNavi.init();
+
+                }
+
+            });
+
+        });
+    </script>
+    <!-- INCLUDE : QUICK NAVI -->
+    <style>
+        #mainContainer {margin-top: 34px;}
+    </style>
+    <div id="quick-navi-wrap">
+        <ul id="quick-navi">
+            <li class="fl">
+                <a href="/main/main/index.cmd" id="access-quickmemu" title="홈">
+                    <img alt="home" src="/common/img/quicknavi_home.gif"/>
+                </a>
+            </li>
+            <li>
+                <div class="quick-menu-div" id="quick-navi-depth1">
+                    <a class="selected-menu quick-menu-depth1" href="/main/customer/customer/CS_000000_M.cmd">
+                        고객지원
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="quick-menu-div" id="quick-navi-depth2">
+                    <a class="selected-menu" href="/main/customer/member/CS_020200_P.cmd">
+                        ID등록/관리
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/main/customer/openAccount/CS_180100_P.cmd">
+                                계좌개설안내
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/main/customer/persnalInfo/CS_170100_P.cmd">
+                                개인(신용)정보 열람 및 이용·제공 현황 조회
+                            </a>
+                        </li>
+                        <li class="selected">
+                            <a href="/main/customer/member/CS_020200_P.cmd">
+                                ID등록/관리
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/main/customer/certificate/CS_030000_M.cmd">
+                                인증센터/OTP
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/main/customer/customer/CS_040100_P.cmd">
+                                거래가이드
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/corebbs5/notice/list/list.cmd">
+                                공지&amp;이벤트
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/main/customer/simulate/CS_120010_P.cmd">
+                                모의투자
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/main/customer/customer/CS_060100_P.cmd">
+                                업무/서비스 안내
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/main/customer/customer/CS_070100_P.cmd">
+                                고객 유의사항
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/main/customer/customer/CS_050100_M.cmd">
+                                거래시스템안내
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/main/customer/customer/CS_100101_P.cmd">
+                                온라인 보안센터
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/main/customer/qna/CS_080100_P.cmd">
+                                고객상담
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/main/customer/hanaMembers/CS_160100_P.cmd">
+                                하나머니
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/main/customer/callSales/CS_230103_P.cmd">
+                                방문판매
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="quick-menu-div" id="quick-navi-depth3">
+                    <a class="selected-menu" href="/main/customer/login/index.cmd">
+                        로그인
+                    </a>
+                    <ul>
+                        <li class="selected">
+                            <a href="/main/customer/login/index.cmd">
+                                로그인
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/main/customer/member/CS_020200_P.cmd">
+                                ID등록
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/main/customer/member/CS_020301.cmd">
+                                ID정보관리
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div class="quick-menu-div" id="quick-navi-depth4">
+                    <ul>
+                    </ul>
+                </div>
+            </li>
+            <li class="mymenu">
+                <a class="" href="#" id="mymenuPopup" title="나의메뉴">
+                    나의메뉴
+                </a>
+                <!-- 등록된상태:class명 on 추가, 등록안된상태:class명 on 삭제  -->
+            </li>
+            <li class="zoom">
+                <!-- <button type="button" id="zoominfoPopup" class="btn btn-default sm fr" >자세히보기</button> -->
+                <a class="dpib" href="#" id="zoominfoPopup" title="자세히보기">
+                    <img alt="화면 확대 / 축소 방법 안내" src="/common/img/zoom_btn.gif"/>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="clear">
+    </div>
+    <div class="dia-content0 ci-dialog-content" id="zoominfoPopupArea">
+        <img alt="화면 확대 / 축소 방법 안내" src="/common/img/zoominfoPopup.jpg" style="margin-top: 10px; margin-left: 10px;"/>
+    </div>
+    <script type="text/javascript">
+        var $depth1 = $('#quick-navi-depth1');
+
+        var $depth2 = $('#quick-navi-depth2');
+
+        var $depth3 = $('#quick-navi-depth3');
+
+        var $depth4 = $('#quick-navi-depth4');
+
+        var menuNames = [];
+
+
+
+        var menuName;
+
+        var menuPath;
+
+        var fullPath;
+
+        var url;
+
+
+
+        function checkCurrentMenu() {
+
+            var data = {};
+
+            data.menuName = menuName;
+
+            $.ajax({
+
+                url : '/main/bank/personalMng/checkCurrentMenu.cmd',
+
+                cache : false,
+
+                type : 'POST',
+
+                data : data,
+
+                success : function(data) {
+
+                    if(data.status == 'true') {
+
+                        $('#mymenuPopup').addClass('on');
+
+                    } else {
+
+                        $('#mymenuPopup').removeClass('on');
+
+                    }
+
+                }
+
+            });
+
+        }
+
+
+
+        window.checkCurrentMenu = checkCurrentMenu;
+
+
+
+        (function () {
+
+            menuNames.push($depth1.find('.selected-menu').text());
+
+            menuNames.push($depth2.find('.selected-menu').text());
+
+            menuNames.push($depth3.find('.selected-menu').text());
+
+            menuNames.push($depth4.find('.selected-menu').text());
+
+            if(menuNames[3]) {
+
+                url = $depth4.find('a').attr('href');
+
+            } else if (menuNames[2]){
+
+                url = $depth3.find('a').attr('href');
+
+                menuNames.pop();
+
+            } else if (menuNames[1]) {
+
+                url = $depth2.find('a').attr('href');
+
+                menuNames.pop();
+
+                menuNames.pop();
+
+            } else {
+
+                url = $depth1.find('a').attr('href');
+
+                menuNames.pop();
+
+                menuNames.pop();
+
+                menuNames.pop();
+
+            }
+
+            fullPath = menuNames.join(',');
+
+            menuName = menuNames.pop();
+
+            menuPath = menuNames.join(',');
+
+            if (get__DEVICE() == 'pc' && get__ISLOGIN()) {
+
+                checkCurrentMenu();
+
+            }
+
+
+
+        })();
+
+
+
+        $('#zoominfoPopup').on('click', function(event) { //화면 확대/축소
+
+            event.preventDefault();
+
+            ci.dialog.open({
+
+                id : 'dialog_0',
+
+                title : '화면 확대 / 축소 방법 안내',
+
+                dom : $('#zoominfoPopupArea'),
+
+                focus : $(this),
+
+                width: 660,
+
+                height: 720
+
+            });
+
+        });
+
+
+
+        $('#mymenuPopup').on('click',function(event){ //마이메뉴
+
+            event.preventDefault();
+
+            if(!get__ISLOGIN()) {
+
+                alert('나의메뉴 등록은 로그인 후 이용할 수 있습니다.');
+
+                return;
+
+            }
+
+            Loader.show();
+
+
+
+            var data = {};
+
+            data.menuName = menuName;
+
+            data.menuPath = menuPath;
+
+            data.fullPath = fullPath;
+
+            data.url = url;
+
+
+
+            $.ajax({
+
+                url : '/main/bank/personalMng/toggleMyMenu.cmd',
+
+                cache : false,
+
+                type : 'POST',
+
+                data : data,
+
+                success : function(data) {
+
+                    Loader.hide();
+
+                    if(data.toggle == 'true') {
+
+                        $('#mymenuPopup').addClass('on');
+
+                        alert('나의 메뉴에 추가하였습니다.');
+
+                    } else if(data.toggle == 'false'){
+
+                        $('#mymenuPopup').removeClass('on');
+
+                        alert('나의 메뉴에서 삭제하였습니다.');
+
+                    }
+
+                }
+
+            });
+
+
+
+
+
+        });
+    </script>
+    <script type="text/javascript">
+        QuickNavi.init();
+    </script>
+    <div id="mainContainer">
+        <!--b:s-->
+        <div class="wrap">
+            <!-- container w100p -->
+            <div class="w100p" id="container">
+                <form action="login.cmd" autocomplete="off" method="post" name="frm">
+                    <input name="autoIndex" type="hidden" value=""/>
+                    <input name="authLevel" type="hidden" value="10"/>
+                    <!-- 10:ID,PASSWORD로그인,20:인증서로그인,25:ID,PASSWORD,인증 비밀번호 로그인 -->
+                    <input name="CLIENT_MAC" type="hidden" value=""/>
+                    <input name="CLIENT_HDD" type="hidden" value=""/>
+                    <input name="se_signdata" type="hidden" value=""/>
+                    <input id="buttonOn" type="hidden" value=""/>
+                    <input id="loginKey" name="loginKey" type="hidden" value="71ot3knfh8zCtGeTeW9enyRzZjqrCbGCTSt1BeBmqEs="/>
+                    <!--PC LOGIN-->
+                    <!-- containertop -->
+                    <div class="containertop">
+                        <h3 class="title-1dep">
+                            로그인
+                        </h3>
+                    </div>
+                    <!-- //containertop -->
+                    <!-- login -->
+                    <div class="login mb45">
+                        <div class="inner">
+                            <div class="login-l">
+                                <!-- login-l -->
+                                <h4>
+                                    공동인증서 로그인
+                                </h4>
+                                <div class="mb25">
+                                    공동인증서 로그인시
+                                    <span class="txtpoint">
+            이체, 금융상품/주식/선물옵션매매 등의
+            <br/>
+            다양한 업무처리가 가능
+           </span>
+                                    합니다.
+                                </div>
+                                <div class="tac mb35">
+                                    <button class="btn btn-green lg w260" id="certLoginBtn" type="button">
+                                        공동인증서 로그인
+                                    </button>
+                                </div>
+                                <div class="logininput-log_1">
+                                    자동로그아웃:
+                                    <select class="select w160 ml15" id="maxtime_full" name="maxtime_full" title="자동로그아웃 시간 설정">
+                                        <option selected="" value="10">
+                                            10분
+                                        </option>
+                                        <option value="30">
+                                            30분
+                                        </option>
+                                        <option value="60">
+                                            1시간
+                                        </option>
+                                        <option value="120">
+                                            2시간
+                                        </option>
+                                        <option value="180">
+                                            3시간
+                                        </option>
+                                        <option value="240">
+                                            4시간
+                                        </option>
+                                        <!--
+
+                                        <option value="300">5시간</option>
+
+                                        <option value="360">6시간</option>
+
+                                         -->
+                                    </select>
+                                </div>
+                                <ul class="inline">
+                                    <li>
+                                        <button class="btn btn-default sm j-btn1" type="button">
+                                            공동인증서 발급/재발급
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button class="btn btn-default sm j-btn2" type="button">
+                                            타기관 인증서 등록
+                                        </button>
+                                    </li>
+                                </ul>
+                                <!-- //login-l -->
+                                <!-- login-r -->
+                            </div>
+                            <div class="login-r">
+                                <h4>
+                                    ID 로그인
+                                </h4>
+                                <div class="login-member">
+                                    <ul>
+                                        <li class="on" id="regularMember">
+                                            <a href="#" onclick="changeMember(0)">
+                                                정회원
+                                            </a>
+                                        </li>
+                                        <li id="associateMember">
+                                            <a href="#" onclick="changeMember(1)">
+                                                준회원
+                                            </a>
+                                            <span class="none">
+              선택
+             </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="mb10" id="regularMemberText">
+                                    ID로그인시 공동인증서를 사용하지 않으시면 일부 메뉴만 조회 가능합니다.
+                                    <br/>
+                                    <span class="f12">
+            (로그인은 가능하나 인증서 필수메뉴 접속 시 인증서 확인필요)
+           </span>
+                                </div>
+                                <div class="mb30 none" id="associateMemberText">
+                                    계좌 미보유 고객 또는 지점계좌개설 고객 중 인터넷뱅킹 서비스 미신청 고객입니다.
+                                </div>
+                                <div class="logininput">
+                                    <div class="logininput-data">
+                                        아이디
+                                        <input class="inputbox w250" id="userid" maxlength="8" name="userid" style="ime-mode:disabled;" title="아이디 입력" type="text" value=""/>
+                                    </div>
+                                    <div class="logininput-data">
+                                        아이디비밀번호
+                                        <input class="inputbox w160" data-e2e="true" data-tk-kbdtype="qwerty" id="pass_wd" maxlength="30" name="pass_wd" style="font-size: 10px;" title="비밀번호 입력" type="password" value=""/>
+                                        <span id="pass_wd_tk_btn">
+            </span>
+                                    </div>
+                                    <div class="logininput-data1 hide-on-tablet" id="pwcertDiv">
+                                        공동인증서
+                                        <input checked="checked" class="radio" id="certUse" name="certUse" title="공동인증서 사용" type="radio" value="Y"/>
+                                        <label for="certUse">
+                                            사용
+                                        </label>
+                                        <input class="radio ml64" id="certUnused" name="certUse" title="공동인증서 미사용" type="radio" value="N"/>
+                                        <label class="ml64" for="certUnused">
+                                            미사용
+                                        </label>
+                                    </div>
+                                    <!-- <div class="logininput-data hide-on-tablet" id="pwcertDiv">
+
+                                    <label for="signPwd">인증비밀번호</label>
+
+                                    <input type="password" id="signPwd" name="signPwd" class="inputbox w160" data-e2e="true" value=""  title="인증비밀번호 입력" data-tk-kbdType="qwerty"  style="font-size: 10px;" maxlength="30"/>
+
+                                    <span id="signPwd_tk_btn"></span>
+
+                                </div> -->
+                                    <div class="logininput-log">
+                                        자동로그아웃:
+                                        <select class="select w160" id="maxtime" name="maxtime" style="top: 0px;" title="자동로그아웃 시간 설정">
+                                            <option selected="" value="10">
+                                                10분
+                                            </option>
+                                            <option value="30">
+                                                30분
+                                            </option>
+                                            <option value="60">
+                                                1시간
+                                            </option>
+                                            <option value="120">
+                                                2시간
+                                            </option>
+                                            <option value="180">
+                                                3시간
+                                            </option>
+                                            <option value="240">
+                                                4시간
+                                            </option>
+                                            <!--
+
+                                        <option value="300">5시간</option>
+
+                                        <option value="360">6시간</option>
+
+                                         -->
+                                        </select>
+                                    </div>
+                                    <div class="logininput-btn">
+                                        <button class="btn btn-green lg" id="loginIdPassBtn" type="button">
+                                            로그인
+                                        </button>
+                                    </div>
+                                </div>
+                                <ul class="inline">
+                                    <li>
+                                        <button class="btn btn-default sm j-btn3" type="button">
+                                            ID 찾기
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button class="btn btn-default sm j-btn4" type="button">
+                                            ID비밀번호 재등록
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button class="btn btn-default sm j-btn5" type="button">
+                                            ID 등록
+                                        </button>
+                                    </li>
+                                    <!-- 자동부여 ID 등록 시작 -->
+                                    <div class="login-kakao2">
+                                        <a class="btn-login-kakao clear-fix j-btn10" href="#">
+                                            <div class="fl automatic-grant-idwrap -ic01">
+              <span>
+               카카오뱅크 고객님! 첫 방문이신가요?
+              </span>
+                                            </div>
+                                            <div class="fl automatic-grant-idwrap -ic02">
+              <span>
+               '자동부여ID' 발급 받으신 고객님이세요?
+              </span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <!-- 자동부여 ID 등록 끝 -->
+                                </ul>
+                            </div>
+                            <!-- //login-r -->
+                            <div class="cb">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- login -->
+                    <!-- container -->
+                    <div class="container">
+                        <h4 class="title-2dep">
+                            계좌개설 안내
+                        </h4>
+                        <div class="mb15">
+                            영업점, 은행, 인터넷에서 편리하게 계좌를 개설하실 수 있습니다. 계좌개설, ID등록방법을 확인하세요.
+                        </div>
+                        <ul class="inline mb60">
+                            <li>
+                                <button class="btn btn-default sm j-btn6" type="button">
+                                    영업점에서 계좌개설 안내
+                                </button>
+                            </li>
+                            <li>
+                                <button class="btn btn-default sm j-btn7" type="button">
+                                    은행에서 계좌개설 안내
+                                </button>
+                            </li>
+                            <li>
+                                <button class="btn btn-default sm j-btn8" type="button">
+                                    비대면 계좌개설 안내
+                                </button>
+                            </li>
+                            <li>
+                                <button class="btn btn-default sm j-btn9" type="button">
+                                    온라인 상품계좌개설 안내
+                                </button>
+                            </li>
+                        </ul>
+                        <!-- box-instruction -->
+                        <div class="box-instruction2">
+                            <h4>
+                                유의사항
+                            </h4>
+                            <div class="btn-tog">
+                                <div class="btn-tog-c">
+                                    <a class="j-btntog" href="#">
+            <span>
+             접기
+            </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <ul class="j-togbox">
+                                <li>
+                                    로그인 하실 때 ID비밀번호 5회 이상(누적) 오류 입력한 경우 접속이 불가합니다. ID비밀번호 재등록 후 로그인 하시기 바랍니다.
+                                </li>
+                                <li>
+                                    기타문의는 고객지원센터(1588-3111)로 연락 바랍니다.
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- //box-instruction -->
+                        <div id="maincon-links-con">
+                            <div class="maincon-links">
+                                <div class="top">
+                                    <div class="areaw">
+                                        <p class="b">
+                                            주식계좌 개설 고객을 위한 온라인 서비스 안내
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="bottom">
+                                    <div class="areaw">
+                                        <ul class="list-2dep">
+                                            <li class="b">
+                                                온라인으로 직접, 바로, 편리하게 이용하는 맞춤형 주식 매매/대출/대여서비스!
+                                            </li>
+                                        </ul>
+                                        <ul class="list_links">
+                                            <li>
+                                                <div class="box-round linksbox0">
+                                                    <dl>
+                                                        <dt>
+                                                            신용융자거래
+                                                        </dt>
+                                                        <dd>
+                                                            레버리지 투자는 기본,
+                                                            <br/>
+                                                            미수주문보다 여유로운
+                                                            <br/>
+                                                            거래기간~
+                                                        </dd>
+                                                    </dl>
+                                                    <p>
+                                                        주식 매수시 증거금률에 따라
+                                                        <br/>
+                                                        매수대금의 일정비율을 빌려주는 서비스
+                                                    </p>
+                                                </div>
+                                                <p>
+                                                    <button class="btn btn-default sm" onclick="location.href='/main/customer/customer/CS_060600_P.cmd?tab=1'" type="button">
+                                                        자세히 보기
+                                                    </button>
+                                                    <button class="btn btn-green sm" onclick="location.href='/main/bank/credit/OB_050101_T5.cmd'" type="button">
+                                                        약정하기
+                                                    </button>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <div class="box-round linksbox1">
+                                                    <dl>
+                                                        <dt>
+                                                            주식담보대출
+                                                        </dt>
+                                                        <dd>
+                                                            여유자금이 필요한
+                                                            <br/>
+                                                            시기에는~
+                                                        </dd>
+                                                    </dl>
+                                                    <p>
+                                                        위탁계좌에 예탁된 유가증권을 담보로
+                                                        <br/>
+                                                        고객님의 필요자금을 대출하는
+                                                        <br/>
+                                                        주식담보대출서비스
+                                                    </p>
+                                                </div>
+                                                <p>
+                                                    <button class="btn btn-default sm" onclick="location.href='/main/customer/customer/CS_060600_P.cmd?tab=0'" type="button">
+                                                        자세히 보기
+                                                    </button>
+                                                    <button class="btn btn-green sm" onclick="location.href='/main/bank/credit/OB_050102_T4.cmd'" type="button">
+                                                        약정하기
+                                                    </button>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <div class="box-round linksbox2">
+                                                    <dl>
+                                                        <dt>
+                                                            매도대금담보대출
+                                                        </dt>
+                                                        <dd>
+                                                            매도 결제 전
+                                                            <br/>
+                                                            현금이 필요할 때~
+                                                        </dd>
+                                                    </dl>
+                                                    <p>
+                                                        주식 매도 후 결제 전이라도 즉시
+                                                        <br/>
+                                                        매도대금을 대출해 드리는 서비스
+                                                    </p>
+                                                </div>
+                                                <p>
+                                                    <button class="btn btn-default sm" onclick="location.href='/main/customer/customer/CS_060600_P.cmd?tab=0'" type="button">
+                                                        자세히 보기
+                                                    </button>
+                                                    <button class="btn btn-green sm" onclick="location.href='/main/bank/credit/OB_050102_T4.cmd'" type="button">
+                                                        약정하기
+                                                    </button>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <div class="box-round linksbox3">
+                                                    <dl>
+                                                        <dt>
+                                                            주식대여거래
+                                                        </dt>
+                                                        <dd>
+                                                            잠자는 주식을 깨워라~
+                                                        </dd>
+                                                    </dl>
+                                                    <p>
+                                                        보유하고 있는 주식을 빌려주고
+                                                        <br/>
+                                                        대여기간 동안 대여수수료도 받는
+                                                        <br/>
+                                                        장기투자 고객을 위한 서비스
+                                                        <br/>
+                                                        대여기간 중 실시간 매도상환 가능!
+                                                    </p>
+                                                </div>
+                                                <p>
+                                                    <button class="btn btn-default sm" onclick="location.href='/main/customer/customer/CS_060600_P.cmd?tab=3'" type="button">
+                                                        자세히 보기
+                                                    </button>
+                                                    <button class="btn btn-green sm" onclick="location.href='/main/bank/credit/OB_050104_T1.cmd'" type="button">
+                                                        약정하기
+                                                    </button>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="maincon-links maincon-links-bottom" style="border:none;">
+                                <div class="top">
+                                    <div class="areaw">
+                                        <p class="b">
+                                            온라인 투자자문 서비스 안내
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="bottom">
+                                    <div class="areaw">
+                                        <ul class="list-2dep">
+                                            <li class="b">
+                                                나의 투자 전략은 어떤게 있을까? 고객님을 위한 온라인 투자전략서비스 제공!
+                                            </li>
+                                        </ul>
+                                        <ul class="list_links">
+                                            <li class="mr120">
+                                                <div class="box-round linksbox4">
+                                                    <dl>
+                                                        <dt>
+                                                            온라인 투자자문서비스
+                                                        </dt>
+                                                        <dd>
+                                                            멘토스
+                                                        </dd>
+                                                    </dl>
+                                                    <ul class="list-3dep">
+                                                        <li>
+                                                            멘토스 매니저들의 실시간 문자서비스,
+                                                            <br/>
+                                                            1:1 종목상담, 고급분석자료 제공하는
+                                                            <br/>
+                                                            멘토스 투자자문
+                                                        </li>
+                                                        <li>
+                                                            멘토스매니저와 리서치센터 연구원들이
+                                                            <br/>
+                                                            출연하는 멘토스 증권방송
+                                                        </li>
+                                                        <li>
+                                                            자산관리 및 투자의 기초, 실전매매
+                                                            <br/>
+                                                            전략을 위한 온라인 투자자 교육 e-멘토스
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <p>
+                                                    <button class="btn btn-default sm" onclick="location.href='/main/customer/mentors/CS_090101.cmd'" type="button">
+                                                        자세히 보기
+                                                    </button>
+                                                    <!-- <button type="button" class="btn btn-green sm" onclick="location.href='http://mentors.hanaw.com/common/html/XecureLink.html?returnURL=/service/service_join.jsp'">약정하기</button> -->
+                                                </p>
+                                            </li>
+                                            <li class="mr120">
+                                                <div class="box-round linksbox6">
+                                                    <dl>
+                                                        <dt>
+                                                            금융공학을 이용한
+                                                            <br/>
+                                                            시스템 트레이딩 전략
+                                                        </dt>
+                                                        <dd>
+                                                            퀀트
+                                                        </dd>
+                                                    </dl>
+                                                    <ul class="list-3dep">
+                                                        <li>
+                                                            씽크풀이 개발한 시스템 트레이딩
+                                                            <br/>
+                                                            투자전략
+                                                        </li>
+                                                        <li>
+                                                            투자성향별 포트폴리오 선택으로 해당
+                                                            <br/>
+                                                            전략내용을 실시간 스마트폰 푸쉬로 알림
+                                                        </li>
+                                                        <li>
+                                                            모멘텀, 수급, 투자자, 지표를 기반으로하는
+                                                            <br/>
+                                                            15개 파워신호는 보너스!
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <p>
+                                                    <button class="btn btn-default sm" onclick="location.href='/main/customer/customer/CS_060809.cmd'" type="button">
+                                                        자세히 보기
+                                                    </button>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <div class="box-round linksbox7">
+                                                    <dl>
+                                                        <dt>
+                                                            주식고수의
+                                                            <br/>
+                                                            모바일 투자정보
+                                                        </dt>
+                                                        <dd>
+                                                            5STAR
+                                                        </dd>
+                                                    </dl>
+                                                    <ul class="list-3dep">
+                                                        <li>
+                                                            경제 전문방송 SBS CNBC가 제작하여
+                                                            <br/>
+                                                            ‘스마트하나HT’에 독점 제공
+                                                        </li>
+                                                        <li>
+                                                            글로벌 주요 경제이슈와 외국인이 주목하는
+                                                            <br/>
+                                                            국내 증시정보를 제공하는 서비스
+                                                        </li>
+                                                        <li>
+                                                            하루에 한 번!
+                                                            <br/>
+                                                            주식고수 5명의 명쾌한 종목전략
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <p>
+                                                    <button class="btn btn-default sm" onclick="location.href='/main/customer/customer/CS_060808.cmd'" type="button">
+                                                        자세히 보기
+                                                    </button>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- //container -->
+        </div>
+        <!-- //container w100p -->
+        <div class="dia-content ci-dialog-content">
+            <div style="overflow:auto">
+                <div style="line-height: 20px;">
+                    <p style="font-size: 18px;">
+                        고객님의 성명이 Watch리스트에 존재합니다. 고객지원센터(1588-3111) 또는 해당 영업점에 문의하시기 바랍니다.
+                    </p>
+                    <br/>
+                    <br/>
+                    <ol style="font-size: 13px;">
+                        <li>
+                            ※ ‘특정금융거래정보의 보고 및 이용 등에 관한 법률’에 의해 UN, CIA 등이 제공하는 Watch리스트와 고객님의 성명이 일치할 경우 당사는 Watch리스트와 동일인 인지 여부를 확인하여야 할
+
+                            의무가 있으며, 고객님께서는 고객지원센터 또는 해당 영업점에 이에 대한 사실 확인후 거래가 가능함을 양지하여 주시기 바랍니다.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="dia-optInfo ci-dialog-content">
+            <div style="overflow:auto">
+                <div style="line-height: 20px;">
+                    <div class="txtbasic mt10 mb20 pl10">
+                        안녕하십니까?
+                        <br/>
+                        금융결제원에서 아래와 같이 OTP 이용이 일시 중단될 예정이오니 양해 부탁드립니다.
+                    </div>
+                    <h5 class="title-3dep">
+        <span class="b">
+         중단일시
+        </span>
+                    </h5>
+                    <ul class="list-3dep mb20">
+                        <li>
+         <span class="red b">
+          2022.03.26(토) 01:00 ~ 01:10 (10분간)
+         </span>
+                        </li>
+                    </ul>
+                    <h5 class="title-3dep">
+        <span class="b">
+         서비스 일시중단 업무
+        </span>
+                    </h5>
+                    <ul class="list-3dep mb20">
+                        <li>
+         <span class="">
+          OTP 인증/조회/등록/해지/보정/사고등록
+         </span>
+                        </li>
+                        <li>
+         <span class="red">
+          OTP 인증 불가로 인하여 대상 OTP를 이용하시는 손님은 해당 시간 동안 이체가 불가할 수 있습니다.
+         </span>
+                        </li>
+                    </ul>
+                    <h5 class="title-3dep">
+        <span class="b">
+         대상 OTP
+        </span>
+                    </h5>
+                    <ul class="list-3dep mb20">
+                        <li>
+         <span class="">
+          OTP폐업인증벤더 (벤더코드 : 003, 005, 007, 008, 009)
+         </span>
+                        </li>
+                    </ul>
+                    <div class="txtbasic mb20 pl10">
+                        자세한 내용은 공지사항을 참고하시길 바랍니다.
+                        <br/>
+                        감사합니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 약관동의확인화면 -->
+        <form action="/main/customer/consent/PL_0301_P.cmd" id="agreeFrm" method="post" name="agreeFrm">
+            <input id="pop1" name="pop1" type="hidden"/>
+            <input id="pop2" name="pop2" type="hidden"/>
+            <input id="pop3" name="pop3" type="hidden"/>
+            <input id="pop4" name="pop4" type="hidden"/>
+            <input id="pop5" name="pop5" type="hidden"/>
+            <input id="pop6" name="pop6" type="hidden"/>
+            <input id="pop7" name="pop7" type="hidden"/>
+            <input id="pop8" name="pop8" type="hidden"/>
+            <input id="pop9" name="pop9" type="hidden"/>
+            <input id="pop10" name="pop10" type="hidden"/>
+            <input id="pop11" name="pop11" type="hidden"/>
+            <input id="browserCheck" name="browserCheck" type="hidden"/>
+            <input id="expireDate" name="expireDate" type="hidden"/>
+            <input id="pop1ExpireDate" name="pop1ExpireDate" type="hidden"/>
+            <input id="cddRipmStdrDt" name="cddRipmStdrDt" type="hidden"/>
+            <input id="redirect" name="redirect" type="hidden"/>
+        </form>
+        <script type="text/javascript">
+            (function(){
+
+                hanaw.cs.bottomToggle($('.j-btntog'), $('.j-togbox'));
+
+                hanaw.cs.setLinks([
+
+                    {btn:$('.j-btn1'), url:'/main/customer/certificate/CS_030100.cmd'},
+
+                    {btn:$('.j-btn2'), url:'/main/customer/certificate/CS_030200.cmd'},
+
+                    {btn:$('.j-btn3'), url:'/main/customer/member/CS_020301.cmd'},
+
+                    {btn:$('.j-btn4'), url:'/main/customer/member/CS_020302_S1.cmd'},
+
+                    {btn:$('.j-btn5'), url:'/main/customer/member/CS_020200_P.cmd'},
+
+                    {btn:$('.j-btn6'), url:'/main/customer/customer/CS_010100_P.cmd'},
+
+                    {btn:$('.j-btn7'), url:'/main/customer/customer/CS_010200.cmd'},
+
+                    {btn:$('.j-btn8'), url:'/main/customer/openAccount/CS_180100_P.cmd'},
+
+                    {btn:$('.j-btn9'), url:'/main/customer/customer/CS_010300.cmd'}
+
+                ]);
+
+
+
+                $(".j-btn10").on("click", function() {
+
+                    var dia1 = ci.dialog.open({
+
+                        id : 'dialog_2', // id 지정
+
+                        title : '알림', // title 지정
+
+                        dom : $('#rgstId'),
+
+                        focus : $(this),
+
+                        width: 470,
+
+                        height: 450,
+
+                        closebutton : false,
+
+                        afterAppend : function() {
+
+
+
+                            //취소
+
+                            $(this).find(".j-cncl").on("click", function() {
+
+                                ci.dialog.close("dialog_2");
+
+                            });
+
+
+
+                            //등록
+
+                            $(this).find(".j-goRgstID").on("click", function() {
+
+                                location.href = "/main/customer/member/CS_020200_P.cmd?custGb=kakao";
+
+                            });
+
+                        },
+
+                    });
+
+                });
+
+            })();
+        </script>
+        <!-- 2020-01-17 v3 실행 레이어 추가 -->
+        <div class="layer_alert layer_vaccine hide-on-desktop" id="layerVaccine" style="display:none">
+            <div class="inner_layer">
+                <strong class="screen_out">
+                    모바일 백신 실행 레이어
+                </strong>
+                <div class="cont_layer">
+                    <div class="desc_vaccine">
+                        <img alt="" class="img_v3" src="/templets/mobile/img/common/img_v3.png"/>
+                        <p>
+                            안전한 접속환경을 위해
+                            <br/>
+                            모바일 백신을 실행합니다.
+                        </p>
+                    </div>
+                </div>
+                <button class="btn_run" type="button">
+                    실행
+                </button>
+            </div>
+        </div>
+        <!-- //2020-01-17 v3 실행 레이어 추가 -->
+        <!--알림-->
+        <div class="dia-content2 ci-dialog-content lh22 hide-on-mobile" id="rgstId">
+            <!-- 자동부여 ID 등록 시작-->
+            <div class="kakaopop">
+                <div class="clear-fix">
+                    <div class="fl automatic-grant-idwrap02 -ic01">
+        <span>
+         카카오뱅크
+         <br/>
+         계좌개설 고객님!
+        </span>
+                    </div>
+                    <div class="fl automatic-grant-idwrap02 -ic02">
+        <span>
+         영업점에서 자동부여ID를
+         <br/>
+         받으신 고객님!
+        </span>
+                    </div>
+                </div>
+                <div class="automatic-grant-gray">
+                    <p class="poptit">
+                        홈페이지
+                        <span class="txtpoint">
+         첫 방문
+        </span>
+                        이시라면
+                        <br/>
+                        아이디
+                        <span class="txtpoint">
+         (재)등록
+        </span>
+                        후 이용하세요.
+                    </p>
+                    <p class="poptxt">
+                        <strong>
+                            계좌개설 시 편의를 위하여 ID를 자동부여 해드리고 있습니다.
+                        </strong>
+                        <br/>
+                        ID찾기 결과가 평소에 이용하시는 아이디와 달라도 당황하지 마세요.
+                        <br/>
+                        손님께서 원하시는 아이디로 (재)등록하신 후 이용하세요.
+                    </p>
+                    <p class="poptxt">
+                        문의
+                        <span class="black">
+         손님케어센터 1588-3111
+        </span>
+                    </p>
+                </div>
+            </div>
+            <!--dialog-btn-->
+            <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+                <div class="ui-dialog-buttonset">
+                    <button aria-disabled="false" class="j-cncl btn btn-default md ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" type="button">
+        <span class="ui-button-text">
+         확인
+        </span>
+                    </button>
+                    <button aria-disabled="false" class="j-goRgstID inquiry btn-green btn btn-default md ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" type="button">
+        <span class="ui-button-text">
+         ID 등록하기
+        </span>
+                    </button>
+                </div>
+            </div>
+            <!--//dialog-btn-->
+            <!-- 자동부여 ID 등록 끝 -->
+        </div>
+        <!--//알림-->
+        <!--b:e-->
+        <!-- 추가 20220714 금융소비자보호 소비자경보 배너 위치 변경 -->
+        <!-- 추가 20200409 리서치센터 안내사항 추가 -->
+    </div>
+    <!-- INCLUDE : SIDEBAR -->
+    <script>
+        $(document).ready(function(){
+
+            /* 로그인 시 고객명, 법인명 노출 추가 */
+
+            var csName = $('.login-csname').width();
+
+            if(csName >= 60){
+
+                $('.login-csname').addClass('login-elip');
+
+                $('.login-elip-wrap').attr('style', 'margin:0 12px').removeClass('tac');
+
+            }
+
+
+
+            $('.open-sidebar-btn').on('click', function(){
+
+                if($('.sidebar').hasClass('opened')){
+
+                    $('.non-open').hide();
+
+                }else{
+
+                    $('.non-open').show();
+
+                }
+
+            })
+
+
+
+            /* 로그인 시 고객명, 법인명 노출 추가 */
+
+        });
+    </script>
+    <div class="sidebar" id="sidebar">
+        <button class="open-sidebar-btn imgBtn" title="" type="button">
+            사이드바 열기
+        </button>
+        <!-- <div class="kakao">
+
+    <a href="/main/customer/customer/CS_061500_P.cmd" class="btn-kakao" aria-label="하나증권 자산관리 SSAM으로 이동">우리 친구해요~</a>
+
+  </div> -->
+        <!-- LOGIN / LOGOUT -->
+        <a class="btn-login fold" href="/main/customer/login/index.cmd">
+            로그인
+        </a>
+        <!--// LOGIN / LOGOUT -->
+        <div class="accodion">
+            <!-- LOGIN / INFO -->
+            <div class="accordion-selector expand" id="sidebar-userinfo">
+                <h4 class="accordion-title">
+       <span class="icon icon-login">
+       </span>
+                    <a href="#" id="access-personal">
+        <span class="txt-login">
+         <span>
+          로그인
+         </span>
+         <span class="expand">
+          이 필요합니다.
+         </span>
+        </span>
+                        <span class="toggle">
+         열림
+        </span>
+                    </a>
+                </h4>
+            </div>
+            <div class="accordion-panel">
+                <div class="btns tac mb10">
+                    <button class="btn btn-green md w120" onclick="location.href='/main/customer/login/index.cmd'" type="button">
+                        로그인
+                    </button>
+                    <button class="btn btn-gray md w120" onclick="location.href='/main/customer/member/CS_020200_P.cmd'" type="button">
+                        회원가입
+                    </button>
+                </div>
+            </div>
+            <!--// LOGIN / INFO -->
+            <!-- MY ASSETS -->
+            <div class="accordion-selector" id="sidebar-todayinfo">
+                <h4 class="accordion-title">
+       <span class="icon icon-assets">
+       </span>
+                    <a class="txtbasic" href="#">
+                        나의
+                        <span class="expand">
+        </span>
+                        자산
+                        <span class="expand">
+         (2023.08.29)
+        </span>
+                        <span class="toggle">
+         열림
+        </span>
+                    </a>
+                </h4>
+            </div>
+            <div class="accordion-panel">
+                <form action="/main/main/getSideTodayInfo.cmd">
+                    <input name="id" type="hidden" value="sidebar-todayinfo"/>
+                    <!-- 톰켓 경고 -->
+                    <div class="my-balance tar">
+        <span class="sidebar-balance f24 green">
+         0
+        </span>
+                        <span class="won f16 green">
+         원
+        </span>
+                    </div>
+                    <a class="btn-detail f14" href="/main/bank/asset/OB_010101_M.cmd">
+                        종합잔고조회
+                    </a>
+                    <div class="sidebar-box">
+                        <h5 class="sidebar-box-title f16">
+                            알림사항
+                        </h5>
+                        <div class="sidebar-box-contents f16 ellipsis" id="sidebar-todayinfo-notice">
+                            알림이 없습니다.
+                        </div>
+                    </div>
+                </form>
+                <div class="side-bar-loading-div hidden" id="side-bar-loading-div2">
+                    <img alt="로딩중" class="side-bar-loading-img" src="/templets/main/img/common/loading.gif"/>
+                </div>
+            </div>
+            <!--// MY ASSETS -->
+        </div>
+        <!-- MY MENU -->
+        <!--// MY MENU -->
+        <!-- FAVORITE -->
+        <!--// FAVORITE -->
+        <!-- LIST -->
+        <div class="side-list">
+            <ul class="list-icon clearfix">
+                <li>
+                    <a class="link-1" href="/main/bank/transfer/OB_030101_S1.cmd">
+                        즉시이체
+                    </a>
+                </li>
+                <li>
+                    <a class="link-2" href="/main/bank/asset/OB_010101_M.cmd">
+                        잔고조회
+                    </a>
+                </li>
+                <li class="expand">
+                    <a class="link-3" href="/main/finance/trade/FP_030101_P1.cmd">
+                        펀드매매
+                    </a>
+                </li>
+                <li>
+                    <a class="link-4" href="/main/customer/customer/CS_060600_P.cmd">
+                        신용융자
+                        <br/>
+                        담보대출
+                    </a>
+                </li>
+                <li>
+                    <a class="link-5" href="/main/wts/main/WT_010601_P.cmd">
+                        신용/대출
+                        <br/>
+                        가능종목
+                    </a>
+                </li>
+                <li>
+                    <button class="btn-more" id="btn-side-menu" type="button">
+                        메뉴 더보기
+                    </button>
+                </li>
+            </ul>
+            <ul class="list-txt clearfix tac">
+                <!-- <li><a href="/main/customer/qna/CS_080510_S1.cmd">손님불편접수</a></li> -->
+                <li>
+                    <a href="/main/customer/qna/CS_080504_S1.cmd">
+                        전자민원접수
+                    </a>
+                </li>
+                <li>
+                    <a aria-label="상품공시실 새창 열림" href="http://dis.kofia.or.kr/fs/dis2/com/COMOutItemAnn.jsp?certifyKey=56b5dcf368687fc83006dbd912ef0320168-7b7e" target="_blank">
+                        상품공시실
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!--// LIST -->
+        <div class="banner-chat" id="bannerChatArea">
+            <a class="banner-chat-link j-goChatBot" href="javascript:void(0)">
+      <span class="txt type1">
+       무엇을
+       <br/>
+       도와드릴까요?
+      </span>
+                <span class="txt type2">
+       하나증권
+       <br/>
+       상담챗봇입니다.
+      </span>
+            </a>
+            <script type="text/javascript">
+                $(document).ready(function(){
+
+
+
+                    //아이콘 말풍선
+
+                    var $chatTxt1 = $('.banner-chat .txt.type1'), $chatTxt2 = $('.banner-chat .txt.type2');
+
+                    chatAni();
+
+                    setInterval(chatAni,10600);
+
+                    function chatAni(){
+
+                        $chatTxt1.animate({opacity:1},300);
+
+                        $chatTxt2.animate({opacity:0},300);
+
+                        setTimeout(function(){
+
+                            $chatTxt1.animate({opacity:0},300);
+
+                            $chatTxt2.animate({opacity:1},300);
+
+                        },5000);
+
+                    }
+
+
+
+                    var pChatBot;
+
+                    //var popupChatBot;
+
+                    $(".j-goChatBot").on("click", function() {
+
+                        var w = "";
+
+                        var h = "";
+
+                        var params="";
+
+                        params +="device="+__DEVICE;
+
+
+
+                        var userAgent = navigator.userAgent.toLowerCase();
+
+                        if((navigator.appName == 'Netscape' && userAgent.search('trident') != -1) || (userAgent.indexOf("msie") != -1)) {
+
+                            //ie
+
+                            params +="&browser=ie";
+
+                            w = "375";
+
+                            h = "810";
+
+                        } else {
+
+                            //ie이외
+
+                            params +="&browser=chrome";
+
+                            w = "365";
+
+                            h = "810";
+
+                        }
+
+
+
+                        var popOption = "width="+w+"px, height="+h+"px, scrollbars=no, resizable=no, location=no, menubar=no, toolbar=no, fullscree=no, status=no, directories=no";
+
+                        //var popOption = "width=363px, height=800px, resizable=no,status=no,toolbar=no,menubar=no,location=no,scrollbars=no";
+
+
+
+                        if(typeof(pChatBot)== 'undefined' || pChatBot.closed) {
+
+                            popupChatBot = window.open("/common/view/chatbotPopup.jsp?"+params,"chatbot", popOption);
+
+                        }
+
+                    });
+
+                });
+            </script>
+            <!-- 채팅영역 -->
+            <div class="banner-chat-box j-chatBot" id="ifrmCB">
+            </div>
+            <!-- // 채팅영역 -->
+            <!-- 2020-10-05버튼추가 -->
+            <button class="btn btn-chat-close" id="btnChatClose" type="button">
+                오늘 그만보기
+            </button>
+            <!-- //2020-10-05버튼추가 -->
+        </div>
+        <!-- // CHATBOT -->
+        <a class="j-go-top" href="#" title="페이지 상단으로 이동">
+            TOP
+        </a>
+    </div>
+    <div class="dia-content0 ci-dialog-content" id="quick-menu">
+        <ul class="tac clearfix">
+            <li>
+                <a class="link-1" href="/WEB-APP/wts/main/index.cmd?screen=0300">
+                    주식매매
+                </a>
+            </li>
+            <li>
+                <a class="link-2" href="/main/finance/trade/FP_030101_P1.cmd">
+                    펀드매매
+                </a>
+            </li>
+            <li>
+                <a class="link-3" href="/main/bank/transfer/OB_030101_S1.cmd">
+                    즉시이체
+                </a>
+            </li>
+            <li>
+                <a class="link-4" href="/main/bank/asset/OB_010101_M.cmd">
+                    잔고조회
+                </a>
+            </li>
+            <li>
+                <a class="link-5" href="/main/customer/qna/CS_080504_S1.cmd">
+                    전자민원접수
+                </a>
+            </li>
+            <li>
+                <a aria-label="상품공시실 새창 열림" class="link-6" href="http://dis.kofia.or.kr/fs/dis2/com/COMOutItemAnn.jsp?certifyKey=56b5dcf368687fc83006dbd912ef0320168-7b7e" target="_blank">
+                    상품공시실
+                </a>
+            </li>
+            <li>
+                <a class="multi link-7" href="/main/wts/main/WT_010601_P.cmd">
+                    신용/대출
+                    <br/>
+                    가능종목
+                </a>
+            </li>
+            <li>
+                <a class="multi link-8" href="/main/customer/customer/CS_060100_P.cmd">
+                    업무/서비스
+                    <br/>
+                    안내
+                </a>
+            </li>
+            <li>
+                <a class="link-9" href="/main/finance/fund/FP_020105_P.cmd">
+                    펀드검색
+                </a>
+            </li>
+            <li>
+                <a class="link-10" href="/main/finance/fund/FP_020103_P.cmd">
+                    추천펀드
+                </a>
+            </li>
+            <li>
+                <a class="link-11" href="/main/bank/subscription/OB_060400.cmd">
+                    ELS/DLS
+                </a>
+            </li>
+            <li>
+                <a class="multi link-12" href="/main/finance/trade/FP_030806_P.cmd">
+                    연금저축
+                    <br/>
+                    계좌안내
+                </a>
+            </li>
+            <li>
+                <a class="multi link-13" href="/main/finance/smart/FP_010202_P1.cmd">
+                    행복한
+                    <br/>
+                    투자제안
+                </a>
+            </li>
+            <li>
+                <a class="link-14" href="/main/research/research/list.cmd?pid=1&amp;cid=1">
+                    투자정보
+                </a>
+            </li>
+            <li>
+                <a class="link-15" href="/main/wts/foreign/WT_210100_P.cmd?tabIndex=0">
+                    해외주식
+                </a>
+            </li>
+            <!--
+
+    <li><a href="" class="link-16">관심상품</a></li>
+
+    -->
+        </ul>
+    </div>
+    <div class="ci-dialog-content" id="mymenuLayer">
+        <div class="ofh mt10 mb10">
+            <h4 class="fl f14">
+                <img src="/templets/main/img/common/bu_arrow_3dep.gif"/>
+                메뉴바 우측의
+                <span style="display:inline-block;width:18px;height:18px;background: url('/common/img/quicknavi_mymenu.png') no-repeat 0 0/100%;vertical-align:bottom;">
+      </span>
+                버튼을 클릭하여 나의메뉴를 등록/삭제할 수 있습니다.
+                <span class="fr">
+       * 등록된 메뉴
+       <span id="totalCount">
+       </span>
+       개
+      </span>
+            </h4>
+        </div>
+        <div class="table-default">
+            <table>
+                <colgroup>
+                    <col width="3%"/>
+                    <col width="25%"/>
+                    <col width="62%"/>
+                    <col width="10%"/>
+                </colgroup>
+                <thead>
+                </thead>
+                <tbody id="mymenu-layer-tbody">
+                </tbody>
+            </table>
+            <div class="paging-area mb30">
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        // 챗봇 숨김처리
+
+        if ( "Y" == ci.util.getCookie('hanaw_chat_close') ){
+
+            $("#bannerChatArea").hide();
+
+        }
+
+
+
+        //side bar
+
+        Sidebar.init();
+
+
+
+        (function () {
+
+            var login = '';
+
+
+
+            if (login !== 'true') {
+
+                return;
+
+            }
+
+
+
+            //나의 관심상품 더보기 레이어
+
+            function sideBarOpenFavoriteFund(ele){
+
+                ci.dialog.close('sidebar-myMenu-dialog');
+
+                ci.dialog.open({
+
+                    id : 'sidebar-interest-dialog',
+
+                    title : '나의 관심상품',
+
+                    url : '/main/finance/fund/FP_020601_P.com',
+
+                    focus : $(ele),
+
+                    width : 800,
+
+                    minHeight : 800
+
+                });
+
+
+
+                Sidebar.close();
+
+            }
+
+
+
+            function sideBarOpenMyMenu(ele) {
+
+                ci.dialog.close('sidebar-interest-dialog');
+
+                ci.dialog.open({
+
+                    id : 'sidebar-myMenu-dialog',
+
+                    title : '나의 메뉴',
+
+                    dom : $('#mymenuLayer'),
+
+                    focus : $(ele),
+
+                    width : 800,
+
+                    minHeight : 600,
+
+                    afterAppend : function() {
+
+                        var viewPage = 1;
+
+                        var $tbody = $(this).find('#mymenu-layer-tbody');
+
+                        var $totalCount = $(this).find('#totalCount');
+
+                        (function() {
+
+                            function paging(page) {
+
+                                window.location = '/main/bank/personalMng/inquiryMyMenu.cmd?curPage=' + page;
+
+                            }
+
+
+
+                            function inquiry(page) {
+
+                                viewPage = page || '1';
+
+
+
+                                var data = {};
+
+                                data.page = viewPage;
+
+                                $.ajax({
+
+                                    url : '/main/bank/personalMng/inquiryMyMenu.cmd',
+
+                                    cache : false,
+
+                                    type : 'POST',
+
+                                    data : data,
+
+                                    success : function(data) {
+
+                                        Loader.hide();
+
+                                        var output = data.output;
+
+                                        var length = data.output.length;
+
+                                        $tbody.children().remove();
+
+                                        for(var i = 0; i < length; i++) {
+
+                                            var fullPath = output[i].fullPath.split(',');
+
+                                            var fullPath = fullPath.join(' > ');
+
+                                            var domString = '<tr id="mymenu' + ((viewPage - 1) * 10 + i + 1) + '">'
+
+                                                + '<th class="tdfirst tac idx">' + ((viewPage - 1) * 10 + i + 1) + '</th>'
+
+                                                + '<td class="fb menuName"><a href="' + output[i].url + '">' + output[i].menuName + '</a></td>'
+
+                                                + '<td class="tdlast"><a href="' + output[i].url + '">' + fullPath + '</a></td>'
+
+                                                + '<td class="tdfirst tdlast"><button type="button" class="btn btn-default sm delete">삭제</button></td>'
+
+                                                + '</tr>';
+
+                                            $tbody.append(domString);
+
+                                        }
+
+                                        $totalCount.text(data.totalNum);
+
+                                        hanaw.util.setNavigator({
+
+                                            'totalNum' : data.totalNum,
+
+                                            'currPage' : viewPage,
+
+                                            'method' : inquiry,
+
+                                            'rowPerPage' : 10,
+
+                                            'pageCount' : 10,
+
+                                            'box' : $('div.paging-area')
+
+                                        });
+
+                                    }
+
+                                });
+
+
+
+                            }
+
+
+
+                            function init() {
+
+                                inquiry();
+
+                            }
+
+
+
+                            init();
+
+
+
+                            $tbody.on('click', '.delete', function() {
+
+                                Loader.show();
+
+                                var $object = $(this).parent().parent();
+
+                                var menuName = $object.find('.menuName').text();
+
+                                var data = {};
+
+                                data.menuName = menuName;
+
+
+
+                                $.ajax({
+
+                                    url : '/main/bank/personalMng/deleteMyMenu.cmd',
+
+                                    cache : false,
+
+                                    async : false,
+
+                                    type : 'POST',
+
+                                    data : data,
+
+                                    success : function(data) {
+
+                                        inquiry(viewPage);
+
+                                        Loader.hide();
+
+                                        alert('나의 메뉴에서 삭제하였습니다.');
+
+                                    }
+
+                                });
+
+
+
+
+
+                                if(window.checkCurrentMenu) {
+
+                                    window.checkCurrentMenu();
+
+                                }
+
+                            });
+
+                        })();
+
+                    }
+
+                });
+
+
+
+            }
+
+
+
+            //-- 임시 전역으로 수정했음
+
+            window['sideBarOpenFavoriteFund'] = sideBarOpenFavoriteFund;
+
+            window['sideBarOpenMyMenu'] = sideBarOpenMyMenu;
+
+
+
+            Sidebar.on("panelopen", function(e, selector, panel) {
+
+                var id = selector.attr("id");
+
+                var $f = panel.find("form");
+
+                if ("sidebar-userinfo" == id) {
+
+                    $("#side-bar-loading-div1").removeClass("hidden");
+
+                    xSubmitAjax($f, {
+
+                        success : function(data) {
+
+                            document.getElementById("sidebar-userinfo-last_conn_dt").innerHTML = data["last_conn_dt"];
+
+                            document.getElementById("sidebar-userinfo-invest_type").innerHTML = data["b_invest_type"];
+
+                            document.getElementById("sidebar-userinfo-last_deal_dt").innerHTML = data["b_last_deal_dt"];
+
+                            document.getElementById("sidebar-userinfo-last_chg_dt").innerHTML = data["b_last_chg_dt"];
+
+                            $("#side-bar-loading-div1").addClass("hidden");
+
+                        }
+
+                    });
+
+                } else if ("sidebar-todayinfo" == id) {
+
+                    $("#side-bar-loading-div2").removeClass("hidden");
+
+                    xSubmitAjax($f, {
+
+                        success : function(data) {
+
+                            document.getElementById("sidebar-todayinfo-total_tot_evlt_amt").innerHTML = data["total_tot_evlt_amt"];
+
+                            //document.getElementById("sidebar-todayinfo-today-calendar").innerHTML = data["notice"];
+
+                            xSubmitAjax(null, {
+
+                                url : "/main/bank/online/OB_000000_M_D1.cmd",
+
+                                dataType : "json",
+
+                                success : function(data2) {
+
+                                    var target = $("#sidebar-todayinfo-notice").empty();
+
+                                    var contentBody = $($.trim(data2.CONTENT_BODY));
+
+                                    target.append(contentBody);
+
+
+
+                                    var list = target.find(".sm-info3");
+
+
+
+                                    list.find(".j-title").hide();
+
+                                    list.find(".j-message").hide();
+
+                                    list.find("li.off").remove();
+
+                                    if (list.find("li.on").size() == 0) {
+
+                                        list.find("UL").append("<li>알림이 없습니다.</li>");
+
+                                    }
+
+                                    $("#side-bar-loading-div2").addClass("hidden");
+
+                                }
+
+                            });
+
+                        }
+
+                    });
+
+                } else if ("sidebar-quickMenu" == id) {
+
+                }
+
+            });
+
+        })();
+
+
+
+        //quick menu
+
+        $('#btn-side-menu').on('click', function(event) {
+
+            event.preventDefault();
+
+            ci.dialog.open({
+
+                draggable: false,
+
+                closebutton : false,
+
+                id : 'dialog_quick',
+
+                title: 'QUICK MENU',
+
+                dom : $('#quick-menu'),
+
+                focus : $(this),
+
+                dialogClass: 'quick-menu',
+
+                width: 902,
+
+                height: 546,
+
+                buttons: false,
+
+                modal: true
+
+            });
+
+            Sidebar.close();
+
+        });
+
+
+
+        //챗봇 종료
+
+        $('#btnChatClose').on('click', function(event) {
+
+            event.preventDefault();
+
+            ci.util.setCookie('hanaw_chat_close','Y',1);
+
+            $("#bannerChatArea").hide();
+
+        });
+
+
+
+        //banner ssam
+
+        $('.banner-ssam .btn-ssam, .banner-ssam .btn-close').click(function() {
+
+            $(this).closest('.banner-ssam').toggleClass('active');
+
+        });
+    </script>
+    <!-- INCLUDE : SITE FOOTER -->
+    <div id="footer">
+        <div class="inner">
+            <div class="footerMenu">
+                <ul>
+                    <li>
+        <span class="tit" id="access-footer" tabindex="0">
+         주요서비스 메뉴
+        </span>
+                    </li>
+                    <li>
+        <span class="tit" tabindex="0">
+         온라인지점
+        </span>
+                        <ul>
+                            <li>
+                                <a href="/main/bank/asset/OB_010101_M.cmd">
+                                    종합잔고조회
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/main/bank/transfer/OB_030101_S1.cmd">
+                                    즉시이체
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/main/bank/online/OB_041001.cmd">
+                                    자동이체서비스
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/main/bank/credit/OB_050201_T1.cmd">
+                                    대출신청
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/main/bank/credit/OB_050301_T1.cmd">
+                                    현금상환
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/main/bank/subscription/OB_060400.cmd">
+                                    ELS/DLS 청약
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/main/bank/online/OB_040200.cmd">
+                                    온라인상품계좌개설
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/main/bank/personalMng/OB_020101.cmd">
+                                    개인정보 조회/변경
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+        <span class="tit" tabindex="0">
+         금융투자상품
+        </span>
+                        <ul>
+                            <li>
+                                <a href="/main/finance/CMA/FP_040100.cmd">
+                                    CMA서비스 안내
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/main/finance/trade/FP_030101_P1.cmd">
+                                    펀드매매
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/main/finance/trade/FP_030808_T1.cmd">
+                                    연금저축펀드검색
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/main/finance/els/FP_050100_P1.cmd">
+                                    ELS/DLS 상품
+                                </a>
+                            </li>
+                            <!-- <li><a href="/main/finance/bond/FP_080104_P1.cmd">장외채권매매</a></li> -->
+                            <li>
+                                <a href="/main/finance/bond2/FP_080402_T1_TAB.cmd">
+                                    장내채권매매
+                                </a>
+                            </li>
+                            <!-- <li><a href="/main/research/research/list.cmd?pid=3&cid=1">추천포트폴리오</a></li>
+
+<li><a href="/main/finance/assetmanager/FP_010106_P1.cmd">펀드클리닉 서비스</a></li>
+
+<li><a href="/main/finance/asset/FP_010501_S.cmd">은퇴서비스</a></li>
+
+<li><a href="/main/finance/asset/FP_010601_T1.cmd">세무상담</a></li>
+
+<li><a href="/main/finance/trade/FP_030101_P1.cmd">펀드매매</a></li>
+
+<li><a href="/main/finance/els/FP_050100_P1.cmd">파생결합상품</a></li>
+
+<li><a href="/main/finance/insurance/FP_070100_M.cmd">보험상품</a></li>
+
+<li><a href="/main/finance/bond/FP_080104_P1.cmd">장외채권주문</a></li> -->
+                        </ul>
+                    </li>
+                    <li>
+        <span class="tit" tabindex="0">
+         주식파생상품
+        </span>
+                        <ul>
+                            <li>
+                                <a href="/WEB-APP/wts/main/index.cmd?screen=0101">
+                                    주식현재가
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/WEB-APP/wts/main/index.cmd?screen=0110">
+                                    ELW현재가
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/WEB-APP/wts/main/index.cmd?screen=0401">
+                                    선물현재가
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/WEB-APP/wts/main/index.cmd?screen=0301">
+                                    주식주문
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/WEB-APP/wts/main/index.cmd?screen=0400">
+                                    선물/옵션주문
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/WEB-APP/wts/main/index.cmd?screen=0304">
+                                    주식잔고
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/WEB-APP/wts/main/index.cmd?screen=0405">
+                                    선물/옵션잔고
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+        <span class="tit" tabindex="0">
+         고객지원
+        </span>
+                        <ul>
+                            <li>
+                                <a href="/main/customer/openAccount/CS_180100_P.cmd">
+                                    계좌개설안내
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/main/customer/member/CS_020200_P.cmd">
+                                    ID등록안내
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/main/customer/customer/CS_050100_M.cmd">
+                                    HTS 거래시스템
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/main/customer/customer/CS_050200_M.cmd">
+                                    모바일트레이딩 안내
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/main/customer/customer/CS_060200.cmd">
+                                    수수료안내
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/corebbs5/qna/list/list.cmd">
+                                    고객의소리(Q&amp;A)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/corebbs5/faq/list/list.cmd?srchCate1=A">
+                                    자주하는질문(FAQ)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/main/customer/customer/CS_100101_P.cmd">
+                                    온라인 보안센터
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="last-child">
+                        <ul class="pt5">
+                            <li class="bgn">
+                                <a href="http://fc.hanaw.com/" target="_blank" title="투자권유 대행인 새창열기">
+                                    <img alt="투자권유 대행인" src="/templets/main/img/banner_footer_02.gif"/>
+                                </a>
+                            </li>
+                            <li class="bgn">
+                                <a href="https://pension.hanaw.com:444/" target="_blank" title="퇴직연금 새창열기">
+                                    <img alt="퇴직연금" src="/templets/main/img/banner_footer_03.gif"/>
+                                </a>
+                            </li>
+                            <li class="bgn">
+                                <a href="https://rc.hanaw.com" target="_blank" title="원격지원 새창열기">
+                                    <!-- <a href="#" target="_blank" title="원격지원 새창열기" class="linkRemoteSupport"> -->
+                                    <img alt="원격지원" src="/templets/main/img/banner_footer_04.gif"/>
+                                </a>
+                            </li>
+                            <li class="bgn">
+                                <a href="/corebbs5/bidAnnuce/list/list.cmd" target="_blank" title="입찰공고 새창열기">
+                                    <img alt="입찰공고" src="/templets/main/img/banner_footer_05.gif"/>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="ci-dialog-content lh22 linkRemote">
+            <ul class="pt15">
+                <li class="tac">
+                    <a class="mr40" href="http://210.107.66.60" target="_blank">
+                        <img alt="헬프컴" src="/templets/main/img/helpcom.gif"/>
+                    </a>
+                    <a href="https://rc.hanaw.com" target="_blank">
+                        <img alt="애니원격" src="/templets/main/img/any_remote.gif"/>
+                    </a>
+                </li>
+            </ul>
+            <div class="mt20 ml40" style="position:relative">
+                <img alt="원격 프로그램 하나를 선택해주세요." src="/templets/main/img/remote_info.gif"/>
+                <a class="btn btn-default sm" href="http://as82.kr/hanafn" style="position:absolute;top:-5px;right:43px" target="_blank">
+                    비상접속
+                </a>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(".linkRemoteSupport").bind("click", function(event){
+
+                event.preventDefault();
+
+                var dia1 = ci.dialog.open({
+
+                    id : 'dialog_1', // id 지정
+
+                    title : '원격지원', // title 지정
+
+                    dom : $('.linkRemote'), // 내용으로 들어갈 마크업 지정
+
+                    focus : $(this),
+
+                    width : 500,
+
+                    height : 350,
+
+                    modal : true,
+
+                    closebutton : false,
+
+                    buttons : [
+
+                        {
+
+                            text : '닫기',
+
+                            'class' : 'btn btn-green md',
+
+                            click : function() {
+
+                                ci.dialog.close($(this));
+
+                            }
+
+                        }]
+
+                });
+
+                //if (confirm("당사 고객지원센터(1588-3111) 접수후 이용 가능합니다.")) window.open("http://210.107.66.60", "_blank");
+
+                //else return;
+
+            })
+        </script>
+        <div class="guide">
+            <div class="guide-group">
+                <ul class="footerLink">
+                    <li>
+                        <a href="http://openhanafn.ttmap.co.kr/content_dt.jsp" target="_blank" title="영업점안내 새창열기">
+                            영업점안내
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/main/customer/customer/CS_100403_P.cmd">
+                            전자금융거래 이용자 유의사항
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/main/customer/customer/CS_070100_P.cmd">
+                            이용약관
+                        </a>
+                    </li>
+                    <li>
+                        <a class="b" href="/main/customer/customer/CS_070300.cmd">
+                            개인정보처리방침
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/main/customer/persnalInfo/CS_170200_P.cmd?tabIndex=0">
+                            개인(신용)정보 열람 및 이용·제공 현황 조회
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/main/customer/persnalInfo/CS_170200_P.cmd?tabIndex=1">
+                            그룹사간 고객정보 제공내역 조회
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/main/customer/customer/CS_070200.cmd?page=3">
+                            보호금융상품등록부
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/main/customer/customer/CS_070200.cmd?page=5">
+                            신용정보활용체제
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://dis.kofia.or.kr/fs/dis2/com/COMOutItemAnn.jsp?certifyKey=56b5dcf368687fc83006dbd912ef0320168-7b7e" target="_blank" title="상품공시실 새창 열림">
+                            상품공시실
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/main/customer/qna/CS_080504_S1.cmd">
+                            전자민원접수
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/main/company/company/CO_010501_P.cmd">
+                            스튜어드십 코드
+                        </a>
+                    </li>
+                </ul>
+                <div class="familysite">
+                    <div class="sbox">
+                        <a class="familysite-opener" href="#" title="하나네트워크 패밀리 사이트 보기">
+                            하나네트워크
+                        </a>
+                    </div>
+                    <ul class="familisite-list">
+                        <li>
+                            <a href="http://www.hanafn.com" target="_blank">
+                                하나금융그룹
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.kebhana.com" target="_blank">
+                                하나은행
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.hanaw.com" target="_blank">
+                                하나증권
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.hanacard.co.kr" target="_blank">
+                                하나카드
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.hanacapital.co.kr" target="_blank">
+                                하나캐피탈
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.hanalife.co.kr" target="_blank">
+                                하나생명
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.hanasavings.com" target="_blank">
+                                하나저축은행
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.hanatrust.com" target="_blank">
+                                하나자산신탁
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://hana-aamc.com" target="_blank">
+                                하나대체투자자산운용
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.hanais.co.kr" target="_blank">
+                                하나펀드서비스
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.hanati.co.kr" target="_blank">
+                                하나금융티아이
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.finnq.com" target="_blank">
+                                핀크
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.hana-nanum.com" target="_blank">
+                                하나금융나눔재단
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.hanafoundation.or.kr" target="_blank">
+                                하나금융공익재단
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.hanacarecenter.or.kr" target="_blank">
+                                하나케어센터
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.hanamiso.org" target="_blank">
+                                하나미소금융재단
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.hana.hs.kr" target="_blank">
+                                하나고등학교
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <script type="text/javascript">
+                    (function() {
+
+
+
+                        var familysite = $('.familysite');
+
+                        var opener = familysite.find('.familysite-opener');
+
+                        var list = familysite.find('.familisite-list');
+
+                        var delay = null;
+
+
+
+                        function openList() {
+
+                            if (delay !== null) {
+
+                                clearTimeout(delay);
+
+                            }
+
+                            list.addClass('opened');
+
+                            list.find('a:first').focus();
+
+                        }
+
+
+
+                        function closeList(e) {
+
+                            if (e && (e.type === 'keydown' || e.type === 'click')) {
+
+                                if (delay !== null) {
+
+                                    clearTimeout(delay);
+
+                                }
+
+                                list.removeClass('opened');
+
+                                opener.focus();
+
+
+
+                                return;
+
+                            }
+
+                            delay = setTimeout(function() {
+
+                                list.removeClass('opened');
+
+                                opener.focus();
+
+                            }, 300);
+
+                        }
+
+                        opener.on('click', function(e) {
+
+                            e.preventDefault();
+
+                            if (list.hasClass('opened')) {
+
+                                closeList(e);
+
+                            } else {
+
+                                openList();
+
+                            }
+
+                        });
+
+                        list.find('a').on('click', function() {
+
+                            closeList(e);
+
+                        });
+
+                        list.find('a').on('keydown.closefamily', function(e) {
+
+                            var keyCode = e.keyCode;
+
+                            if (keyCode === 27) {
+
+                                closeList(e);
+
+                            }
+
+                        });
+
+                        list.find('a:first').on('keydown', function(e) {
+
+                            var keycode = e.keyCode || e.which;
+
+                            if (e.shiftKey && keycode == 9) {
+
+                                e.preventDefault();
+
+                                closeList(e);
+
+                            }
+
+                        });
+
+                        list.find('a:last').on('keydown', function(e) {
+
+
+
+                            var keycode = e.keyCode || e.which;
+
+                            if (!e.shiftKey && keycode == 9) {
+
+                                e.preventDefault();
+
+                                closeList(e);
+
+                            }
+
+                        });
+
+
+
+                        opener.add(list).on('mouseleave', function(e) {
+
+                            closeList(e);
+
+                        });
+
+
+
+                        list.on('mouseenter', function(e) {
+
+                            openList();
+
+                        });
+
+                    })();
+                </script>
+                <div class="sns-footer">
+                    <ul>
+                        <li>
+                            <a href="https://www.facebook.com/hanadtpage" target="_blank" title="하나증권 페이스북 새창열기 ">
+                                <img alt="페이스북" src="/templets/main/img/icon_facebook.gif"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://blog.naver.com/hanadtsec" target="_blank" title="하나증권 블로그 새창열기">
+                                <img alt="블로그" src="/templets/main/img/icon_blog.gif"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cscenter">
+                    <div class="imgtext">
+                        하나증권 고객지원센터 1588-3111 | 프라임케어실 투자상담 02-785-5000
+                        <br/>
+                        해외선물 02-785-7111(24시간) | 해외주식 02-3771-3771(24시간)
+                    </div>
+                    <a href="http://www.hanafn.com/main.do" target="_blank" title="하나금융그룹 행복한 금융">
+                        <img alt="하나금융그룹 행복한 금융" src="/templets/main/img/FP/blank.gif" style="width:100%; height:100%"/>
+                    </a>
+                </div>
+                <div class="copyright">
+                    <div class="hidden">
+                        주소 : 서울특별시 영등포구 의사당대로 82(여의도동), 사업자등록번호 : 116-81-05992
+                        <br/>
+                        Copyright ⓒ 2014 Hana Securities Co.,Ltd. All Rights Reserved.
+                    </div>
+                    <img alt="" src="/templets/main/img/copyright.gif?ver20220630"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

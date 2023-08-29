@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agree Component</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
+
+
         /* Add your modal styles here */
         .modal {
             display: none;
@@ -36,17 +37,22 @@
     </style>
 </head>
 <body>
-<div class="agree-container">
-    <div class="agree-box">
-        <div class="agree-head">
-            AI 주식 자동 매매,<br>
-            <br>
-            누구나 할 수 있도록
-        </div>
-        <button class="agree-button" onclick="handleModalOpen()">
-            동의하기
-        </button>
+<div class="di-wrap">
+    <div class="di-header">
+        <img src="img/1qpro.png">
+        <img src="img/logo.png">
+        <img src="img/logo2.png">
     </div>
+    <div class="di-main">
+        <div class="di-main-1">
+            <p>주식 투자의 단 하나의 기준,</p>
+            <p>다이렉트 ONE덱싱</p>
+            <button class="agree-button" onclick="handleModalOpen()">
+                지금 시작하기
+            </button>
+        </div>
+    </div>
+    <div class="di-footer"></div>
 </div>
 
 <div id="modal" class="modal">
