@@ -5,13 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>전략 선택 페이지</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        .di-header {
+            position: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* 이미지와 버튼 사이의 간격을 최대화하여 배치 */
+            padding: 20px;
+            width: 100vw;
+            border: red 1px solid;
+            z-index: 1000;
         }
 
-        .header {
-            text-align: center;
-            margin: 20px 0;
+        .image-1qpro {
+            width: 100px; /* 원하는 너비 값으로 변경 */
+            height: auto; /* 높이를 자동으로 조정하여 비율 유지 */
+        }
+
+        .strategy-sidebar {
+            width: 250px;
+            position: fixed;
+            top: 60px; /* Height of the header */
+            bottom: 0;
+            background-color: #f0f0f0;
+            overflow-y: auto;
+        }
+
+        .strategy-main {
+            margin-left: 250px;
+            padding: 20px;
         }
 
         .strategy-selector {
@@ -110,67 +131,594 @@
     </style>
 </head>
 <body>
-<div class="header">
-    <select id="strategySelector">
-        <option value="strategy">전략 선택</option>
-        <option value="vault">전략 보관함</option>
-    </select>
-</div>
-
-<div class="strategy-selector">
-    <div class="strategy-card" id="themeCard">
-        테마 전략
-    </div>
-    <div class="strategy-card" id="sectorCard">
-        업종 전략
-    </div>
-    <div class="strategy-card" id="personalCard">
-        나만의 전략
-    </div>
-    <div class="strategy-card" id="expertsCard">
-        대가들의 투자 전략
-    </div>
-</div>
-
-<div class="strategy-content">
-    <div id="themeContent">
-        <div>
-            <button>하나 ONE Pick</button>
-            <button>하나 ONE 테마</button>
+<div class="strategy-wrap">
+    <div class="strategy-header">
+        <div class="di-header">
+            <img class="image-1qpro" src="img/1qpro.png">
         </div>
-        <div>
-            '하나One Pick' 프리셋이란?
-        </div>
-        <div class="strategy-box">
-            <div class="strategy-title">
-                K-반도체 담당 소부장(Active)
+    </div>
+    <div class="strategy-sidebar">
+        <!-- Sidebar content -->
+        <div class="strategy-card">사이드바 아이템 1</div>
+        <div class="strategy-card">사이드바 아이템 2</div>
+        <!-- ... Add more sidebar items as needed -->
+    </div>
+    <div class="strategy-main">
+        <div class="strategy-selector">
+            <div class="strategy-card" id="themeCard">
+                테마 전략
             </div>
-            <div class="strategy-description">
-                반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
-                소부장 (소재, 부품, 장비) 대표 기업들에 투자
+            <div class="strategy-card" id="sectorCard">
+                업종 전략
             </div>
-            <div class="strategy-performance">
-                <div>3개월 수익률: 10%</div>
-                <div>수익률: 25%</div>
+            <div class="strategy-card" id="personalCard">
+                나만의 전략
             </div>
-            <div class="strategy-details">
-                <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
-                <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
-                <!--                전략 선택 버튼 누르면 모달 팝업-->
-                <button class="strategy-select" onclick="showModal()">전략 선택</button>
+            <div class="strategy-card" id="expertsCard">
+                대가들의 투자 전략
             </div>
         </div>
+        <div class="strategy-content">
+            <div id="themeContent">
+                <div>
+                    <button>하나 ONE Pick</button>
+                    <button>하나 ONE 테마</button>
+                </div>
+                <div>
+                    '하나One Pick' 프리셋이란?
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
 
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+                <div class="strategy-box">
+                    <div class="strategy-title">
+                        K-반도체 담당 소부장(Active)
+                    </div>
+                    <div class="strategy-description">
+                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                        소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                    </div>
+                    <div class="strategy-performance">
+                        <div>3개월 수익률: 10%</div>
+                        <div>수익률: 25%</div>
+                    </div>
+                    <div class="strategy-details">
+                        <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                        <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                        <!--                전략 선택 버튼 누르면 모달 팝업-->
+                        <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                    </div>
+                </div>
+
+            </div>
+            <div id="sectorContent">
+                업종 전략 내용
+            </div>
+            <div id="personalContent">
+                나만의 전략 내용
+            </div>
+            <div id="expertsContent">
+                대가들의 투자 전략 내용
+            </div>
+        </div>
     </div>
-    <div id="sectorContent">
-        업종 전략 내용
-    </div>
-    <div id="personalContent">
-        나만의 전략 내용
-    </div>
-    <div id="expertsContent">
-        대가들의 투자 전략 내용
-    </div>
+    <div class="startegy-footer"></div>
 </div>
 <!-- 모달 코드 추가 -->
 <div id="modal" class="modal">
