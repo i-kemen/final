@@ -2,1360 +2,816 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전략 선택 페이지</title>
     <style>
-        .wrap ul {
-            list-style: none; /* 불릿 제거 */
-            padding: 0; /* 여백 제거 */
+        .emoji-with-circle {
+            position: relative;
+            display: inline-block;
+            margin: 10px; /* 각각의 이모지 사이의 간격을 조정하려면 마진 값을 조절하세요 */
+            z-index: 10;
         }
 
-        .wrap li {
-            margin: 0; /* 여백 제거 */
-            padding: 0; /* 여백 제거 */
+        .emoji-with-circle span {
+            display: inline-block;
+            font-size: 16px; /* 이모지 크기를 조정하려면 폰트 크기 값을 조절하세요 */
         }
+
+        .emoji-with-circle::before {
+            content: '';
+            position: absolute;
+            width: 20px; /* 흰 원의 너비를 조정하려면 값을 조절하세요 */
+            height: 20px; /* 흰 원의 높이를 조정하려면 값을 조절하세요 */
+            border: 2px solid white;
+            border-radius: 50%;
+            background-color: white;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1; /* 흰 원을 이모지 뒤로 숨기기 위해 z-index 값을 설정합니다 */
+        }
+
+        .strategy-header {
+            position: sticky;
+
+        }
+
+        .image-1qpro {
+            width: 80px; /* 원하는 너비 값으로 변경 */
+            height: auto; /* 높이를 자동으로 조정하여 비율 유지 */
+        }
+
+        .main-wrap {
+            display: flex;
+            margin: 0;
+        }
+
+        .strategy-sidebar,
+        .strategy-main {
+            border: 1px solid #ccc;
+            width: 1100px;
+        }
+
+        .strategy-sidebar {
+            width: 200px;
+            position: sticky;
+        }
+
+        .strategy-container {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .line1 {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .line2 {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .line1 > div {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 300px;
+            height: 200px;
+        }
+
+        .line2 > div {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 300px;
+            height: 200px;
+        }
+
+        .strategy-sidebar div {
+            /*display: block;*/
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+            border: 1px solid #ccc;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+
+        .strategy-sidebar div:hover {
+            background-color: #f0f0f0;
+        }
+
+        .theme-top {
+            background-image: url("img/s1.svg");
+        }
+
+        .theme-top-top {
+            height: 40px;
+        }
+
+        .theme-top-bottom {
+            height: 40px;
+            font-family: '하나2.0 M';
+            margin-left: 10px;
+        }
+
+        .theme-bottom-top {
+            height: 60px;
+            display: flex;
+            /*justify-content: center;*/
+            align-items: center;
+            margin-left: 10px;
+            font-family: "하나2.0 R";
+            font-size: 13px;
+        }
+
+        .theme-bottom-bottom {
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* 버튼 사이 간격 조절 */
+        }
+
+        .theme-report-button {
+            padding: 10px 20px;
+            color: black;
+            background-color: #E5E5E5;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+            /*font-weight: bolder;*/
+        }
+
+        .theme-report-button:hover {
+            background-color: #757575; /* hover 시 배경색 변경 */
+        }
+
+        .theme-performance-button {
+            padding: 10px 20px;
+            color: white;
+            background-color: #332D41; /* 다른 버튼의 배경색 */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+        }
+
+        .theme-performance-button:hover {
+            background-color: #AAAAAA; /* 다른 버튼의 hover 시 배경색 변경 */
+        }
+
+        .sector-top {
+            background-image: url("img/s2.svg");
+        }
+
+        .sector-top-top {
+            height: 40px;
+        }
+
+        .sector-top-bottom {
+            height: 40px;
+            font-family: '하나2.0 M';
+            margin-left: 10px;
+        }
+
+        .sector-bottom-top {
+            height: 60px;
+            display: flex;
+            /*justify-content: center;*/
+            align-items: center;
+            margin-left: 10px;
+            font-family: "하나2.0 R";
+            font-size: 13px;
+        }
+
+        .sector-bottom-bottom {
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* 버튼 사이 간격 조절 */
+        }
+
+        .sector-report-button {
+            padding: 10px 20px;
+            color: black;
+            background-color: #E5E5E5;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+            /*font-weight: bolder;*/
+        }
+
+        .sector-report-button:hover {
+            background-color: #757575; /* hover 시 배경색 변경 */
+        }
+
+        .sector-performance-button {
+            padding: 10px 20px;
+            color: white;
+            background-color: #332D41; /* 다른 버튼의 배경색 */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+        }
+
+        .sector-performance-button:hover {
+            background-color: #AAAAAA; /* 다른 버튼의 hover 시 배경색 변경 */
+        }
+
+        .daega-top {
+            background-image: url("img/s3.svg");
+        }
+
+        .daega-top-top {
+            height: 40px;
+        }
+
+        .daega-top-bottom {
+            height: 40px;
+            font-family: '하나2.0 M';
+            margin-left: 10px;
+        }
+
+        .daega-bottom-top {
+            height: 60px;
+            display: flex;
+            /*justify-content: center;*/
+            align-items: center;
+            margin-left: 10px;
+            font-family: "하나2.0 R";
+            font-size: 13px;
+        }
+
+        .daega-bottom-bottom {
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* 버튼 사이 간격 조절 */
+        }
+
+        .daega-report-button {
+            padding: 10px 20px;
+            color: black;
+            background-color: #E5E5E5;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+            /*font-weight: bolder;*/
+        }
+
+        .daega-report-button:hover {
+            background-color: #757575; /* hover 시 배경색 변경 */
+        }
+
+        .daega-performance-button {
+            padding: 10px 20px;
+            color: white;
+            background-color: #332D41; /* 다른 버튼의 배경색 */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+        }
+
+        .daega-performance-button:hover {
+            background-color: #AAAAAA; /* 다른 버튼의 hover 시 배경색 변경 */
+        }
+
+        .mine-top {
+            background-image: url("img/s4.png");
+        }
+
+        .mine-top-top {
+            height: 40px;
+        }
+
+        .mine-top-bottom {
+            height: 40px;
+            font-family: '하나2.0 M';
+            margin-left: 10px;
+        }
+
+        .mine-bottom-top {
+            height: 60px;
+            display: flex;
+            /*justify-content: center;*/
+            align-items: center;
+            margin-left: 10px;
+            font-family: "하나2.0 R";
+            font-size: 13px;
+        }
+
+        .mine-bottom-bottom {
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* 버튼 사이 간격 조절 */
+        }
+
+        .mine-report-button {
+            padding: 10px 20px;
+            color: black;
+            background-color: #E5E5E5;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+            /*font-weight: bolder;*/
+        }
+
+        .mine-report-button:hover {
+            background-color: #757575; /* hover 시 배경색 변경 */
+        }
+
+        .mine-performance-button {
+            padding: 10px 20px;
+            color: white;
+            background-color: #332D41; /* 다른 버튼의 배경색 */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+        }
+
+        .mine-performance-button:hover {
+            background-color: #AAAAAA; /* 다른 버튼의 hover 시 배경색 변경 */
+        }
+
+        .extra1-top {
+            background-image: url("img/s5.png");
+        }
+
+        .extra1-top-top {
+            height: 40px;
+        }
+
+        .extra1-top-bottom {
+            height: 40px;
+            font-family: '하나2.0 M';
+            margin-left: 10px;
+        }
+
+        .extra1-bottom-top {
+            height: 60px;
+            display: flex;
+            /*justify-content: center;*/
+            align-items: center;
+            margin-left: 10px;
+            font-family: "하나2.0 R";
+            font-size: 13px;
+        }
+
+        .extra1-bottom-bottom {
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* 버튼 사이 간격 조절 */
+        }
+
+        .extra1-report-button {
+            padding: 10px 20px;
+            color: black;
+            background-color: #E5E5E5;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+            /*font-weight: bolder;*/
+        }
+
+        .extra1-report-button:hover {
+            background-color: #757575; /* hover 시 배경색 변경 */
+        }
+
+        .extra1-performance-button {
+            padding: 10px 20px;
+            color: white;
+            background-color: #332D41; /* 다른 버튼의 배경색 */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+            width: 300px;
+        }
+
+        .extra1-performance-button:hover {
+            background-color: #AAAAAA; /* 다른 버튼의 hover 시 배경색 변경 */
+        }
+
+        .extra2-top {
+            background-image: url("img/s1.svg");
+        }
+
+        .extra2-top-top {
+            height: 40px;
+        }
+
+        .extra2-top-bottom {
+            height: 40px;
+            font-family: '하나2.0 M';
+            margin-left: 10px;
+        }
+
+        .extra2-bottom-top {
+            height: 60px;
+            display: flex;
+            /*justify-content: center;*/
+            align-items: center;
+            margin-left: 10px;
+            font-family: "하나2.0 R";
+            font-size: 13px;
+        }
+
+        .extra2-bottom-bottom {
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* 버튼 사이 간격 조절 */
+        }
+
+        .extra2-report-button {
+            padding: 10px 20px;
+            color: black;
+            background-color: #E5E5E5;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+            /*font-weight: bolder;*/
+        }
+
+        .extra2-report-button:hover {
+            background-color: #757575; /* hover 시 배경색 변경 */
+        }
+
+        .extra2-performance-button {
+            padding: 10px 20px;
+            color: white;
+            background-color: #332D41; /* 다른 버튼의 배경색 */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+        }
+
+        .extra2-performance-button:hover {
+            background-color: #AAAAAA; /* 다른 버튼의 hover 시 배경색 변경 */
+        }
+
+        /*사이드바*/
+        .di {
+
+        }
+
+        .di-content {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-family: '하나2.0 M';
+            font-size: 13px;
+            transition: background-color 0.3s;
+        }
+
+        .di clicked {
+            background-color: #F6EDFF;
+        }
+
+        .portfolio {
+
+        }
+
+        .portfolio-content {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-family: '하나2.0 M';
+            font-size: 13px;
+        }
+
+        .mystrategy {
+
+        }
+
+        .mystrategy-content {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-family: '하나2.0 M';
+            font-size: 13px;
+        }
+
+        .moetest {
+
+        }
+
+        .moetest-content {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-family: '하나2.0 M';
+            font-size: 13px;
+        }
+
+        .backtest {
+
+        }
+
+        .backtest-content {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-family: '하나2.0 M';
+            font-size: 13px;
+        }
+
+        .faq {
+            margin-top : 200px;
+            background-color: #FAFAFA;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-family: '하나2.0 M';
+            font-size: 12px;
+        }
+        .faq-bottom{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            border-color: transparent;
+        }
+
+        .faq-button {
+            margin-top: 10px;
+            border-radius: 40px;
+            border: none;
+            background-color: #332D41;
+            color: white;
+            font-family: "하나2.0 R";
+            font-size: 12px;
+            height: 20px;
+        }
+
+        img {
+        }
+
+
     </style>
 </head>
 <body>
-<div class="wrap">
-    <div class="header">
-        <div class="inner">
-            <h1><a href="">하나증권</a></h1>
-            <ul class="memberlink">
-                <li>
-                    <a href="">
-                        <span>로그인</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        ID 등록
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        인증센터
-                    </a>
-                </li>
-            </ul>
-            <form method="post" id="templetSearchForm" action="/main/main/search.cmd"
-                  onsubmit="return checktempletSearch()">
-                <fieldset>
-                    <legend>통합검색</legend>
-                    <div class="topsrch">
-                        <input name="query" id="templetSearchInput" type="text" maxlength="20" style="width: 105px"
-                               title="검색어 입력"> <!-- 20200305 수정 -->
-                        <input type="image" id="btnSearch" src="/common/img/icon_srch.gif" alt="검색">
-                    </div>
-                </fieldset>
-                <script type="text/javascript">
-                    function emrtest() {
-                        alert("제휴wts 비상테스트");
-                        $.ajax({
-                            url: "/common/common/getEmrIssKey.cmd",
-                            success: function (data) {
-                                console.log(data);
-                                window.open("https://local.hanaw.com:8445/afwts/login/login/emrLogin.cmd?afwtsCode=" + data.afwtsCode + "&data=" + data.encData);
-
-                            }
-                        });
-
-
-                    }
-
-                    function checktempletSearch() {
-                        var regExp = /[^0-9a-zA-Zㄱ-힣\s]/;
-                        var icssQuery = document.getElementById("templetSearchInput");
-                        var keyword = icssQuery.value;
-                        if (keyword.search(regExp) != -1) {
-                            alert("특수문자는 사용할 수 없습니다.");
-                            icssQuery.focus();
-                            return false;
-                        }
-
-                        return true;
-                    }
-                </script>
-            </form>
-            <ul class="sns-header">
-                <li>
-                    <a href="https://www.facebook.com/hanadtpage" target="_blank" title="하나증권 페이스북 새창열기">
-                        <img src="/common/img/icon_facebook_light.gif" alt="페이스북">
-                    </a>
-                </li>
-                <li>
-                    <a href="http://blog.naver.com/hanadtsec" target="_blank" title="하나증권 블로그 새창열기">
-                        <img src="/common/img/icon_blog_light.gif" alt="블로그">
-                    </a>
-                </li>
-            </ul>
-            <ul class="toplink">
-                <li id="co-menu-wrap">
-                    <a href="/main/company/company/CO_000000_M.cmd">회사소개</a>
-                </li>
-                <!-- li>
-                <a href="http://www.hanaib.com/main/hanaib/index.htm">
-                <img src="/common/img/btn_toplink.gif" alt="투자은행부문" />
-                </a>
-                </li-->
-            </ul>
-        </div>
-        <div id="gnb-area">
-            <ul id="gnb">
-                <li class="gnb_01">
-                    <a href="/main/bank/online/index.cmd" class="depth1-link">
-                        온라인지점</a>
-                </li>
-                <li class="gnb_02">
-                    <a href="/main/finance/fund/FP_000000_M.cmd" class="depth1-link">
-                        금융투자상품</a>
-                </li>
-                <li class="gnb_03">
-                    <a href="/main/wts/main/index.cmd" class="depth1-link ">
-                        주식파생상품</a>
-                </li>
-                <li class="gnb_04">
-                    <a href="/main/wts/foreign/index.cmd" class="depth1-link ">
-                        해외주식파생/CFD</a>
-                </li>
-                <li class="gnb_05">
-                    <a href="/main/research/research/RC_000000_M.cmd" class="depth1-link ">
-                        리서치센터</a>
-                </li>
-                <li class="gnb_06">
-                    <a href="/main/customer/customer/CS_000000_M.cmd" class="depth1-link ">
-                        고객지원</a>
-                </li>
-                <li class="gnb_07">
-                    <a href="/main/customer/customer/CS_000001_M.cmd" class="depth1-link">
-                        금융소비자보호</a>
-                </li>
-            </ul>
-        </div>
+<div class="strategy-wrap">
+    <div class="strategy-header">
+        <img class="image-1qpro" src="img/1qpro.png">
     </div>
+    <div class="main-wrap">
+        <div class="strategy-sidebar">
 
-    <div id="submain">
-        <!-- maincon-top -->
-        <div id="maincon-top" class="main-banner-wrap">
-            <span class="main-banner-background"
-                  style="background-image: url(); background-repeat: no-repeat; background-position: 50% 0px; display: block;"></span>
-            <span
-                    class="main-banner-background"
-                    style="background-image: url(); background-repeat: no-repeat; background-position: 50% 0px; display: none;"></span>
-            <span
-                    class="main-banner-background"
-                    style="background-image: url(); background-repeat: no-repeat; background-position: 50% 0px; display: none;"></span>
-            <span
-                    class="main-banner-background"
-                    style="background-image: url(); background-repeat: no-repeat; background-position: 50% 0px; display: none;"></span>
-            <div class="main-banner inner">
-                <div class="maincontrol">
-                    <ul>
-                        <li>
-                            <button type="button" class="main-banner-indi"><span class="mask"></span><img
-                                    src="/templets/main/img/MAIN/main_banner_thumb_230818.png" alt="0"></button>
-                        </li>
-                        <li>
-                            <button type="button" class="main-banner-indi"><span class="mask"></span><img
-                                    src="/templets/main/img/MAIN/main_banner_thumb_230720.png" alt="1"></button>
-                        </li>
-                        <li>
-                            <button type="button" class="main-banner-indi"><span class="mask"></span><img
-                                    src="/templets/main/img/MAIN/main_banner_thumb_230615.png" alt="2"></button>
-                        </li>
-                        <li>
-                            <button type="button" class="main-banner-indi active"><span class="mask"></span><img
-                                    src="/templets/main/img/MAIN/main_banner_thumb_220127.png?v=230201" alt="3">
-                            </button>
-                        </li>
-                        <li><a href="#" class="main-banner-onoff" title="배너 롤링 끄기"></a></li>
-                    </ul>
-                </div>
-                <div class="main-banner-img-wrap">
-                    <div style="position: absolute; display: none;">
-                        <div><a href="/corebbs5/eventIng/view/view.cmd?bbsSeq=483" class="main-banner-btn btn-banner"
-                                target="_self"><img class="main-banner-img"
-                                                    src="/templets/main/img/MAIN/main_banner_text_230818.png"
-                                                    alt="HANA POP-UP 사전예약 이벤트, 8/26-9/3 가로수길 팝업 Grand OPEN!"></a></div>
-                    </div>
-                    <div style="position: absolute; display: none;">
-                        <div><a href="/corebbs5/eventIng/view/view.cmd?bbsSeq=478" class="main-banner-btn btn-banner"
-                                target="_self"><img class="main-banner-img"
-                                                    src="/templets/main/img/MAIN/main_banner_text_230720.png"
-                                                    alt="국내주식 소수점 매매 오픈 이벤트, 2023.07.20 ~ 11.30"></a></div>
-                    </div>
-                    <div style="position: absolute; display: none;">
-                        <div><a href="/corebbs5/eventIng/view/view.cmd?bbsSeq=474" class="main-banner-btn btn-banner"
-                                target="_self"><img class="main-banner-img"
-                                                    src="/templets/main/img/MAIN/main_banner_text_230615.png"
-                                                    alt="달려라 하나로! 역대급 계좌개설 혜택, 2023.06.27~ 2023.08.31"></a></div>
-                    </div>
-                    <div style="position: absolute; display: block;">
-                        <div><a href="/corebbs5/eventIng/view/view.cmd?bbsSeq=402" class="main-banner-btn btn-banner"
-                                target="_self"><img class="main-banner-img"
-                                                    src="/templets/main/img/MAIN/main_banner_text_220127.png?v=230201"
-                                                    alt="마이데이터로 MY 자산을 합! 자산 연결 시, 전원 랜덤 혜택"></a></div>
-                    </div>
+            <div class="di-content" onclick="changeColor(this)">
+                <img src="img/puzzle2.png" width="20" height="20">
+                다이렉트인덱싱
+            </div>
+
+
+            <div class="portfolio-content" onclick="changeColor(this)">
+                <img src="img/portfolio.png" width="20" height="20">
+                내 포트폴리오
+            </div>
+
+
+            <div class="mystrategy-content" onclick="changeColor(this)">
+                <img src="img/strategy.png" width="20" height="20">
+                내 전략
+            </div>
+
+
+            <div class="moetest-content" onclick="changeColor(this)">
+                <img src="img/chart2.png" width="20" height="20">
+                모의테스트
+            </div>
+
+
+            <div class="backtest-content" onclick="changeColor(this)">
+                <img src="img/chart3.png" width="20" height="20">
+                백테스트
+            </div>
+            <div class="faq">
+                다이렉트 원덱싱이 처음이신가요?
+                <div class="faq-bottom">
+                    <a href="faq.html">
+                        <button class="faq-button">첫 사용 가이드 보기</button>
+                    </a>
+                    <img src="img/faq.png" width="40px" height="40px">
                 </div>
             </div>
-            <span class="main-banner-logo">HANA SECURITIES</span>
         </div>
-        <!-- //maincon-top -->
-
-        <!-- FIRST -->
-        <div class="first-visit">
-            <div class="sub-title">
-                <a href="/main/customer/customer/CS_010000_P.cmd">
-                    <h2>처음 오셨나요?</h2>
-                    <p class="desc">내 손안의 계좌 개설!<br>이제 스마트폰으로 계좌를 만드세요.</p>
-                </a>
+        <div class="strategy-main">
+            <div style="padding-left: 30px;">
+                <h4>내 포트폴리오로 운용하고 싶은 전략을 선택하세요.</h4>
             </div>
-            <ul class="list-step clearfix">
-                <li><a href="/main/customer/openAccount/CS_180100_P.cmd" class="btn-step-1" data-idx="1"><span
-                        class="icon"></span><span class="txt">계좌개설</span></a></li>
-                <li><a href="/main/customer/member/CS_020200_P.cmd" class="btn-step-2" data-idx="2"><span
-                        class="icon"></span><span class="txt">ID등록</span></a></li>
-                <li><a href="/main/customer/certificate/CS_030000_M.cmd" class="btn-step-3" data-idx="3"><span
-                        class="icon"></span><span class="txt">인증/OTP</span></a></li>
-                <li><a href="/main/customer/customer/CS_050100_M.cmd" class="btn-step-4" data-idx="4"><span
-                        class="icon"></span><span class="txt">HTS 다운로드</span></a></li>
-            </ul>
-        </div>
-        <!--// FIRST -->
+            <div class="strategy-container">
+                <div class="line1">
+                    <div class="theme">
+                        <div class="theme-top">
+                            <div class="theme-top-top">
+                     <span class="emoji-with-circle">
+  <span>🇰🇷</span>
+</span>
 
-        <!-- STOCK -->
-        <div id="jisuInfo" class="list-stock">
-            <h2 class="none">주가정보</h2>
-            <div class="controller">
-                <button type="button" class="btn-prev">이전</button>
-                <button type="button" class="btn-next">다음</button>
-            </div>
-            <ul class="stock-wrap" data-bind="_this.withItem(jisuObject,false)" data-rowgroup="1">
-                <li class="active">
-                    <dl>
-                        <dt>KOSPI</dt>
-                        <dd class="goUp">
-                            <span data-bind="K001['NowPrc']" data-bind-bypass="true">2,552.16</span>
-                            <span data-bind="checkUpDownJisu(K001['PrdayCmpTp'])" data-bind-bypass="true"></span> <span
-                                class="rate goUp" data-bind="K001['PrdayCmp']" data-bind-bypass="true">8.75</span>
-                            <span class="hidden">상승</span>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>KOSDAQ</dt>
-                        <dd class="goUp">
-                            <span data-bind="K201['NowPrc']" data-bind-bypass="true">916.24</span>
-                            <span data-bind="checkUpDownJisu(K201['PrdayCmpTp'])" data-bind-bypass="true"></span> <span
-                                class="rate goUp" data-bind="K201['PrdayCmp']" data-bind-bypass="true">6.86</span>
-                            <span class="hidden">상승</span>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>국고채(3년)</dt>
-                        <dd class="goDown">
-                            <span data-bind="Y0101['NowPrc']" data-bind-bypass="true">3.7400</span>
-                            <span data-bind="checkUpDownJisu(Y0101['PrdayCmpTp'])" data-bind-bypass="true"></span> <span
-                                class="rate goDown" data-bind="Y0101['PrdayCmp']" data-bind-bypass="true">0.0190</span>
-                            <span class="hidden">하락</span>
-                        </dd>
-                    </dl>
-                </li>
-                <li class="">
-                    <dl>
-                        <dt>DOW<span class="sub-txt" data-bind="DJI_DJI['ViewPoint']" data-bind-bypass="true">종가</span>
-                        </dt>
-                        <dd class="goUp">
-                            <span data-bind="DJI_DJI['NowPrc']" data-bind-bypass="true">34,559.98</span>
-                            <span data-bind="checkUpDownJisu(DJI_DJI['PrdayCmpTp'])" data-bind-bypass="true"></span>
-                            <span class="rate goUp" data-bind="DJI_DJI['PrdayCmp']"
-                                  data-bind-bypass="true">213.08</span>
-                            <span class="hidden">상승</span>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>NASDAQ<span class="sub-txt" data-bind="NAS_IXIC['ViewPoint']"
-                                        data-bind-bypass="true">15분지연</span></dt>
-                        <dd class="goUp">
-                            <span data-bind="NAS_IXIC['NowPrc']" data-bind-bypass="true">13,705.13</span>
-                            <span data-bind="checkUpDownJisu(NAS_IXIC['PrdayCmpTp'])" data-bind-bypass="true"></span>
-                            <span class="rate goUp" data-bind="NAS_IXIC['PrdayCmp']"
-                                  data-bind-bypass="true">114.48</span>
-                            <span class="hidden">상승</span>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>원달러 환율<span class="sub-txt">5분지연</span></dt>
-                        <dd class="goDown">
-                            <span data-bind="USDKRWSMBS['NowPrc']" data-bind-bypass="true">1,321.90</span>
-                            <span data-bind="checkUpDownJisu(USDKRWSMBS['PrdayCmpTp'])" data-bind-bypass="true"></span>
-                            <span class="rate goDown" data-bind="USDKRWSMBS['PrdayCmp']"
-                                  data-bind-bypass="true">1.50</span>
-                            <span class="hidden">하락</span>
-                        </dd>
-                    </dl>
-                </li>
-            </ul>
-
-        </div>
-        <!-- STOCK -->
-
-        <!-- FOCUS / FUND / 해외주식 / PENSION / ETC -->
-        <div id="maincon-info" class="maincon-info">
-            <span class="bg-tab active-etc"></span>
-            <!-- FOCUS -->
-            <div class="info-wrap focus">
-                <h2 class="tab"><a href="#" class="btn-tab" data-name="focus">Focus</a></h2>
-                <ul class="tab-contents list-focus clearfix">
-                    <!-- <li class="big bnr_stockoff">
-                        <img src="/templets/main/img/MAIN/focus_info_210422.jpg" alt="개인대주(공매도)시행 안내">
-                        <a href="https://www.hanaw.com/corebbs5/notice/view/view.cmd?bbsSeq=2790" class="link_detail">자세히 보기</a>
-                        <a href="https://www.kifin.or.kr" class="link_kifin" target="_blank">사전교육</a>
-                        <a href="https://strn.krx.co.kr" class="link_krx" target="_blank">모의투자시스템</a>
-                    </li>
-                    <li class="big">
-                        <a href="//www.hanaw.com/corebbs5/foreignFutur/view/view.cmd?bbsSeq=897">
-                            <img src="/templets/main/img/MAIN/focus_tradingview.png" alt="트레이딩뷰 플랫폼 OPEN! 글로벌 투자자들의 Top Pick 트레이딩 플랫폼 자세히 보기">
-                        </a>
-                    </li> -->
-                    <li class="big">
-                        <a href="http://openhanafn.ttmap.co.kr/content_dt.jsp" target="_blank">
-                            <img src="/templets/main/img/MAIN/focus_store.png" alt="영업점 찾기">
-                        </a>
-                    </li>
-                    <!--
-                    <li class="big">
-                        <a href="/main/customer/event/CS_112501_P.html" target="_blank">
-                            <img src="/templets/main/img/MAIN/focus_cfdopen.png" alt="전문투자자를 위한 하나원큐 CFD OPEN! 국내는 물론 해외주식까지! 자세히 보기">
-                        </a>
-                    </li>
-                    <li class="big"><a href="/corebbs5/eventIng/view/view.cmd?bbsSeq=279"><img src="/templets/main/img/MAIN/focus_store_01.png" alt="휴먼계좌찾기"></a></li> -->
-                    <li><a href="/main/customer/customer/CS_061300_P.cmd"><img
-                            src="/templets/main/img/MAIN/focus_account.jpg" alt="휴면계좌찾기"></a></li>
-                    <!-- <li><a href="/corebbs5/eventIng/view/view.cmd?bbsSeq=436"><img src="/templets/main/img/MAIN/focus_idea.png" alt="손님행복(불편제거) 아이디어 공모전"></a></li> -->
-                    <!-- <li><a href="/main/finance/fund/FP_020103_P.cmd"><img src="/templets/main/img/MAIN/focus_recomm.jpg" alt="하나증권 추천펀드"></a></li> -->
-                    <!-- <li><a href="http://openhanafn.ttmap.co.kr/content_dt.jsp"><img src="/templets/main/img/MAIN/focus_store_02.jpg" alt="가까운 영업점 찾기"></a></li> -->
-                    <!-- <li><a href="/main/finance/els/FP_050100_P1.cmd"><img src="/templets/main/img/MAIN/focus_els.png" alt="금리인상기엔 ELS! 지금 청약 가능한 ELS는? 청약하러 가기"></a></li> -->
-                    <!-- <li><a href="/main/customer/customer/CS_050200_M.cmd"><img src="/templets/main/img/MAIN/focus_mobiletrading.png" alt="모바일 트레이딩 스마트한 트레이딩 시스템"></a></li> -->
-                    <li><a href="/main/customer/qna/CS_080700_P.cmd"><img
-                            src="/templets/main/img/MAIN/focus_primecare.png" alt="온라인 투자상담 프라임케어 PB와 고민해결!"></a></li>
-                    <!-- <li><a href="//www.hanaw.com/corebbs5/notice/view/view.cmd?bbsSeq=2759"><img src="/templets/main/img/MAIN/focus_warn.jpg" alt="주식 리딩방에 대한 주의사항을 읽어보세요!"></a></li> -->
-                    <li><a href="/main/finance/giftplan/FP_110100_P1.cmd"><img
-                            src="/templets/main/img/MAIN/focus_giftplan.png?v=20220609"
-                            alt="증여플랜!목돈마련과 종합세무컨설팅 제공 자세히보기, 투자전 설명청취 및 상품설명서약관필독, 원금손실(0~100%)발생가능 및 투자자귀속"></a></li>
-                    <!-- <li><a href="//www.hanacard.co.kr/partner/oneq/hanafn" target="_blank"><img src="/templets/main/img/MAIN/focus_card.png" alt="하나카드 안내 신청"></a></li> -->
-                    <!-- <li><a href="//www.hanaw.com/corebbs5/notice/view/view.cmd?bbsSeq=2849"><img src="/templets/main/img/MAIN/focus_voice.png" alt="보이스피싱 주의하세요! 의심하고, 전화끊고, 확인하고! 상세한 주의사항 보러가기"></a></li> -->
-                    <li><a href="//www.hanaw.com/corebbs5/notice/view/view.cmd?bbsSeq=3133"><img
-                            src="/templets/main/img/MAIN/focus_voice.png"
-                            alt="보이스피싱 주의하세요! 의심하고, 전화끊고, 확인하고! 상세한 주의사항 보러가기"></a></li>
-                    <!-- <li class="notice">
-                      <a href="//www.hanaw.com/corebbs5/notice/view/view.cmd?bbsSeq=3182">
-                        <strong class="sub-title lh26">넥스틸(주)<br>청약 안내</strong>
-                        <span class="date f16">2023.08.09(수) ~ 08.10(목)</span>
-                        <span class="blt">바로가기</span>
-                      </a>
-                    </li> -->
-                    <!-- <li><a href="/main/customer/customer/CS_100403_P.cmd?tab=1"><img src="/templets/main/img/MAIN/focus_caution.png" alt="금융사기 관련 유의사항 안내"></a></li> -->
-                </ul>
-            </div>
-            <!--// FOCUS -->
-
-            <!-- FUND -->
-            <div class="info-wrap fund">
-                <h2 class="tab"><a href="#" class="btn-tab" data-name="fund">펀드</a></h2>
-                <div class="tab-contents list-fund clearfix">
-                    <h3>인기Best 펀드</h3>
-                    <ul>
-                        <li>
-                            <a href="/main/finance/fund/FP_020102_P.cmd">
-                                <span class="blt">국내주식형</span>
-                                <span class="blt">초고위험</span>
-                                <h4>미래에셋코어테크증권자(주식)종류A-e</h4>
-                                <p class="txt">수익률 3개월</p>
-                                <strong class="rate goDown goUp">1.59%</strong></a>
-                        </li>
-                        <li>
-                            <a href="/main/finance/fund/FP_020102_P.cmd">
-                                <span class="blt">국내주식형</span>
-                                <span class="blt">고위험</span>
-                                <h4>VIP한국형가치투자증권자[주식] A-e</h4>
-                                <p class="txt">수익률 3개월</p>
-                                <strong class="rate goUp"><span>4.27</span>%</strong></a>
-                        </li>
-                        <li class="rank-3">
-                            <a href="/main/finance/fund/FP_020102_P.cmd">
-                                <span class="blt">국내채권형</span>
-                                <span class="blt">초저위험</span>
-                                <h4>유진챔피언단기채증권자[채권]A-E</h4>
-                                <p class="txt">수익률 3개월</p>
-                                <strong class="rate goUp"><span>1.16</span>%</strong></a>
-                        </li>
-                        <li>
-                            <a href="/main/finance/fund/FP_020102_P.cmd">
-                                <span class="blt">국내파생형</span>
-                                <span class="blt">초고위험</span>
-                                <h4>NH-Amundi코리아2배레버리지증권[주식-파생형]종류Ae</h4>
-                                <p class="txt">수익률 3개월</p>
-                                <strong class="rate goDown goUp">5.31%</strong></a>
-                        </li>
-                        <li>
-                            <a href="/main/finance/fund/FP_020102_P.cmd">
-                                <span class="blt">국내채권혼합형</span>
-                                <span class="blt">중위험</span>
-                                <h4>코레이트하이일드공모주플러스증권[채권혼합]_A-E</h4>
-                                <p class="txt">수익률 3개월</p>
-                                <strong class="rate goUp"><span>1.65</span>%</strong></a>
-                        </li>
-                        <!-- <li>
-                        <a href="">
-                          <span class="blt">혼합형</span>
-                          <span class="blt">고위험</span>
-                          <h4>한국투자연금베트남증권자투자신탁(주식혼합)C-e</h4>
-                          <p class="txt">수익률 3개월</p>
-                          <strong class="rate"><span>26.11</span>%</strong>
-                        </a>
-                      </li>
-                      <li class="rank-3">
-                        <a href="">
-                          <span class="blt">주식형</span>
-                          <span class="blt">고위험</span>
-                          <h4>KTB중국1등주증권자투자신탁[주식]종류Ae</h4>
-                          <p class="txt">수익률 3개월</p>
-                          <strong class="rate"><span>16.18</span>%</strong>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="">
-                          <span class="blt">주식형</span>
-                          <span class="blt">초고위험</span>
-                          <h4>NH-Amundi코리아2배레버리지증권투자신탁[주식-파생형]종류Ae</h4>
-                          <p class="txt">수익률 3개월</p>
-                          <strong class="rate"><span>1.31</span>%</strong>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="">
-                          <span class="blt">주식형</span>
-                          <span class="blt">초고위험</span>
-                          <h4>삼성코스닥1501.5배레버리지증권투자신탁[주식-파생형]A-e</h4>
-                          <p class="txt">수익률 3개월</p>
-                          <strong class="rate"><span>86.79</span>%</strong>
-                        </a>
-                      </li> -->
-                    </ul>
-                </div>
-            </div>
-            <!--// FUND -->
-
-            <!-- 해외주식 -->
-            <div class="info-wrap etc-product overseas">
-                <h2 class="tab"><a href="#" class="btn-tab" data-name="overseas">해외주식</a></h2>
-                <ul class="tab-contents list-overseas-2">
-                    <li class="first">
-                        <a href="/main/wts/foreign/index.cmd">
-                            <h3>미국 주식? 하나에서는 <span class="overseas-purple">多</span>된다!</h3>
-                            <p>소액으로 소수점 주문부터 실시간 미국 OTC 거래까지, 하나에서 원큐로!</p>
-                        </a>
-                    </li>
-                    <li class="column overseas-column1">
-                        <a href="/main/wts/foreign/WT_210100_P.cmd?tabIndex=6" class="column-row1">
-                            <div class="list-overseas-contwrap">
-                                <h3>미국 소수점 주문</h3>
-                                <ul class="list-overseas-hash clearfix">
-                                    <li>#미국 주식</li>
-                                    <li>#소액</li>
-                                    <li>#원화 거래</li>
-                                </ul>
-                                <div class="con-detail">
-                                    <p>천 원부터 골라담는 미국 주식<br>소액으로 분산, 원화로 한번에,<br>자동으로 적립까지!</p>
-                                </div>
+                                <span class="emoji-with-circle">
+  <span>🔥</span>
+</span>
                             </div>
-                        </a>
-                        <a href="/main/wts/foreign/WT_210100_P.cmd?tabIndex=5" class="column-row2">
-                            <div class="list-overseas-contwrap">
-                                <h3>적립식 주문 서비스</h3>
-                                <ul class="list-overseas-hash clearfix">
-                                    <li>#자동 적립</li>
-                                    <li>#천 원단위 거래</li>
-                                </ul>
-                                <div class="con-detail">
-                                    <p>1,000원 단위부터 미국 주식 여러 종목을<br>매달 적금처럼 차곡차곡 적립해 보세요!</p>
-                                </div>
+                            <div class="theme-top-bottom">
+                                테마 성장주 집중 전략
                             </div>
-                        </a>
-                        <a href="/main/wts/foreign/WT_210100_P.cmd?tabIndex=6" class="column-row3">
-                            <div class="list-overseas-contwrap">
-                                <h3>내가 만드는<br>배당 포트폴리오</h3>
-                                <ul class="list-overseas-hash clearfix">
-                                    <li>#배당 수익</li>
-                                </ul>
-                                <div class="con-detail">
-                                    <p>배당 주기를 확인하여 배당 종목에 투자해<br>주가 시세 차익뿐만 아니라 매달 배당 수익까지!</p>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="column overseas-column2">
-                        <a href="/main/wts/foreign/WT_210100_P.cmd?tabIndex=4" class="column-row4">
-                            <div class="list-overseas-contwrap">
-                                <h3>실시간<br>미국 OTC 거래 가능</h3>
-                                <ul class="list-overseas-hash clearfix">
-                                    <li>#미국 장외 주식</li>
-                                    <li>#실시간 시세</li>
-                                </ul>
-                                <div class="con-detail">
-                                    <p>하나에서만 제공되는 온라인 실시간 매매!<br>달러로 편하게 유럽 주식도 거래해 보세요!</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="/main/wts/foreign/WT_220100_P.cmd?tabIndex=0&amp;subIndex=0" class="column-row5">
-                            <div class="list-overseas-contwrap">
-                                <h3>오후 5시부터<br>프리마켓</h3>
-                                <ul class="list-overseas-hash clearfix">
-                                    <li>#정규장 이전 매매</li>
-                                </ul>
-                                <div class="con-detail">
-                                    <p>번거롭게 새벽에 매매하지 마시고<br>퇴근길에 미국 주식 매매하세요!</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="/main/wts/foreign/WT_210100_P.cmd?tabIndex=1" class="column-row6">
-                            <div class="list-overseas-contwrap">
-                                <h3>24시간<br>달러 환전 서비스</h3>
-                                <ul class="list-overseas-hash clearfix">
-                                    <li>#외환 명가</li>
-                                    <li>#낮 밤 모두</li>
-                                </ul>
-                                <div class="con-detail">
-                                    <p>외환 명가 하나증권에서는<br>낮에도, 밤에도 환전 가능!</p>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <!--// 해외주식 -->
-
-            <!-- 파생상품 -->
-            <div class="info-wrap derivative">
-                <h2 class="tab">
-                    <a href="#" class="btn-tab" data-name="derivative">파생상품</a>
-                </h2>
-                <div class="pr tab-contents">
-                    <div class="derivative-btnwrap">
-                        <ul class="derivative-btn clearfix" role="tablist">
-                            <li class="active domestic pl5">
-                                <a href="#" role="tab" aria-selected="true" aria-controls="pannel-1" id="tab-1">국내</a>
-                            </li>
-                            <li class="overseas pr5">
-                                <a href="#" role="tab" aria-selected="false" aria-controls="pannel-2" id="tab-2">해외</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <ul id="pannel-1" class="list-derivative clearfix domestic-ver" role="tabpanel"
-                        aria-labelledby="tab-1" aria-hidden="false" style="display: block;">
-                        <li class="first">
-                            <div class="hidden">
-                                <h3>국내파생!</h3>
-                                <p>하나증권에서 전문가와 든든한 지원받으며 트레이딩 해보세요!</p>
-                                <p>전국에서 만날 수 있는 전문가들과 24시간 상담지원으로 트레이딩에만 집중할 수 있도록 도와드립니다.</p>
-                            </div>
-                        </li>
-                        <li class="column derivative-column1">
-                            <a href="/main/customer/customer/CS_050100_M.cmd" class="column-row1">
-                                <div class="con-detail">
-                                    <div class="hidden">
-                                        <h3>한번에 빠르게 다양하게</h3>
-                                        <p>다양한 주문 기능 제공! 당신의 트레이딩에 새로운 경험을 제공합니다.</p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="/WEB-APP/wts/main/index.cmd?screen=0400" class="column-row2">
-                                <div class="con-detail">
-                                    <div class="hidden">
-                                        <h3>앞서가는 트레이딩 플랫폼</h3>
-                                        <p>우수고객을 위한 전략 아이디어로 성공적 투자를 도와드립니다.</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="column derivative-column2">
-                            <a href="/main/research/research/list.cmd?pid=8&amp;cid=1"
-                               class="column-row1 research-scrollmove">
-                                <div class="con-detail">
-                                    <div class="hidden">
-                                        <h3>리서치 명가의 밀착관리</h3>
-                                        <p>전국에서 만나볼 수 있는 자산관리 전문가들의 밀착관리!</p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="/main/wts/main/index.cmd" class="column-row2">
-                                <div class="con-detail">
-                                    <div class="hidden">
-                                        <h3>24시간 상담지원 주간 1588-3111 야간 02-785-7111</h3>
-                                        <p>해외선물에 대한 모든 궁금증을 해결해주는 24시간 데스크 운영!</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-
-                    <ul id="pannel-2" class="list-derivative clearfix overseas-ver" role="tabpanel"
-                        aria-labelledby="tab-2" aria-hidden="true">
-                        <li class="first">
-                            <div class="hidden">
-                                <h3>해외파생!</h3>
-                                <p>하나증권에서 밤낮없이 나만의 스타일로 트레이딩!</p>
-                                <p>전국에서 만날 수 있는 전문가들과 24시간 상담지원으로 트레이딩에만 집중할 수 있도록 도와드립니다.</p>
-                            </div>
-                        </li>
-                        <li class="column derivative-column1">
-                            <a href="/apps/wts/tv/TV_100300_P.cmd" class="column-row1">
-                                <div class="con-detail">
-                                    <div class="hidden">
-                                        <h3>앞서가는 트레이딩 플랫폼</h3>
-                                        <p>AI 기반의 매매 시그널 전송 Web기반 차트 주문 플랫폼 TradingView</p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="/main/research/research/list.cmd?pid=1&amp;cid=2" class="column-row2">
-                                <div class="con-detail">
-                                    <div class="hidden">
-                                        <h3>투자의 든든한 길잡이</h3>
-                                        <p>명쾌한 통찰력으로 투자자의 눈이 되다! 매일 아침 카톡으로 받아보는 해외선물 시황</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="column derivative-column2">
-                            <a href="/main/wts/foreign/WT_060101_P.htm" class="column-row1">
-                                <div class="con-detail">
-                                    <div class="hidden">
-                                        <h3>멀티통화 증거금</h3>
-                                        <p>외화가 없다고 걱정하지 마세요! 별도 신청없이 원화만 있어도 거래가능!</p>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="/main/wts/foreign/WT_060102_P.htm" class="column-row2">
-                                <div class="con-detail">
-                                    <div class="hidden">
-                                        <h3>24시간 상담지원 02-785-7111</h3>
-                                        <p>해외선물에 대한 모든 궁금증을 해결해주는 24시간 데스크 운영!</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- PENSION -->
-            <!--       <div class="info-wrap pension-product"> -->
-            <!--         <h2 class="tab"><a href="#" class="btn-tab" data-name="pension">연금대표펀드</a></h2> -->
-            <!--         <ul class="tab-contents list-pension clearfix"> -->
-            <!--           <li class="pension-3"> -->
-            <!--             <a href="/main/finance/trade/FP_030808_T5.cmd#pension-1"> -->
-            <!--               <h3>하나UBS PIMCO<br />글로벌인컴 혼합펀드</h3> -->
-            <!--               <p class="sub-title">혼합자산투자신탁(재간접형)</p> -->
-            <!-- <strong class="rate">%</strong>
-            <p class="txt">수익률 3개월</p> -->
-            <!--               <p class="desc">다양한 채권자산과 시장상황별 적극적인 운용<br>전략을 바탕으로 꾸준하고 안정적인 이자수익을<br>추구합니다.</p> -->
-            <!--             </a> -->
-            <!--           </li> -->
-            <!--           <li class="pension-2"> -->
-            <!--             <a href="/main/finance/trade/FP_030808_T5.cmd#pension-2"> -->
-            <!--               <h3>미래에셋하나1Q연금<br />저축펀드</h3> -->
-            <!--               <p class="sub-title">증권자투자신탁1호(주식혼합-재간접)</p> -->
-            <!-- <strong class="rate"><span class='red' title='1.23'>1.23</span>%</strong>
-            <p class="txt">수익률 3개월</p> -->
-            <!--               <p class="desc">하나의 펀드로 전세계 유망펀드에 분산투자<br>하는 자산배분펀드 소액으로도 전문가의<br>자산관리 서비스를 받아보세요!</p> -->
-            <!--             </a> -->
-            <!--           </li> -->
-            <!--           <li class="pension-4"> -->
-            <!--             <a href="/main/finance/trade/FP_030808_T5.cmd#pension-4"> -->
-            <!--               <h3>IBK플레인바닐라<br/>EMP</h3> -->
-            <!--               <p class="sub-title">증권투자신탁(혼합-재간접형)</p> -->
-            <!--               <p class="desc">일반투자자가 접근하기 어려운 부동산,인프라<br>대체자산 등 글로벌 우량자산에 투자하여<br>고배당인컴 수익을 추구합니다.</p> -->
-            <!--             </a> -->
-            <!--           </li> -->
-            <!--         </ul> -->
-            <!--       </div> -->
-            <!--// PENSION -->
-
-            <!-- ETC -->
-            <div class="info-wrap etc-product active">
-                <h2 class="tab"><a href="#" class="btn-tab" data-name="etc">기타금융상품</a></h2>
-                <ul class="tab-contents list-etc temp clearfix">
-                    <!--
-                    <li class="first">
-                      <a href="#" onclick="return false">
-                        <span class="blt">ETF</span>
-                        <h3>주식 ETF</h3>
-                        <p class="desc">주제별 종목만을<br />모은 ETF로 절세효과까지!</p>
-                      </a>
-                    </li>
-                    -->
-                    <li class="first">
-                        <a href="/main/finance/els/FP_050100_P1.cmd">
-                            <span class="blt">ELS</span>
-                            <h3>ELS/DLS</h3>
-                            <p class="desc">하나증권이 자신있게 만들고<br>추천하는 ELS를 소개합니다.</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/main/finance/wrap/FP_06010_TAB.cmd">
-                            <span class="blt">랩(<span class="small">WRAP</span>)</span>
-                            <h3>랩 어카운트</h3>
-                            <p class="desc">오직 손님 한분에 맞춘<br>프리미엄 자산관리 서비스</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/main/finance/trade/FP_030806_P.cmd">
-                            <span class="blt">연금</span>
-                            <h3>연금저축</h3>
-                            <p class="desc">1년에 최대 66만원 세액공제로<br>돌려받는 기특한 연금저축</p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <!--// ETC -->
-        </div>
-        <!--// FOCUS / FUND / 해외주식 / PENSION / ETC -->
-
-        <!-- BOARD -->
-        <div id="maincon-board" class="maincon-board clearfix">
-            <!-- NOTICE -->
-            <div class="notice">
-                <div class="sub-title">
-                    <h2>NOTICE</h2>
-                    <a href="/corebbs5/notice/list/list.cmd" class="btn-more">공지사항 더보기</a>
-                </div>
-                <ul class="list-notice">
-                    <li>
-                        <a href="/corebbs5/notice/view/view.cmd?bbsSeq=2998" class="ellipsis">당사 애널리스트를 사칭한 금융사기 주의
-                            요망<span class="date">2022.06.16</span></a>
-                    </li>
-                    <li>
-                        <a href="/corebbs5/notice/view/view.cmd?bbsSeq=3189" class="ellipsis">국내파생상품시장 증거금률 수시 변경
-                            안내<span class="date">2023.08.21</span></a>
-                    </li>
-                    <li>
-                        <a href="/corebbs5/notice/view/view.cmd?bbsSeq=3188" class="ellipsis">기업현황보고서(2023년 반기 기준)<span
-                                class="date">2023.08.17</span></a>
-                    </li>
-                    <li>
-                        <a href="/corebbs5/notice/view/view.cmd?bbsSeq=3187" class="ellipsis">일임형 종합자산관리계좌 약관 개정 안내<span
-                                class="date">2023.08.16</span></a>
-                    </li>
-                </ul>
-            </div>
-            <!--// NOTICE -->
-
-            <!-- EVENT -->
-            <div class="event">
-                <div class="sub-title">
-                    <h2>EVENT</h2>
-                    <a href="/corebbs5/eventIng/list/list.cmd" class="btn-more">이벤트 더보기</a>
-                </div>
-                <div class="bx-wrapper" style="max-width: 100%;">
-                    <div class="bx-viewport" style="width: 100%; overflow: hidden; position: relative; height: 120px;">
-                        <ul class="list-event"
-                            style="width: 815%; position: relative; transition-duration: 0s; transform: translate3d(-468px, 0px, 0px);">
-                            <li style="float: left; list-style: none; position: relative; width: 468px;"
-                                class="bx-clone"><a href="/corebbs5/eventIng/view/view.cmd?bbsSeq=465"><img
-                                    src="/download/bbs/event/real_20230426180442.png" width="468" height="120"
-                                    alt="국내주식선물 거래 이벤트"></a></li>
-                            <li style="float: left; list-style: none; position: relative; width: 468px;"><a
-                                    href="/corebbs5/eventIng/view/view.cmd?bbsSeq=483"><img
-                                    src="/download/bbs/event/real_20230817133923.png" width="468" height="120"
-                                    alt="HANA POP-UP 사전예약 이벤트"></a></li>
-                            <li style="float: left; list-style: none; position: relative; width: 468px;"><a
-                                    href="/corebbs5/eventIng/view/view.cmd?bbsSeq=478"><img
-                                    src="/download/bbs/event/real_20230719105100.png" width="468" height="120"
-                                    alt="캐스퍼타고 투자 드라이빙"></a></li>
-                            <li style="float: left; list-style: none; position: relative; width: 468px;"><a
-                                    href="/corebbs5/eventIng/view/view.cmd?bbsSeq=476"><img
-                                    src="/download/bbs/event/real_20230627143706.png" width="468" height="120"
-                                    alt="해외주식 이사하고 투자지원금 받자!"></a></li>
-                            <li style="float: left; list-style: none; position: relative; width: 468px;"><a
-                                    href="/corebbs5/eventIng/view/view.cmd?bbsSeq=475"><img
-                                    src="/download/bbs/event/real_20230623084840.png" width="468" height="120"
-                                    alt="연금저축은 어디로? 하나~로"></a></li>
-                            <li style="float: left; list-style: none; position: relative; width: 468px;"><a
-                                    href="/corebbs5/eventIng/view/view.cmd?bbsSeq=474"><img
-                                    src="/download/bbs/event/real_20230623090933.png" width="468" height="120"
-                                    alt="달려라 하나로! 역대급 신규혜택"></a></li>
-                            <li style="float: left; list-style: none; position: relative; width: 468px;"><a
-                                    href="/corebbs5/eventIng/view/view.cmd?bbsSeq=465"><img
-                                    src="/download/bbs/event/real_20230426180442.png" width="468" height="120"
-                                    alt="국내주식선물 거래 이벤트"></a></li>
-                            <li style="float: left; list-style: none; position: relative; width: 468px;"
-                                class="bx-clone"><a href="/corebbs5/eventIng/view/view.cmd?bbsSeq=483"><img
-                                    src="/download/bbs/event/real_20230817133923.png" width="468" height="120"
-                                    alt="HANA POP-UP 사전예약 이벤트"></a></li>
-                        </ul>
-                    </div>
-                    <div class="bx-controls bx-has-pager bx-has-controls-auto">
-                        <div class="bx-pager bx-default-pager">
-                            <div class="bx-pager-item"><a href="" data-slide-index="0"
-                                                          class="bx-pager-link active">1</a></div>
-                            <div class="bx-pager-item"><a href="" data-slide-index="1" class="bx-pager-link">2</a></div>
-                            <div class="bx-pager-item"><a href="" data-slide-index="2" class="bx-pager-link">3</a></div>
-                            <div class="bx-pager-item"><a href="" data-slide-index="3" class="bx-pager-link">4</a></div>
-                            <div class="bx-pager-item"><a href="" data-slide-index="4" class="bx-pager-link">5</a></div>
-                            <div class="bx-pager-item"><a href="" data-slide-index="5" class="bx-pager-link">6</a></div>
                         </div>
-                        <div class="bx-controls-auto">
-                            <div class="bx-controls-auto-item"><a class="bx-start active" href="">Start</a></div>
-                            <div class="bx-controls-auto-item"><a class="bx-stop" href="">Stop</a></div>
+                        <div class="theme-bottom">
+                            <div class="theme-bottom-top">
+                                하나 증권이 Pick한 Hot한 테마들에 투자해보세요.
+                            </div>
+                            <div class="theme-bottom-bottom">
+                                <button class="theme-report-button"> 리포트 더 보기</button>
+                                <button class="theme-performance-button"> 투자 성과 확인하기</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- 기존 롤링 소스 => 주석처리 -->
-                <!-- 기존 롤링 소스 => 주석처리 -->
+                    <div class="sector">
+                        <div class="sector-top">
+                            <div class="sector-top-top">
+            <span class="emoji-with-circle">
+                <span>🇰🇷</span>
+            </span>
 
-                <!-- <ul class="list-event">
-              <li><a href="/corebbs5/eventIng/list/list.cmd"><img src="/templets/main/img/MAIN/main_evtbanner_default.png" width="468" height="120" alt="" /></a></li>
-            </ul>  -->
-            </div>
-            <!--// EVENT -->
-        </div>
-        <!--// BOARD -->
-
-        <!-- RESERCH CENTER -->
-        <div id="maincon-rc" class="reserch-center">
-            <h2>RESEARCH CENTER</h2>
-            <!-- <div class="banner">매경 Best 리서치 2년 연속 1위</div> -->
-            <ul id="research-area" class="list-reserch clearfix">
-                <li>
-                    <a href="/main/research/research/list.cmd?pid=1&amp;cid=1&amp;bbsCd=2237&amp;bbsSeq=1275923">
-                        <img src="/templets/main/img/MAIN/img_rc_01.gif" width="237" height="128" alt="">
-                        <h3>자산전략</h3>
-                        <span class="date">2023.08.29</span>
-                        <p class="title ellipsis">[CrediVille] 아낌없이 주는 은행 </p>
-                    </a>
-                </li>
-                <li>
-                    <a href="/main/research/research/list.cmd?pid=2&amp;cid=1&amp;bbsCd=1260&amp;bbsSeq=1275929">
-                        <img src="/templets/main/img/MAIN/img_rc_02.gif" width="237" height="128" alt="">
-                        <h3>주식전략</h3>
-                        <span class="date">2023.08.29</span>
-                        <p class="title ellipsis">[Quant Model Portfolio] 연말 ‘실적’ 팩터로는 2% 부족, 개인 순매수 팩터 관심 </p>
-                    </a>
-                </li>
-                <li>
-                    <a href="/main/research/research/list.cmd?pid=3&amp;cid=1&amp;bbsCd=2210&amp;bbsSeq=1275927">
-                        <img src="/templets/main/img/MAIN/img_rc_03.gif" width="237" height="128" alt="">
-                        <h3>산업/기업</h3>
-                        <span class="date">2023.08.29</span>
-                        <p class="title ellipsis">메타바이오메드(059210.KQ): 최대 실적 랠리의 서막, 초저평가된 K의료기기 업체</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="/main/research/research/list.cmd?pid=4&amp;cid=1&amp;bbsCd=2206&amp;bbsSeq=1275930">
-                        <img src="/templets/main/img/MAIN/img_rc_04.gif" width="237" height="128" alt="">
-                        <h3>Daily</h3>
-                        <span class="date">2023.08.29</span>
-                        <p class="title ellipsis">하루에 하나 0830 </p>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <!-- RESERCH CENTER -->
-
-        <!-- BANNER -->
-        <div class="banner-account">
-            <h2>지금 계좌를 만드세요.</h2>
-            <p>쉽고 빠른 계좌개설을 도와드리겠습니다.</p>
-            <a href="/main/customer/openAccount/CS_180100_P.cmd">계좌개설하기</a>
-        </div>
-        <!--// BANNER -->
-
-        <script type="text/javascript">
-            function checkUpDownJisu(PrdayCmpTp, obj) {
-                var list = $(obj).closest('dd');
-
-                var mark = "";
-                if (PrdayCmpTp == "+" || PrdayCmpTp == "1" || PrdayCmpTp == "2") {
-                    list.addClass("goUp")
-                    list.find('span:last').html('상승');
-
-                } else if (PrdayCmpTp == "-" || PrdayCmpTp == "4" || PrdayCmpTp == "5") {
-                    list.addClass("goDown")
-                    list.find('span:last').html('하락');
-                } else {
-
-                }
-                return mark;
-            }
-
-            function checkJisuStatus() {
-                $('.rate').each(function () {
-                    var rate = $(this).text();
-                    if (parseFloat(rate) < 0) {
-                        $(this).addClass("goDown");
-                        $(this).html(rate.replace(/\-/g, ''));
-                    } else {
-                        $(this).addClass("goUp");
-                    }
-                });
-            }
-
-            function overseasHover() {
-                $('.overseas .column a').hover(function () {
-                    $(this).addClass('on');
-                }, function () {
-                    $(this).removeClass('on');
-                });
-            }
-
-            function derivativeTab() {
-                $('.list-derivative.domestic-ver').show();
-                var derivativeBtn = $('.derivative-btn li');
-
-                derivativeBtn.children('a').click(function (e) {
-                    derivativeBtn.removeClass('active');
-                    $(this).parent('li').addClass('active');
-                    if ($('.domestic').hasClass('active')) {
-                        $('.list-derivative.domestic-ver').show().attr('aria-hidden', false);
-                        $('.list-derivative.overseas-ver').hide().attr('aria-hidden', true);
-                        $('.domestic > a').attr('aria-selected', true);
-                        $('.overseas > a').attr('aria-selected', false);
-                    } else {
-                        $('.list-derivative.overseas-ver').show().attr('aria-hidden', false);
-                        $('.list-derivative.domestic-ver').hide().attr('aria-hidden', true);
-                        $('.overseas > a').attr('aria-selected', true);
-                        $('.domestic > a').attr('aria-selected', false);
-                    }
-                    e.preventDefault();
-                });
-            }
-
-            $(document).ready(function () {
-                var eventImgCnt = Number("6");
-                MainBanner.init();
-                FirstVisit.init();
-                JisuRolling.init();
-                MainTab.init();
-                if (eventImgCnt > 0) {
-                    EventRolling.init();
-                }
-                ResearchOpener.init();
-                overseasHover();
-                derivativeTab();
-
-                //$('#maincon-info .info-wrap:eq(' + Math.floor(Math.random() * 3) + ') .btn-tab').trigger('click');
-
-                if (hanaw.jisu && hanaw.jisu.data) {
-                    var jisuBinder = manager.addBinder("jisuInfo", true);
-                    jisuBinder.bind(hanaw.jisu.data);
-                    checkJisuStatus();
-
-                    setInterval(function () {
-
-                        $.ajax({
-                            url: get__POLLING_DOMAIN() + "/pub/js/jisu_json.js?__r=" + Math.random(),
-                            dataType: "script",
-                            crossDomain: true,
-                            success: function (data) {
-                                try {
-                                    jisuBinder.bind(hanaw.jisu.data);
-                                    checkJisuStatus();
-                                } catch (e) {
-                                    console.log("hanaw.jisu.data_update :" + e.message);
-                                }
-                            }
-                        });
-                    }, 20000);
-                }
-            });//ready end
-
-        </script>
-    </div>
-
-    <div id="sidebar" class="sidebar">
-        <button type="button" class="open-sidebar-btn imgBtn" title="">사이드바 열기</button>
-        <!-- <div class="kakao">
-          <a href="/main/customer/customer/CS_061500_P.cmd" class="btn-kakao" aria-label="하나증권 자산관리 SSAM으로 이동">우리 친구해요~</a>
-        </div> -->
-        <!-- LOGIN / LOGOUT -->
-        <a href="/main/customer/login/index.cmd" class="btn-login fold">로그인</a>
-        <!--// LOGIN / LOGOUT -->
-
-        <div class="accodion">
-            <!-- LOGIN / INFO -->
-            <div class="accordion-selector expand" id="sidebar-userinfo">
-                <h4 class="accordion-title">
-                    <span class="icon icon-login"></span>
-                    <a id="access-personal" href="#">
-                        <span class="txt-login"><span>로그인</span><span class="expand">이 필요합니다.</span></span>
-                        <span class="toggle">열림</span>
-                    </a>
-                </h4>
-            </div>
-
-            <div class="accordion-panel">
-                <div class="btns tac mb10">
-                    <button type="button" onclick="location.href='/main/customer/login/index.cmd'"
-                            class="btn btn-green md w120">로그인
-                    </button>
-                    <button type="button" onclick="location.href='/main/customer/member/CS_020200_P.cmd'"
-                            class="btn btn-gray md w120">회원가입
-                    </button>
-                </div>
-            </div>
-            <!--// LOGIN / INFO -->
-
-            <!-- MY ASSETS -->
-            <div class="accordion-selector" id="sidebar-todayinfo">
-                <h4 class="accordion-title">
-                    <span class="icon icon-assets"></span>
-                    <a href="#" class="txtbasic">나의<span class="expand">&nbsp;</span>자산 <span class="expand">(2023.08.29)</span>
-                        <span class="toggle">열림</span>
-                    </a>
-                </h4>
-            </div>
-
-            <div class="accordion-panel">
-                <form action="/main/main/getSideTodayInfo.cmd">
-                    <input type="hidden" name="id" value="sidebar-todayinfo">
-                    <!-- 톰켓 경고 -->
-                    <div class="my-balance tar">
-                        <span class="sidebar-balance f24 green">0</span>
-                        <span class="won f16 green">원</span>
+                                <span class="emoji-with-circle">
+                <span>🔥</span>
+            </span>
+                            </div>
+                            <div class="sector-top-bottom">
+                                섹터 성장주 집중 전략
+                            </div>
+                        </div>
+                        <div class="sector-bottom">
+                            <div class="sector-bottom-top">
+                                하나 증권이 Pick한 Hot한 섹터들에 투자해보세요.
+                            </div>
+                            <div class="sector-bottom-bottom">
+                                <button class="sector-report-button"> 리포트 더 보기</button>
+                                <button class="sector-performance-button"> 투자 성과 확인하기</button>
+                            </div>
+                        </div>
                     </div>
-                    <a href="/main/bank/asset/OB_010101_M.cmd" class="btn-detail f14">종합잔고조회</a>
-                    <div class="sidebar-box">
-                        <h5 class="sidebar-box-title f16">알림사항</h5>
-                        <div id="sidebar-todayinfo-notice" class="sidebar-box-contents f16 ellipsis">알림이 없습니다.</div>
+
+                    <div class="daega">
+                        <div class="daega-top">
+                            <div class="daega-top-top">
+            <span class="emoji-with-circle">
+                <span>🇰🇷</span>
+            </span>
+
+                                <span class="emoji-with-circle">
+                <span>🔥</span>
+            </span>
+                            </div>
+                            <div class="daega-top-bottom">
+                                대가 성장주 집중 전략
+                            </div>
+                        </div>
+                        <div class="daega-bottom">
+                            <div class="daega-bottom-top">
+                                하나 증권이 Pick한 Hot한 대가들에 투자해보세요.
+                            </div>
+                            <div class="daega-bottom-bottom">
+                                <button class="daega-report-button"> 리포트 더 보기</button>
+                                <button class="daega-performance-button"> 투자 성과 확인하기</button>
+                            </div>
+                        </div>
                     </div>
-                </form>
-                <div id="side-bar-loading-div2" class="side-bar-loading-div hidden">
-                    <img src="/templets/main/img/common/loading.gif" class="side-bar-loading-img" alt="로딩중">
+
                 </div>
-            </div>
-            <!--// MY ASSETS -->
-        </div>
+                <div class="line2">
+                    <div class="mine">
+                        <div class="mine-top">
+                            <div class="mine-top-top">
+            <span class="emoji-with-circle">
+                <span>🇰🇷</span>
+            </span>
 
-        <!-- MY MENU -->
-        <!--// MY MENU -->
-
-        <!-- FAVORITE -->
-        <!--// FAVORITE -->
-
-        <!-- LIST -->
-        <div class="side-list">
-            <ul class="list-icon clearfix">
-                <li><a href="/main/bank/transfer/OB_030101_S1.cmd" class="link-1">즉시이체</a></li>
-                <li><a href="/main/bank/asset/OB_010101_M.cmd" class="link-2">잔고조회</a></li>
-                <li class="expand"><a href="/main/finance/trade/FP_030101_P1.cmd" class="link-3">펀드매매</a></li>
-                <li><a href="/main/customer/customer/CS_060600_P.cmd" class="link-4">신용융자<br>담보대출</a></li>
-                <li><a href="/main/wts/main/WT_010601_P.cmd" class="link-5">신용/대출<br>가능종목</a></li>
-                <li>
-                    <button type="button" id="btn-side-menu" class="btn-more">메뉴 더보기</button>
-                </li>
-            </ul>
-            <ul class="list-txt clearfix tac">
-                <!-- <li><a href="/main/customer/qna/CS_080510_S1.cmd">손님불편접수</a></li> -->
-                <li><a href="/main/customer/qna/CS_080504_S1.cmd">전자민원접수</a></li>
-                <li>
-                    <a href="http://dis.kofia.or.kr/fs/dis2/com/COMOutItemAnn.jsp?certifyKey=56b5dcf368687fc83006dbd912ef0320168-7b7e"
-                       target="_blank" aria-label="상품공시실 새창 열림">상품공시실</a></li>
-            </ul>
-        </div>
-        <!--// LIST -->
-
-        <div id="bannerChatArea" class="banner-chat">
-            <a href="javascript:void(0)" class="banner-chat-link j-goChatBot">
-                <span class="txt type1" style="opacity: 1;">무엇을<br>도와드릴까요?</span>
-                <span class="txt type2" style="opacity: 0;">하나증권<br>상담챗봇입니다.</span>
-            </a>
-            <script type="text/javascript">
-                $(document).ready(function () {
-
-                    //아이콘 말풍선
-                    var $chatTxt1 = $('.banner-chat .txt.type1'), $chatTxt2 = $('.banner-chat .txt.type2');
-                    chatAni();
-                    setInterval(chatAni, 10600);
-
-                    function chatAni() {
-                        $chatTxt1.animate({opacity: 1}, 300);
-                        $chatTxt2.animate({opacity: 0}, 300);
-                        setTimeout(function () {
-                            $chatTxt1.animate({opacity: 0}, 300);
-                            $chatTxt2.animate({opacity: 1}, 300);
-                        }, 5000);
-                    }
-
-                    var pChatBot;
-                    //var popupChatBot;
-                    $(".j-goChatBot").on("click", function () {
-                        var w = "";
-                        var h = "";
-                        var params = "";
-                        params += "device=" + __DEVICE;
-
-                        var userAgent = navigator.userAgent.toLowerCase();
-                        if ((navigator.appName == 'Netscape' && userAgent.search('trident') != -1) || (userAgent.indexOf("msie") != -1)) {
-                            //ie
-                            params += "&browser=ie";
-                            w = "375";
-                            h = "810";
-                        } else {
-                            //ie이외
-                            params += "&browser=chrome";
-                            w = "365";
-                            h = "810";
-                        }
-
-                        var popOption = "width=" + w + "px, height=" + h + "px, scrollbars=no, resizable=no, location=no, menubar=no, toolbar=no, fullscree=no, status=no, directories=no";
-                        //var popOption = "width=363px, height=800px, resizable=no,status=no,toolbar=no,menubar=no,location=no,scrollbars=no";
-
-                        if (typeof (pChatBot) == 'undefined' || pChatBot.closed) {
-                            popupChatBot = window.open("/common/view/chatbotPopup.jsp?" + params, "chatbot", popOption);
-                        }
-                    });
-                });
-            </script>
-            <!-- 채팅영역 -->
-            <div class="banner-chat-box j-chatBot" id="ifrmCB">
-
-            </div>
-            <!-- // 채팅영역 -->
-            <!-- 2020-10-05버튼추가 -->
-            <button type="button" id="btnChatClose" class="btn btn-chat-close">오늘 그만보기</button>
-            <!-- //2020-10-05버튼추가 -->
-        </div>
-        <!-- // CHATBOT -->
-
-        <a href="#" class="j-go-top" title="페이지 상단으로 이동">TOP</a>
-    </div>
-    <div id="footer">
-        <div class="inner">
-            <div class="footerMenu">
-                <ul>
-                    <li><span id="access-footer" class="tit" tabindex="0">주요서비스 메뉴</span></li>
-                    <li><span class="tit" tabindex="0">온라인지점</span>
-                        <ul>
-                            <li><a href="/main/bank/asset/OB_010101_M.cmd">종합잔고조회</a></li>
-                            <li><a href="/main/bank/transfer/OB_030101_S1.cmd">즉시이체</a></li>
-                            <li><a href="/main/bank/online/OB_041001.cmd">자동이체서비스</a></li>
-                            <li><a href="/main/bank/credit/OB_050201_T1.cmd">대출신청</a></li>
-                            <li><a href="/main/bank/credit/OB_050301_T1.cmd">현금상환</a></li>
-                            <li><a href="/main/bank/subscription/OB_060400.cmd">ELS/DLS 청약</a></li>
-                            <li><a href="/main/bank/online/OB_040200.cmd">온라인상품계좌개설</a></li>
-                            <li><a href="/main/bank/personalMng/OB_020101.cmd">개인정보 조회/변경</a></li>
-                        </ul>
-                    </li>
-                    <li><span class="tit" tabindex="0">금융투자상품</span>
-                        <ul>
-                            <li><a href="/main/finance/CMA/FP_040100.cmd">CMA서비스 안내</a></li>
-                            <li><a href="/main/finance/trade/FP_030101_P1.cmd">펀드매매</a></li>
-                            <li><a href="/main/finance/trade/FP_030808_T1.cmd">연금저축펀드검색</a></li>
-                            <li><a href="/main/finance/els/FP_050100_P1.cmd">ELS/DLS 상품</a></li>
-                            <!-- <li><a href="/main/finance/bond/FP_080104_P1.cmd">장외채권매매</a></li> -->
-                            <li><a href="/main/finance/bond2/FP_080402_T1_TAB.cmd">장내채권매매</a></li>
-                            <!-- <li><a href="/main/research/research/list.cmd?pid=3&cid=1">추천포트폴리오</a></li>
-                            <li><a href="/main/finance/assetmanager/FP_010106_P1.cmd">펀드클리닉 서비스</a></li>
-                            <li><a href="/main/finance/asset/FP_010501_S.cmd">은퇴서비스</a></li>
-                            <li><a href="/main/finance/asset/FP_010601_T1.cmd">세무상담</a></li>
-                            <li><a href="/main/finance/trade/FP_030101_P1.cmd">펀드매매</a></li>
-                            <li><a href="/main/finance/els/FP_050100_P1.cmd">파생결합상품</a></li>
-                            <li><a href="/main/finance/insurance/FP_070100_M.cmd">보험상품</a></li>
-                            <li><a href="/main/finance/bond/FP_080104_P1.cmd">장외채권주문</a></li> -->
-                        </ul>
-                    </li>
-                    <li><span class="tit" tabindex="0">주식파생상품</span>
-                        <ul>
-                            <li><a href="/WEB-APP/wts/main/index.cmd?screen=0101">주식현재가</a></li>
-                            <li><a href="/WEB-APP/wts/main/index.cmd?screen=0110">ELW현재가</a></li>
-                            <li><a href="/WEB-APP/wts/main/index.cmd?screen=0401">선물현재가</a></li>
-                            <li><a href="/WEB-APP/wts/main/index.cmd?screen=0301">주식주문</a></li>
-                            <li><a href="/WEB-APP/wts/main/index.cmd?screen=0400">선물/옵션주문</a></li>
-                            <li><a href="/WEB-APP/wts/main/index.cmd?screen=0304">주식잔고</a></li>
-                            <li><a href="/WEB-APP/wts/main/index.cmd?screen=0405">선물/옵션잔고</a></li>
-                        </ul>
-                    </li>
-                    <li><span class="tit" tabindex="0">고객지원</span>
-                        <ul>
-                            <li><a href="/main/customer/openAccount/CS_180100_P.cmd">계좌개설안내</a></li>
-                            <li><a href="/main/customer/member/CS_020200_P.cmd">ID등록안내</a></li>
-                            <li><a href="/main/customer/customer/CS_050100_M.cmd">HTS 거래시스템</a></li>
-                            <li><a href="/main/customer/customer/CS_050200_M.cmd">모바일트레이딩 안내</a></li>
-                            <li><a href="/main/customer/customer/CS_060200.cmd">수수료안내</a></li>
-                            <li><a href="/corebbs5/qna/list/list.cmd">고객의소리(Q&amp;A)</a></li>
-                            <li><a href="/corebbs5/faq/list/list.cmd?srchCate1=A">자주하는질문(FAQ)</a></li>
-                            <li><a href="/main/customer/customer/CS_100101_P.cmd">온라인 보안센터</a></li>
-                        </ul>
-                    </li>
-                    <li class="last-child">
-                        <ul class="pt5">
-
-                            <li class="bgn"><a href="http://fc.hanaw.com/" target="_blank" title="투자권유 대행인 새창열기">
-                                <img src="/templets/main/img/banner_footer_02.gif" alt="투자권유 대행인"></a></li>
-                            <li class="bgn"><a href="https://pension.hanaw.com:444/" target="_blank" title="퇴직연금 새창열기">
-                                <img src="/templets/main/img/banner_footer_03.gif" alt="퇴직연금"></a></li>
-                            <li class="bgn"><a href="https://rc.hanaw.com" target="_blank" title="원격지원 새창열기">
-                                <!-- <a href="#" target="_blank" title="원격지원 새창열기" class="linkRemoteSupport"> -->
-                                <img src="/templets/main/img/banner_footer_04.gif" alt="원격지원"></a></li>
-                            <li class="bgn"><a href="/corebbs5/bidAnnuce/list/list.cmd" target="_blank"
-                                               title="입찰공고 새창열기">
-                                <img src="/templets/main/img/banner_footer_05.gif" alt="입찰공고"></a></li>
-
-
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="guide">
-
-            <div class="guide-group">
-                <ul class="footerLink">
-                    <li><a href="http://openhanafn.ttmap.co.kr/content_dt.jsp" target="_blank"
-                           title="영업점안내 새창열기">영업점안내</a>
-                    </li>
-                    <li><a href="/main/customer/customer/CS_100403_P.cmd">전자금융거래 이용자 유의사항</a></li>
-                    <li><a href="/main/customer/customer/CS_070100_P.cmd">이용약관</a></li>
-                    <li><a href="/main/customer/customer/CS_070300.cmd" class="b">개인정보처리방침</a></li>
-                    <li><a href="/main/customer/persnalInfo/CS_170200_P.cmd?tabIndex=0">개인(신용)정보 열람 및 이용·제공 현황 조회</a>
-                    </li>
-                    <li><a href="/main/customer/persnalInfo/CS_170200_P.cmd?tabIndex=1">그룹사간 고객정보 제공내역 조회</a></li>
-                    <li><a href="/main/customer/customer/CS_070200.cmd?page=3">보호금융상품등록부</a></li>
-                    <li><a href="/main/customer/customer/CS_070200.cmd?page=5">신용정보활용체제</a></li>
-                    <li>
-                        <a href="http://dis.kofia.or.kr/fs/dis2/com/COMOutItemAnn.jsp?certifyKey=56b5dcf368687fc83006dbd912ef0320168-7b7e"
-                           target="_blank" title="상품공시실 새창 열림">상품공시실</a></li>
-                    <li><a href="/main/customer/qna/CS_080504_S1.cmd">전자민원접수</a></li>
-                    <li><a href="/main/company/company/CO_010501_P.cmd">스튜어드십 코드</a></li>
-                </ul>
-
-                <div class="familysite">
-                    <div class="sbox">
-                        <a href="#" class="familysite-opener" title="하나네트워크 패밀리 사이트 보기">하나네트워크</a>
+                                <span class="emoji-with-circle">
+                <span>🔥</span>
+            </span>
+                            </div>
+                            <div class="mine-top-bottom">
+                                나만의 성장주 집중 전략
+                            </div>
+                        </div>
+                        <div class="mine-bottom">
+                            <div class="mine-bottom-top">
+                                하나 증권이 Pick한 Hot한 항목들에 투자해보세요.
+                            </div>
+                            <div class="mine-bottom-bottom">
+                                <button class="mine-report-button"> 리포트 더 보기</button>
+                                <button class="mine-performance-button"> 투자 성과 확인하기</button>
+                            </div>
+                        </div>
                     </div>
-                    <ul class="familisite-list">
-                        <li><a href="http://www.hanafn.com" target="_blank">하나금융그룹</a></li>
-                        <li><a href="https://www.kebhana.com" target="_blank">하나은행</a></li>
-                        <li><a href="https://www.hanaw.com" target="_blank">하나증권</a></li>
-                        <li><a href="https://www.hanacard.co.kr" target="_blank">하나카드</a></li>
-                        <li><a href="https://www.hanacapital.co.kr" target="_blank">하나캐피탈</a></li>
-                        <li><a href="https://www.hanalife.co.kr" target="_blank">하나생명</a></li>
-                        <li><a href="https://www.hanasavings.com" target="_blank">하나저축은행</a></li>
-                        <li><a href="http://www.hanatrust.com" target="_blank">하나자산신탁</a></li>
-                        <li><a href="https://hana-aamc.com" target="_blank">하나대체투자자산운용</a></li>
-                        <li><a href="http://www.hanais.co.kr" target="_blank">하나펀드서비스</a></li>
-                        <li><a href="https://www.hanati.co.kr" target="_blank">하나금융티아이</a></li>
-                        <li><a href="https://www.finnq.com" target="_blank">핀크</a></li>
-                        <li><a href="http://www.hana-nanum.com" target="_blank">하나금융나눔재단</a></li>
-                        <li><a href="http://www.hanafoundation.or.kr" target="_blank">하나금융공익재단</a></li>
-                        <li><a href="http://www.hanacarecenter.or.kr" target="_blank">하나케어센터</a></li>
-                        <li><a href="http://www.hanamiso.org" target="_blank">하나미소금융재단</a></li>
-                        <li><a href="http://www.hana.hs.kr" target="_blank">하나고등학교</a></li>
-                    </ul>
-                </div>
-                <script type="text/javascript">
-                    (function () {
 
-                        var familysite = $('.familysite');
-                        var opener = familysite.find('.familysite-opener');
-                        var list = familysite.find('.familisite-list');
-                        var delay = null;
+                    <div class="extra1">
+                        <div class="extra1-top">
+                            <div class="extra1-top-top">
+            <span class="emoji-with-circle">
+                <span>✍️</span>
+            </span>
 
-                        function openList() {
-                            if (delay !== null) {
-                                clearTimeout(delay);
-                            }
-                            list.addClass('opened');
-                            list.find('a:first').focus();
-                        }
-
-                        function closeList(e) {
-                            if (e && (e.type === 'keydown' || e.type === 'click')) {
-                                if (delay !== null) {
-                                    clearTimeout(delay);
-                                }
-                                list.removeClass('opened');
-                                opener.focus();
-
-                                return;
-                            }
-                            delay = setTimeout(function () {
-                                list.removeClass('opened');
-                                opener.focus();
-                            }, 300);
-                        }
-
-                        opener.on('click', function (e) {
-                            e.preventDefault();
-                            if (list.hasClass('opened')) {
-                                closeList(e);
-                            } else {
-                                openList();
-                            }
-                        });
-                        list.find('a').on('click', function () {
-                            closeList(e);
-                        });
-                        list.find('a').on('keydown.closefamily', function (e) {
-                            var keyCode = e.keyCode;
-                            if (keyCode === 27) {
-                                closeList(e);
-                            }
-                        });
-                        list.find('a:first').on('keydown', function (e) {
-                            var keycode = e.keyCode || e.which;
-                            if (e.shiftKey && keycode == 9) {
-                                e.preventDefault();
-                                closeList(e);
-                            }
-                        });
-                        list.find('a:last').on('keydown', function (e) {
-
-                            var keycode = e.keyCode || e.which;
-                            if (!e.shiftKey && keycode == 9) {
-                                e.preventDefault();
-                                closeList(e);
-                            }
-                        });
-
-                        opener.add(list).on('mouseleave', function (e) {
-                            closeList(e);
-                        });
-
-                        list.on('mouseenter', function (e) {
-                            openList();
-                        });
-                    })();
-                </script>
-                <div class="sns-footer">
-                    <ul>
-                        <li><a href="https://www.facebook.com/hanadtpage" target="_blank" title="하나증권 페이스북 새창열기 "><img
-                                src="/templets/main/img/icon_facebook.gif" alt="페이스북"></a></li>
-                        <li><a href="http://blog.naver.com/hanadtsec" target="_blank" title="하나증권 블로그 새창열기"><img
-                                src="/templets/main/img/icon_blog.gif" alt="블로그"></a></li>
-                    </ul>
-                </div>
-
-                <div class="cscenter">
-                    <div class="imgtext">하나증권 고객지원센터 1588-3111 | 프라임케어실 투자상담 02-785-5000<br>해외선물 02-785-7111(24시간) |
-                        해외주식
-                        02-3771-3771(24시간)
+                                <!--                                <span class="emoji-with-circle">-->
+                                <!--&lt;!&ndash;                <span>🔥</span>&ndash;&gt;-->
+                                <!--            </span>-->
+                            </div>
+                            <div class="extra1-top-bottom">
+                                추가1 성장주 집중 전략
+                            </div>
+                        </div>
+                        <div class="extra1-bottom">
+                            <div class="extra1-bottom-top">
+                                하나 증권이 Pick한 Hot한 추가1 항목들에 투자해보세요.
+                            </div>
+                            <div class="extra1-bottom-bottom">
+                                <!--                                <button class="extra1-report-button"> 리포트 더 보기</button>-->
+                                <button class="extra1-performance-button"> 만들어 보기</button>
+                            </div>
+                        </div>
                     </div>
-                    <a href="http://www.hanafn.com/main.do" title="하나금융그룹 행복한 금융" target="_blank">
-                        <img src="/templets/main/img/FP/blank.gif" style="width:100%; height:100%" alt="하나금융그룹 행복한 금융">
-                    </a>
-                </div>
-                <div class="copyright">
-                    <div class="hidden">
-                        주소 : 서울특별시 영등포구 의사당대로 82(여의도동), 사업자등록번호 : 116-81-05992<br>
-                        Copyright ⓒ 2014 Hana Securities Co.,Ltd. All Rights Reserved.
+
+                    <div class="extra2">
+                        <div class="extra2-top">
+                            <div class="extra2-top-top">
+            <span class="emoji-with-circle">
+                <span>🇰🇷</span>
+            </span>
+
+                                <span class="emoji-with-circle">
+                <span>🔥</span>
+            </span>
+                            </div>
+                            <div class="extra2-top-bottom">
+                                추가2 성장주 집중 전략
+                            </div>
+                        </div>
+                        <div class="extra2-bottom">
+                            <div class="extra2-bottom-top">
+                                하나 증권이 Pick한 Hot한 추가2 항목들에 투자해보세요.
+                            </div>
+                            <div class="extra2-bottom-bottom">
+                                <button class="extra2-report-button"> 리포트 더 보기</button>
+                                <button class="extra2-performance-button"> 투자 성과 확인하기</button>
+                            </div>
+                        </div>
                     </div>
-                    <img src="/templets/main/img/copyright.gif?ver20220630" alt="">
+
                 </div>
             </div>
 
         </div>
     </div>
-
+    <div class="startegy-footer"></div>
 </div>
+<script>
+    let selectedDiv = null;
+
+    function changeColor(div) {
+        if (selectedDiv) {
+            selectedDiv.style.backgroundColor = '';
+        }
+        div.style.backgroundColor = '#F6EDFF';
+        selectedDiv = div;
+    }
+</script>
 </body>
+
 </html>
