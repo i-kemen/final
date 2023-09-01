@@ -5,22 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agree Component</title>
     <style>
+        .di-wrap {
+            width: 1440px;
+            height: 1000px;
+            /*display: flex;*/
+            /*flex-direction: column;*/
+            /*정중앙 배치 */
+            /*position: absolute;*/
+            /*top: 50%;*/
+            /*left: 50%;*/
+            /*transform: translate(-50%, -50%);*/
+            /*가로 기준 중앙 배치 */
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         .di-header {
             display: flex;
             align-items: center;
             justify-content: space-between; /* 이미지와 버튼 사이의 간격을 최대화하여 배치 */
-            padding: 20px;
-            width: 100vw;
-            height : 100px
+            width: 1440px;
+            height: 100px
         }
 
         .image-1qpro {
-            width: 80px; /* 원하는 너비 값으로 변경 */
-            height: 100px; /* 높이를 자동으로 조정하여 비율 유지 */
+            width: 60px; /* 원하는 너비 값으로 변경 */
+            height: 66px; /* 높이를 자동으로 조정하여 비율 유지 */
         }
 
         .di-main-1 {
-            height: 650px;
+            height: 800px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -65,6 +80,7 @@
             font-family: "하나2.0 B";
             font-size: 20px;
             color: #ffffff;
+            height: 50px;
         }
 
         .apple-button:hover {
@@ -94,6 +110,7 @@
             font-family: "하나2.0 B";
             font-size: 20px;
             color: #ffffff;
+            height: 50px;
         }
 
         .google-button:hover {
@@ -141,6 +158,8 @@
             font-size: 20px;
             color: black;
             text-align: center;
+            width : 900px;
+            height : 400px;
         }
 
         .modal-content p {

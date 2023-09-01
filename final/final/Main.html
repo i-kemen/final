@@ -5,6 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>전략 선택 페이지</title>
     <style>
+
+        .strategy-wrap {
+            width: 1440px;
+            height: 1000px;
+            /*display: flex;*/
+            /*flex-direction: column;*/
+            /*정중앙 배치 */
+            /*position: absolute;*/
+            /*top: 50%;*/
+            /*left: 50%;*/
+            /*transform: translate(-50%, -50%);*/
+            /*가로 기준 중앙 배치 */
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .strategy-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* 이미지와 버튼 사이의 간격을 최대화하여 배치 */
+            width: 1440px;
+            height: 100px
+        }
+
+        .image-1qpro {
+            width: 60px; /* 원하는 너비 값으로 변경 */
+            height: 66px; /* 높이를 자동으로 조정하여 비율 유지 */
+        }
         .emoji-with-circle {
             position: relative;
             display: inline-block;
@@ -36,14 +65,11 @@
 
         }
 
-        .image-1qpro {
-            width: 80px; /* 원하는 너비 값으로 변경 */
-            height: auto; /* 높이를 자동으로 조정하여 비율 유지 */
-        }
 
         .main-wrap {
             display: flex;
             margin: 0;
+            height : 800px;
         }
 
         .strategy-sidebar,
@@ -552,7 +578,7 @@
         }
 
         .faq {
-            margin-top : 200px;
+            margin-top : 450px;
             background-color: #FAFAFA;
             padding: 20px;
             display: flex;
@@ -632,7 +658,7 @@
             </div>
         </div>
         <div class="strategy-main">
-            <div style="padding-left: 30px;">
+            <div style="padding-left: 30px; height : 100px;">
                 <h4>내 포트폴리오로 운용하고 싶은 전략을 선택하세요.</h4>
             </div>
             <div class="strategy-container">
@@ -657,7 +683,7 @@
                                 하나 증권이 Pick한 Hot한 테마들에 투자해보세요.
                             </div>
                             <div class="theme-bottom-bottom">
-                                <button class="theme-report-button"> 리포트 더 보기</button>
+                                <button class="theme-report-button" onclick="showTheme()"> 리포트 더 보기</button>
                                 <button class="theme-performance-button"> 투자 성과 확인하기</button>
                             </div>
                         </div>
@@ -810,6 +836,9 @@
         }
         div.style.backgroundColor = '#F6EDFF';
         selectedDiv = div;
+    }
+    function showTheme(){
+        window.location.href = "Theme.html"
     }
 </script>
 </body>
