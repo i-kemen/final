@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Slider Example</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .main-visual {
+      position: relative;
+      overflow: hidden;
+    }
+    .slider-wrapper {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .slide {
+      flex: 0 0 100%;
+      min-width: 100%;
+      max-height: 100vh;
+      position: relative;
+    }
+    .overlay-image {
+      position: absolute;
+      top: 20%;
+      left: 20%;
+      z-index: 1;
+    }
+    .main-visual__control {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .main-visual__control button {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <section class="main-visual">
+    <div class="slider-wrapper">
+      <div class="slide">
+        <img src="img/jal.png" width="100%" style="background: #0E8C8D">
+        <img src="img/hanada.png" class="overlay-image" style="width: 600px; height: 350px;">
+      </div>
+      <div class="slide">
+        <img src="img/jal.png" width="100%" style="background: #FFFFFF">
+      </div>
+    </div>
+    <div class="main-visual__control">
+      <button class="swiper-button-play" type="button" title="슬라이드 일시정지" id="pause">
+        <span class="blind">슬라이드 일시정지</span>
+      </button>
+      <div class="swiper-button-prev" title="이전 슬라이드 보기" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-bdc10488c10710ee10c3">
+        <span class="blind">이전 슬라이드 보기</span>
+      </div>
+      <div class="swiper-pagination swiper-pagination-fraction swiper-pagination-horizontal">
+        <span class="swiper-pagination-current">1</span> / <span class="swiper-pagination-total">2</span>
+      </div>
+      <div class="swiper-button-next" title="다음 슬라이드 보기" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-bdc10488c10710ee10c3">
+        <span class="blind">다음 슬라이드 보기</span>
+      </div>
+    </div>
+  </section>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const sliderWrapper = document.querySelector(".slider-wrapper");
+    const slides = document.querySelectorAll(".slide");
+    const pauseButton = document.getElementById("pause");
+    let currentIndex = 0;
+    let interval;
+
+    function goToSlide(index) {
+      sliderWrapper.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      goToSlide(currentIndex);
+    }
+
+    function startSlider() {
+      interval = setInterval(nextSlide, 2000);
+    }
+
+    function pauseSlider() {
+      clearInterval(interval);
+    }
+
+    pauseButton.addEventListener("click", pauseSlider);
+    startSlider();
+  });
+</script>
+</body>
+</html>
