@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            color: white;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        .pages {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            bottom: -100%;
+            transition: bottom .7s;
+
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+
+        .page:first-child {
+            bottom: 0;
+        }
+
+        .first {
+            background-color: #dc322f;
+        }
+
+        .second {
+            background-color: #073642;
+        }
+
+        .third {
+            background-color: #cb4b16;
+        }
+
+        .pagination {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .pagination > li {
+            list-style: none;
+            height: 20px;
+            width: 20px;
+            background: #000000;
+            border-radius: 50%;
+            margin-top: 10px;
+            transition: background .7s;
+        }
+
+        .pagination > li.active {
+            background: #ffffff;
+        }
+
+        .title {
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="pages">
+    <div class="first page">
+        <h2 class="title">스크롤하면 다음페이지로 넘어갑니다</h2>
+    </div>
+    <div class="second page">
+        <h2 class="title">원페이지 스크롤링입니다</h2>
+    </div>
+    <div class="third page">
+        <h2 class="title">공부열심히 합시다</h2>
+    </div>
+</div>
+<!-- 페이징 -->
+<ul class="pagination">
+</ul>
+<script>
+    window.onload = () => {
+        const Slider = function (pages, pagination) {
+            let slides = [],
+                btns = [],
+                count = 0,
+                current = 0,
+                touchstart = 0,
+                animation_state = false;
+
+            const init = () => {
+                slides = pages.children;
+                count = slides.length;
+                for (let i = 0; i < count; i++) {
+                    slides[i].style.bottom = -(i * 100) + '%';
+                    let btn = document.createElement('li');
+                    btn.dataset.slide = i;
+                    btn.addEventListener('click', btnClick)
+                    btns.push(btn);
+                    pagination.appendChild(btn);
+                }
+                btns[0].classList.add('active');
+            }
+
+            const gotoNum = (index) => {
+                if ((index != current) && !animation_state) {
+                    animation_state = true;
+                    setTimeout(() => animation_state = false, 500);
+                    btns[current].classList.remove('active');
+                    current = index;
+                    btns[current].classList.add('active');
+                    for (let i = 0; i < count; i++) {
+                        slides[i].style.bottom = (current - i) * 100 + '%';
+                    }
+                }
+            }
+
+            const gotoNext = () => current < count - 1 ? gotoNum(current + 1) : false;
+            const gotoPrev = () => current > 0 ? gotoNum(current - 1) : false;
+            const btnClick = (e) => gotoNum(parseInt(e.target.dataset.slide));
+            pages.ontouchstart = (e) => touchstart = e.touches[0].screenY;
+            pages.ontouchend = (e) => touchstart < e.changedTouches[0].screenY ? gotoPrev() : gotoNext();
+            pages.onmousewheel = pages.onwheel = (e) => e.deltaY < 0 ? gotoPrev() : gotoNext();
+
+            init();
+        }
+
+        let pages = document.querySelector('.pages');
+        let pagination = document.querySelector('.pagination');
+        let slider = new Slider(pages, pagination)
+    }
+
+</script>
+</body>
+</html>

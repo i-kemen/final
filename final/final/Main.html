@@ -1,846 +1,266 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>전략 선택 페이지</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
     <style>
 
-        .strategy-wrap {
-            width: 1440px;
-            height: 1000px;
-            /*display: flex;*/
-            /*flex-direction: column;*/
-            /*정중앙 배치 */
-            /*position: absolute;*/
-            /*top: 50%;*/
-            /*left: 50%;*/
-            /*transform: translate(-50%, -50%);*/
-            /*가로 기준 중앙 배치 */
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .strategy-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between; /* 이미지와 버튼 사이의 간격을 최대화하여 배치 */
-            width: 1440px;
-            height: 100px
-        }
-
-        .image-1qpro {
-            width: 60px; /* 원하는 너비 값으로 변경 */
-            height: 66px; /* 높이를 자동으로 조정하여 비율 유지 */
-        }
-        .emoji-with-circle {
-            position: relative;
-            display: inline-block;
-            margin: 10px; /* 각각의 이모지 사이의 간격을 조정하려면 마진 값을 조절하세요 */
-            z-index: 10;
-        }
-
-        .emoji-with-circle span {
-            display: inline-block;
-            font-size: 16px; /* 이모지 크기를 조정하려면 폰트 크기 값을 조절하세요 */
-        }
-
-        .emoji-with-circle::before {
-            content: '';
-            position: absolute;
-            width: 20px; /* 흰 원의 너비를 조정하려면 값을 조절하세요 */
-            height: 20px; /* 흰 원의 높이를 조정하려면 값을 조절하세요 */
-            border: 2px solid white;
-            border-radius: 50%;
-            background-color: white;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: -1; /* 흰 원을 이모지 뒤로 숨기기 위해 z-index 값을 설정합니다 */
-        }
-
-        .strategy-header {
-            position: sticky;
-
-        }
-
-
-        .main-wrap {
-            display: flex;
+        body {
             margin: 0;
-            height : 800px;
+            padding: 0;
+
         }
 
-        .strategy-sidebar,
-        .strategy-main {
-            border: 1px solid #ccc;
-            width: 1240px;
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 75px;
+            color: black;
+            background: white;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000; /* 다른 요소 위에 나타나게 함 */
         }
 
-        .strategy-sidebar {
-            width: 200px;
-            position: sticky;
-        }
-
-        .strategy-container {
+        .wrap {
             display: flex;
             flex-direction: column;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-left: 20px;
+            width: 100%;
+            margin-top: 75px; /* 헤더의 높이만큼 여백 추가 */
+            box-sizing: border-box;
+            padding: 0 1rem;
+        }
+
+        .main-visual {
+            position: relative;
+        }
+
+        .image-container {
+            position: relative;
+        }
+
+        .overlay-image {
+            position: absolute;
+            top: 20%;
+            left: 20%; /* 변경: 왼쪽에 겹치도록 설정 */
+            z-index: 1;
+        }
+
+
+        .main-visual img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-60%);
+            width: 1000px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        nav ul li {
             margin-right: 20px;
         }
 
-        .line1 {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
+        nav ul li:last-child {
+            margin-right: 0;
         }
 
-        .line2 {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-
-        .line1 > div {
-            border: 1px solid #ccc;
-            padding: 10px;
-            width: 300px;
-            height: 200px;
-        }
-
-        .line2 > div {
-            border: 1px solid #ccc;
-            padding: 10px;
-            width: 300px;
-            height: 200px;
-        }
-
-        .strategy-sidebar div {
-            /*display: block;*/
-            padding: 10px;
+        nav ul li a {
             text-decoration: none;
-            color: black;
-            border: 1px solid #ccc;
-            margin-bottom: 5px;
-            border-radius: 5px;
+            color: #333333;
+            transition: color 0.3s;
+            font-family: "하나2.0 M";
+            font-size: 20px;
+            font-weight: 700;
+
         }
 
-        .strategy-sidebar div:hover {
-            background-color: #f0f0f0;
+        nav ul li a:hover {
+            color: #008458;
         }
 
-        .theme-top {
-            background-image: url("img/s1.svg");
+        .main-visual3 {
+            width: 100%;
+            height: 550px;
+            background: #FFFFFF;
+            overflow: hidden;
+            position: relative;
         }
 
-        .theme-top-top {
-            height: 40px;
-        }
-
-        .theme-top-bottom {
-            height: 40px;
-            font-family: '하나2.0 M';
-            margin-left: 10px;
-        }
-
-        .theme-bottom-top {
-            height: 60px;
+        .card-list {
             display: flex;
-            /*justify-content: center;*/
-            align-items: center;
-            margin-left: 10px;
-            font-family: "하나2.0 R";
-            font-size: 13px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: moveRight 15s linear infinite;
         }
 
-        .theme-bottom-bottom {
-            height: 60px;
+        .card {
+            width: 280px;
+            height: 320px;
+            background: #ECECEC;
+            margin-right: 20px;
+            border-radius: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px; /* 버튼 사이 간격 조절 */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .theme-report-button {
-            padding: 10px 20px;
-            color: black;
-            background-color: #E5E5E5;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
-            font-family: "하나2.0 M";
-            /*font-weight: bolder;*/
+        @keyframes moveRight {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(50%); /* 5 cards * (280px + 20px) */
+            }
         }
 
-        .theme-report-button:hover {
-            background-color: #757575; /* hover 시 배경색 변경 */
-        }
+        /*footer*/
 
-        .theme-performance-button {
-            padding: 10px 20px;
-            color: white;
-            background-color: #332D41; /* 다른 버튼의 배경색 */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
-            font-family: "하나2.0 M";
-        }
-
-        .theme-performance-button:hover {
-            background-color: #AAAAAA; /* 다른 버튼의 hover 시 배경색 변경 */
-        }
-
-        .sector-top {
-            background-image: url("img/s2.svg");
-        }
-
-        .sector-top-top {
-            height: 40px;
-        }
-
-        .sector-top-bottom {
-            height: 40px;
-            font-family: '하나2.0 M';
-            margin-left: 10px;
-        }
-
-        .sector-bottom-top {
-            height: 60px;
-            display: flex;
-            /*justify-content: center;*/
-            align-items: center;
-            margin-left: 10px;
-            font-family: "하나2.0 R";
-            font-size: 13px;
-        }
-
-        .sector-bottom-bottom {
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px; /* 버튼 사이 간격 조절 */
-        }
-
-        .sector-report-button {
-            padding: 10px 20px;
-            color: black;
-            background-color: #E5E5E5;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
-            font-family: "하나2.0 M";
-            /*font-weight: bolder;*/
-        }
-
-        .sector-report-button:hover {
-            background-color: #757575; /* hover 시 배경색 변경 */
-        }
-
-        .sector-performance-button {
-            padding: 10px 20px;
-            color: white;
-            background-color: #332D41; /* 다른 버튼의 배경색 */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
-            font-family: "하나2.0 M";
-        }
-
-        .sector-performance-button:hover {
-            background-color: #AAAAAA; /* 다른 버튼의 hover 시 배경색 변경 */
-        }
-
-        .daega-top {
-            background-image: url("img/s3.svg");
-        }
-
-        .daega-top-top {
-            height: 40px;
-        }
-
-        .daega-top-bottom {
-            height: 40px;
-            font-family: '하나2.0 M';
-            margin-left: 10px;
-        }
-
-        .daega-bottom-top {
-            height: 60px;
-            display: flex;
-            /*justify-content: center;*/
-            align-items: center;
-            margin-left: 10px;
-            font-family: "하나2.0 R";
-            font-size: 13px;
-        }
-
-        .daega-bottom-bottom {
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px; /* 버튼 사이 간격 조절 */
-        }
-
-        .daega-report-button {
-            padding: 10px 20px;
-            color: black;
-            background-color: #E5E5E5;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
-            font-family: "하나2.0 M";
-            /*font-weight: bolder;*/
-        }
-
-        .daega-report-button:hover {
-            background-color: #757575; /* hover 시 배경색 변경 */
-        }
-
-        .daega-performance-button {
-            padding: 10px 20px;
-            color: white;
-            background-color: #332D41; /* 다른 버튼의 배경색 */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
-            font-family: "하나2.0 M";
-        }
-
-        .daega-performance-button:hover {
-            background-color: #AAAAAA; /* 다른 버튼의 hover 시 배경색 변경 */
-        }
-
-        .mine-top {
-            background-image: url("img/s4.png");
-        }
-
-        .mine-top-top {
-            height: 40px;
-        }
-
-        .mine-top-bottom {
-            height: 40px;
-            font-family: '하나2.0 M';
-            margin-left: 10px;
-        }
-
-        .mine-bottom-top {
-            height: 60px;
-            display: flex;
-            /*justify-content: center;*/
-            align-items: center;
-            margin-left: 10px;
-            font-family: "하나2.0 R";
-            font-size: 13px;
-        }
-
-        .mine-bottom-bottom {
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px; /* 버튼 사이 간격 조절 */
-        }
-
-        .mine-report-button {
-            padding: 10px 20px;
-            color: black;
-            background-color: #E5E5E5;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
-            font-family: "하나2.0 M";
-            /*font-weight: bolder;*/
-        }
-
-        .mine-report-button:hover {
-            background-color: #757575; /* hover 시 배경색 변경 */
-        }
-
-        .mine-performance-button {
-            padding: 10px 20px;
-            color: white;
-            background-color: #332D41; /* 다른 버튼의 배경색 */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
-            font-family: "하나2.0 M";
-        }
-
-        .mine-performance-button:hover {
-            background-color: #AAAAAA; /* 다른 버튼의 hover 시 배경색 변경 */
-        }
-
-        .extra1-top {
-            background-image: url("img/s5.png");
-        }
-
-        .extra1-top-top {
-            height: 40px;
-        }
-
-        .extra1-top-bottom {
-            height: 40px;
-            font-family: '하나2.0 M';
-            margin-left: 10px;
-        }
-
-        .extra1-bottom-top {
-            height: 60px;
-            display: flex;
-            /*justify-content: center;*/
-            align-items: center;
-            margin-left: 10px;
-            font-family: "하나2.0 R";
-            font-size: 13px;
-        }
-
-        .extra1-bottom-bottom {
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px; /* 버튼 사이 간격 조절 */
-        }
-
-        .extra1-report-button {
-            padding: 10px 20px;
-            color: black;
-            background-color: #E5E5E5;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
-            font-family: "하나2.0 M";
-            /*font-weight: bolder;*/
-        }
-
-        .extra1-report-button:hover {
-            background-color: #757575; /* hover 시 배경색 변경 */
-        }
-
-        .extra1-performance-button {
-            padding: 10px 20px;
-            color: white;
-            background-color: #332D41; /* 다른 버튼의 배경색 */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
-            font-family: "하나2.0 M";
-            width: 300px;
-        }
-
-        .extra1-performance-button:hover {
-            background-color: #AAAAAA; /* 다른 버튼의 hover 시 배경색 변경 */
-        }
-
-        .extra2-top {
-            background-image: url("img/s1.svg");
-        }
-
-        .extra2-top-top {
-            height: 40px;
-        }
-
-        .extra2-top-bottom {
-            height: 40px;
-            font-family: '하나2.0 M';
-            margin-left: 10px;
-        }
-
-        .extra2-bottom-top {
-            height: 60px;
-            display: flex;
-            /*justify-content: center;*/
-            align-items: center;
-            margin-left: 10px;
-            font-family: "하나2.0 R";
-            font-size: 13px;
-        }
-
-        .extra2-bottom-bottom {
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px; /* 버튼 사이 간격 조절 */
-        }
-
-        .extra2-report-button {
-            padding: 10px 20px;
-            color: black;
-            background-color: #E5E5E5;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
-            font-family: "하나2.0 M";
-            /*font-weight: bolder;*/
-        }
-
-        .extra2-report-button:hover {
-            background-color: #757575; /* hover 시 배경색 변경 */
-        }
-
-        .extra2-performance-button {
-            padding: 10px 20px;
-            color: white;
-            background-color: #332D41; /* 다른 버튼의 배경색 */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
-            font-family: "하나2.0 M";
-        }
-
-        .extra2-performance-button:hover {
-            background-color: #AAAAAA; /* 다른 버튼의 hover 시 배경색 변경 */
-        }
-
-        /*사이드바*/
-        .di {
-
-        }
-
-        .di-content {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            font-family: '하나2.0 M';
-            font-size: 13px;
-            transition: background-color 0.3s;
-        }
-
-        .di clicked {
-            background-color: #F6EDFF;
-        }
-
-        .portfolio {
-
-        }
-
-        .portfolio-content {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            font-family: '하나2.0 M';
-            font-size: 13px;
-        }
-
-        .mystrategy {
-
-        }
-
-        .mystrategy-content {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            font-family: '하나2.0 M';
-            font-size: 13px;
-        }
-
-        .moetest {
-
-        }
-
-        .moetest-content {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            font-family: '하나2.0 M';
-            font-size: 13px;
-        }
-
-        .backtest {
-
-        }
-
-        .backtest-content {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            font-family: '하나2.0 M';
-            font-size: 13px;
-        }
-
-        .faq {
-            margin-top : 450px;
-            background-color: #FAFAFA;
-            padding: 20px;
+        footer {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            font-family: '하나2.0 M';
-            font-size: 12px;
-        }
-        .faq-bottom{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            border-color: transparent;
-        }
 
-        .faq-button {
-            margin-top: 10px;
-            border-radius: 40px;
-            border: none;
-            background-color: #332D41;
-            color: white;
-            font-family: "하나2.0 R";
-            font-size: 12px;
-            height: 20px;
         }
-
-        img {
-        }
-
 
     </style>
 </head>
 <body>
-<div class="strategy-wrap">
-    <div class="strategy-header">
-        <img class="image-1qpro" src="img/1qpro.png">
-    </div>
-    <div class="main-wrap">
-        <div class="strategy-sidebar">
-
-            <div class="di-content" onclick="changeColor(this)">
-                <img src="img/puzzle2.png" width="20" height="20">
-                다이렉트인덱싱
+<div class="wrap">
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="Main.html"><img src="img/logo.png" alt="로고"></a>
             </div>
 
-
-            <div class="portfolio-content" onclick="changeColor(this)">
-                <img src="img/portfolio.png" width="20" height="20">
-                내 포트폴리오
-            </div>
-
-
-            <div class="mystrategy-content" onclick="changeColor(this)">
-                <img src="img/strategy.png" width="20" height="20">
-                내 전략
-            </div>
-
-
-            <div class="moetest-content" onclick="changeColor(this)">
-                <img src="img/chart2.png" width="20" height="20">
-                모의테스트
-            </div>
-
-
-            <div class="backtest-content" onclick="changeColor(this)">
-                <img src="img/chart3.png" width="20" height="20">
-                백테스트
-            </div>
-            <div class="faq">
-                다이렉트 원덱싱이 처음이신가요?
-                <div class="faq-bottom">
-                    <a href="faq.html">
-                        <button class="faq-button">첫 사용 가이드 보기</button>
-                    </a>
-                    <img src="img/faq.png" width="40px" height="40px">
+            <nav>
+                <ul>
+                    <li><a href="Sogae.html">다이렉트인덱싱</a></li>
+                    <li><a href="Start.html">시작하기</시작하기></a></li>
+                    <li><a href="#">내 포트폴리오</a></li>
+                    <li><a href="#">내 전략</a></li>
+                    <li><a href="#">모의테스트</a></li>
+                    <li><a href="#">백테스트</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="contents">
+        <section class="main-visual">
+            <img src="img/jal.png" width="100%" style="background: #0E8C8D">
+            <img src="img/hanada.png" class="overlay-image" style="width: 600px; height: 350px;">
+        </section>
+        <section class="main-visual2"
+                 style="width: 100%; height: 550px; background: #F6FAF6; display: flex; justify-content: center; align-items: center; position: relative; ">
+            <div class="vd -active">
+                <div class="video-wrapper" style="filter: brightness(0.7);">
+                    <video id="brand-video" muted="" playsinline="" loop="" autoplay=""
+                           poster="img/brand_stock_poster.jpg" height="550">
+                        <source src="img/brand_stock_bg.mp4" type="video/mp4">
+                    </video>
                 </div>
+            </div>
+            <div class="contents" style="position: absolute; z-index: 2; text-align: center; color: #FFFFFF; top: -5%;">
+                <h1 class="title"
+                    style="display: block; padding: 80px 0 30px; font-size: 37px; line-height: 46px; letter-spacing: -1.73px; font-weight: 700; font-family:'하나2.0 B'">
+                    누구나 쉬운 인덱싱<br>하나 다이렉트원덱싱</h1>
+                <p class="txt"
+                   style="font-size: 14px; line-height: 21px; opacity: .7; letter-spacing: -0.65px; font-family: '하나2.0 B'">
+                    원큐스탁은
+                    개인마다 다른 투자 습관을 만족시키기 위한<br>컨텐츠 커스터마이징을 제공합니다.</p>
+                <p class="txt"
+                   style="font-size: 14px; line-height: 21px; opacity: .7; letter-spacing: -0.65px; font-family: '하나2.0 B'">
+                    국내뿐만
+                    아니라 해외주식도 원큐스탁에서<br>쉽게 시작해 보세요.</p>
+            </div>
+        </section>
+        <section class="main-visual3" style="width: 100%; height: 550px; background: #FFFFFF">
+
+            <div class="card-list">
+                <div class="card">Card 1</div>
+                <div class="card">Card 2</div>
+                <div class="card">Card 3</div>
+                <div class="card">Card 4</div>
+                <div class="card">Card 5</div>
+                <div class="card">Card 1</div>
+                <div class="card">Card 2</div>
+                <div class="card">Card 3</div>
+                <div class="card">Card 4</div>
+                <div class="card">Card 5</div>
+            </div>
+        </section>
+        <section class="main-visual4" style="width: 100%; height: 550px; background: #626E62">
+
+
+        </section>
+
+
+    </div>
+    <footer id="footer" style="background-color: #111111; color: white;">
+        <div class="top"
+             style="border-bottom: 1px solid hsla(0,0%,49%,.2); width: 100%; height: 70px; display: flex; align-items: center; ">
+            <div class="inner"
+                 style="display: flex; flex-direction: row; justify-content: space-between;  align-items: center; margin: 0 auto; width: 1280px;">
+                <div class="link" style="font-family: '하나2.0 M'; font-size : 14px; color : #cccccc;">
+                    <ul style="display: flex; list-style: none; padding: 0; justify-content: space-evenly;">
+                        <li style="margin-right: 20px;">개인정보처리방침</li>
+                        <li style="margin-right: 20px;">신용정보활용체제</li>
+                        <li style="margin-right: 20px;">고객정보취급방침</li>
+                        <li>하나맵</li>
+                    </ul>
+                </div>
+                <div class="sns" style="margin-top: 0.3rem;">
+                    <img src="img/ico-youtube.svg" style="margin-right: 5px;">
+                    <img src="img/ico-instagram.svg">
+                    <img src="img/ico-tictok.svg" style="margin-right: -2px;">
+                    <img src="img/ico-facebook.svg">
+                </div>
+
             </div>
         </div>
-        <div class="strategy-main">
-            <div style="padding-left: 30px; height : 100px;">
-                <h4>내 포트폴리오로 운용하고 싶은 전략을 선택하세요.</h4>
+
+        <div class="bottom">
+            <div class="inner" style="color:#A0AAAA;  margin: 0 auto; width: 1280px; font-size: 14px; font-family: '하나2.0 R'; padding: 40px 0 50px;">
+                <a href="/ko/main/index.do" class="logo" title="홈으로" aria-label="홈으로">
+                    <img src="img/logo-w.svg" alt="하나금융그룹 로고" style="width: 140px; height:28px; ">
+                </a>
+                <p>
+                    <span>서울특별시 중구 을지로 66</span>
+                    <span>02.2002.1110</span></p>
+                <p>Copyright ⓒ 2022 HANA FINANCIAL GROUP. All rights Reserved.</p>
             </div>
-            <div class="strategy-container">
-                <div class="line1">
-                    <div class="theme">
-                        <div class="theme-top">
-                            <div class="theme-top-top">
-                     <span class="emoji-with-circle">
-  <span>🇰🇷</span>
-</span>
-
-                                <span class="emoji-with-circle">
-  <span>🔥</span>
-</span>
-                            </div>
-                            <div class="theme-top-bottom">
-                                테마 성장주 집중 전략
-                            </div>
-                        </div>
-                        <div class="theme-bottom">
-                            <div class="theme-bottom-top">
-                                하나 증권이 Pick한 Hot한 테마들에 투자해보세요.
-                            </div>
-                            <div class="theme-bottom-bottom">
-                                <button class="theme-report-button" onclick="showTheme()"> 리포트 더 보기</button>
-                                <button class="theme-performance-button"> 투자 성과 확인하기</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sector">
-                        <div class="sector-top">
-                            <div class="sector-top-top">
-            <span class="emoji-with-circle">
-                <span>🇰🇷</span>
-            </span>
-
-                                <span class="emoji-with-circle">
-                <span>🔥</span>
-            </span>
-                            </div>
-                            <div class="sector-top-bottom">
-                                섹터 성장주 집중 전략
-                            </div>
-                        </div>
-                        <div class="sector-bottom">
-                            <div class="sector-bottom-top">
-                                하나 증권이 Pick한 Hot한 섹터들에 투자해보세요.
-                            </div>
-                            <div class="sector-bottom-bottom">
-                                <button class="sector-report-button"> 리포트 더 보기</button>
-                                <button class="sector-performance-button"> 투자 성과 확인하기</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="daega">
-                        <div class="daega-top">
-                            <div class="daega-top-top">
-            <span class="emoji-with-circle">
-                <span>🇰🇷</span>
-            </span>
-
-                                <span class="emoji-with-circle">
-                <span>🔥</span>
-            </span>
-                            </div>
-                            <div class="daega-top-bottom">
-                                대가 성장주 집중 전략
-                            </div>
-                        </div>
-                        <div class="daega-bottom">
-                            <div class="daega-bottom-top">
-                                하나 증권이 Pick한 Hot한 대가들에 투자해보세요.
-                            </div>
-                            <div class="daega-bottom-bottom">
-                                <button class="daega-report-button"> 리포트 더 보기</button>
-                                <button class="daega-performance-button"> 투자 성과 확인하기</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="line2">
-                    <div class="mine">
-                        <div class="mine-top">
-                            <div class="mine-top-top">
-            <span class="emoji-with-circle">
-                <span>🇰🇷</span>
-            </span>
-
-                                <span class="emoji-with-circle">
-                <span>🔥</span>
-            </span>
-                            </div>
-                            <div class="mine-top-bottom">
-                                나만의 성장주 집중 전략
-                            </div>
-                        </div>
-                        <div class="mine-bottom">
-                            <div class="mine-bottom-top">
-                                하나 증권이 Pick한 Hot한 항목들에 투자해보세요.
-                            </div>
-                            <div class="mine-bottom-bottom">
-                                <button class="mine-report-button"> 리포트 더 보기</button>
-                                <button class="mine-performance-button"> 투자 성과 확인하기</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="extra1">
-                        <div class="extra1-top">
-                            <div class="extra1-top-top">
-            <span class="emoji-with-circle">
-                <span>✍️</span>
-            </span>
-
-                                <!--                                <span class="emoji-with-circle">-->
-                                <!--&lt;!&ndash;                <span>🔥</span>&ndash;&gt;-->
-                                <!--            </span>-->
-                            </div>
-                            <div class="extra1-top-bottom">
-                                추가1 성장주 집중 전략
-                            </div>
-                        </div>
-                        <div class="extra1-bottom">
-                            <div class="extra1-bottom-top">
-                                하나 증권이 Pick한 Hot한 추가1 항목들에 투자해보세요.
-                            </div>
-                            <div class="extra1-bottom-bottom">
-                                <!--                                <button class="extra1-report-button"> 리포트 더 보기</button>-->
-                                <button class="extra1-performance-button"> 만들어 보기</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="extra2">
-                        <div class="extra2-top">
-                            <div class="extra2-top-top">
-            <span class="emoji-with-circle">
-                <span>🇰🇷</span>
-            </span>
-
-                                <span class="emoji-with-circle">
-                <span>🔥</span>
-            </span>
-                            </div>
-                            <div class="extra2-top-bottom">
-                                추가2 성장주 집중 전략
-                            </div>
-                        </div>
-                        <div class="extra2-bottom">
-                            <div class="extra2-bottom-top">
-                                하나 증권이 Pick한 Hot한 추가2 항목들에 투자해보세요.
-                            </div>
-                            <div class="extra2-bottom-bottom">
-                                <button class="extra2-report-button"> 리포트 더 보기</button>
-                                <button class="extra2-performance-button"> 투자 성과 확인하기</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
         </div>
-    </div>
-    <div class="startegy-footer"></div>
+    </footer>
 </div>
-<script>
-    let selectedDiv = null;
-
-    function changeColor(div) {
-        if (selectedDiv) {
-            selectedDiv.style.backgroundColor = '';
-        }
-        div.style.backgroundColor = '#F6EDFF';
-        selectedDiv = div;
-    }
-    function showTheme(){
-        window.location.href = "Theme.html"
-    }
-</script>
 </body>
-
 </html>

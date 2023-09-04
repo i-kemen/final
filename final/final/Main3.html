@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전략 선택 페이지</title>
+    <style>
+
+        .strategy-wrap {
+            width: 1440px;
+            height: 1000px;
+            /*display: flex;*/
+            /*flex-direction: column;*/
+            /*정중앙 배치 */
+            /*position: absolute;*/
+            /*top: 50%;*/
+            /*left: 50%;*/
+            /*transform: translate(-50%, -50%);*/
+            /*가로 기준 중앙 배치 */
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .strategy-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* 이미지와 버튼 사이의 간격을 최대화하여 배치 */
+            width: 1440px;
+            height: 100px
+        }
+
+        .image-1qpro {
+            width: 60px; /* 원하는 너비 값으로 변경 */
+            height: 66px; /* 높이를 자동으로 조정하여 비율 유지 */
+        }
+        .emoji-with-circle {
+            position: relative;
+            display: inline-block;
+            margin: 10px; /* 각각의 이모지 사이의 간격을 조정하려면 마진 값을 조절하세요 */
+            z-index: 10;
+        }
+
+        .emoji-with-circle span {
+            display: inline-block;
+            font-size: 16px; /* 이모지 크기를 조정하려면 폰트 크기 값을 조절하세요 */
+        }
+
+        .emoji-with-circle::before {
+            content: '';
+            position: absolute;
+            width: 20px; /* 흰 원의 너비를 조정하려면 값을 조절하세요 */
+            height: 20px; /* 흰 원의 높이를 조정하려면 값을 조절하세요 */
+            border: 2px solid white;
+            border-radius: 50%;
+            background-color: white;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1; /* 흰 원을 이모지 뒤로 숨기기 위해 z-index 값을 설정합니다 */
+        }
+
+        .strategy-header {
+            position: sticky;
+
+        }
+
+
+        .main-wrap {
+            display: flex;
+            margin: 0;
+            height : 800px;
+        }
+
+        .strategy-sidebar,
+        .strategy-main {
+            border: 1px solid #ccc;
+            width: 1240px;
+        }
+
+        .strategy-sidebar {
+            width: 200px;
+            position: sticky;
+        }
+
+        .strategy-container {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .line1 {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .line2 {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .line1 > div {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 300px;
+            height: 200px;
+        }
+
+        .line2 > div {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 300px;
+            height: 200px;
+        }
+
+        .strategy-sidebar div {
+            /*display: block;*/
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+            border: 1px solid #ccc;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+
+        .strategy-sidebar div:hover {
+            background-color: #f0f0f0;
+        }
+
+        .theme-top {
+            background-image: url("img/s1.svg");
+        }
+
+        .theme-top-top {
+            height: 40px;
+        }
+
+        .theme-top-bottom {
+            height: 40px;
+            font-family: '하나2.0 M';
+            margin-left: 10px;
+        }
+
+        .theme-bottom-top {
+            height: 60px;
+            display: flex;
+            /*justify-content: center;*/
+            align-items: center;
+            margin-left: 10px;
+            font-family: "하나2.0 R";
+            font-size: 13px;
+        }
+
+        .theme-bottom-bottom {
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* 버튼 사이 간격 조절 */
+        }
+
+        .theme-report-button {
+            padding: 10px 20px;
+            color: black;
+            background-color: #E5E5E5;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+            /*font-weight: bolder;*/
+        }
+
+        .theme-report-button:hover {
+            background-color: #757575; /* hover 시 배경색 변경 */
+        }
+
+        .theme-performance-button {
+            padding: 10px 20px;
+            color: white;
+            background-color: #332D41; /* 다른 버튼의 배경색 */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+        }
+
+        .theme-performance-button:hover {
+            background-color: #AAAAAA; /* 다른 버튼의 hover 시 배경색 변경 */
+        }
+
+        .sector-top {
+            background-image: url("img/s2.svg");
+        }
+
+        .sector-top-top {
+            height: 40px;
+        }
+
+        .sector-top-bottom {
+            height: 40px;
+            font-family: '하나2.0 M';
+            margin-left: 10px;
+        }
+
+        .sector-bottom-top {
+            height: 60px;
+            display: flex;
+            /*justify-content: center;*/
+            align-items: center;
+            margin-left: 10px;
+            font-family: "하나2.0 R";
+            font-size: 13px;
+        }
+
+        .sector-bottom-bottom {
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* 버튼 사이 간격 조절 */
+        }
+
+        .sector-report-button {
+            padding: 10px 20px;
+            color: black;
+            background-color: #E5E5E5;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+            /*font-weight: bolder;*/
+        }
+
+        .sector-report-button:hover {
+            background-color: #757575; /* hover 시 배경색 변경 */
+        }
+
+        .sector-performance-button {
+            padding: 10px 20px;
+            color: white;
+            background-color: #332D41; /* 다른 버튼의 배경색 */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+        }
+
+        .sector-performance-button:hover {
+            background-color: #AAAAAA; /* 다른 버튼의 hover 시 배경색 변경 */
+        }
+
+        .daega-top {
+            background-image: url("img/s3.svg");
+        }
+
+        .daega-top-top {
+            height: 40px;
+        }
+
+        .daega-top-bottom {
+            height: 40px;
+            font-family: '하나2.0 M';
+            margin-left: 10px;
+        }
+
+        .daega-bottom-top {
+            height: 60px;
+            display: flex;
+            /*justify-content: center;*/
+            align-items: center;
+            margin-left: 10px;
+            font-family: "하나2.0 R";
+            font-size: 13px;
+        }
+
+        .daega-bottom-bottom {
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* 버튼 사이 간격 조절 */
+        }
+
+        .daega-report-button {
+            padding: 10px 20px;
+            color: black;
+            background-color: #E5E5E5;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+            /*font-weight: bolder;*/
+        }
+
+        .daega-report-button:hover {
+            background-color: #757575; /* hover 시 배경색 변경 */
+        }
+
+        .daega-performance-button {
+            padding: 10px 20px;
+            color: white;
+            background-color: #332D41; /* 다른 버튼의 배경색 */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+        }
+
+        .daega-performance-button:hover {
+            background-color: #AAAAAA; /* 다른 버튼의 hover 시 배경색 변경 */
+        }
+
+        .mine-top {
+            background-image: url("img/s4.png");
+        }
+
+        .mine-top-top {
+            height: 40px;
+        }
+
+        .mine-top-bottom {
+            height: 40px;
+            font-family: '하나2.0 M';
+            margin-left: 10px;
+        }
+
+        .mine-bottom-top {
+            height: 60px;
+            display: flex;
+            /*justify-content: center;*/
+            align-items: center;
+            margin-left: 10px;
+            font-family: "하나2.0 R";
+            font-size: 13px;
+        }
+
+        .mine-bottom-bottom {
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* 버튼 사이 간격 조절 */
+        }
+
+        .mine-report-button {
+            padding: 10px 20px;
+            color: black;
+            background-color: #E5E5E5;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+            /*font-weight: bolder;*/
+        }
+
+        .mine-report-button:hover {
+            background-color: #757575; /* hover 시 배경색 변경 */
+        }
+
+        .mine-performance-button {
+            padding: 10px 20px;
+            color: white;
+            background-color: #332D41; /* 다른 버튼의 배경색 */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+        }
+
+        .mine-performance-button:hover {
+            background-color: #AAAAAA; /* 다른 버튼의 hover 시 배경색 변경 */
+        }
+
+        .extra1-top {
+            background-image: url("img/s5.png");
+        }
+
+        .extra1-top-top {
+            height: 40px;
+        }
+
+        .extra1-top-bottom {
+            height: 40px;
+            font-family: '하나2.0 M';
+            margin-left: 10px;
+        }
+
+        .extra1-bottom-top {
+            height: 60px;
+            display: flex;
+            /*justify-content: center;*/
+            align-items: center;
+            margin-left: 10px;
+            font-family: "하나2.0 R";
+            font-size: 13px;
+        }
+
+        .extra1-bottom-bottom {
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* 버튼 사이 간격 조절 */
+        }
+
+        .extra1-report-button {
+            padding: 10px 20px;
+            color: black;
+            background-color: #E5E5E5;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+            /*font-weight: bolder;*/
+        }
+
+        .extra1-report-button:hover {
+            background-color: #757575; /* hover 시 배경색 변경 */
+        }
+
+        .extra1-performance-button {
+            padding: 10px 20px;
+            color: white;
+            background-color: #332D41; /* 다른 버튼의 배경색 */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+            width: 300px;
+        }
+
+        .extra1-performance-button:hover {
+            background-color: #AAAAAA; /* 다른 버튼의 hover 시 배경색 변경 */
+        }
+
+        .extra2-top {
+            background-image: url("img/s1.svg");
+        }
+
+        .extra2-top-top {
+            height: 40px;
+        }
+
+        .extra2-top-bottom {
+            height: 40px;
+            font-family: '하나2.0 M';
+            margin-left: 10px;
+        }
+
+        .extra2-bottom-top {
+            height: 60px;
+            display: flex;
+            /*justify-content: center;*/
+            align-items: center;
+            margin-left: 10px;
+            font-family: "하나2.0 R";
+            font-size: 13px;
+        }
+
+        .extra2-bottom-bottom {
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* 버튼 사이 간격 조절 */
+        }
+
+        .extra2-report-button {
+            padding: 10px 20px;
+            color: black;
+            background-color: #E5E5E5;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+            /*font-weight: bolder;*/
+        }
+
+        .extra2-report-button:hover {
+            background-color: #757575; /* hover 시 배경색 변경 */
+        }
+
+        .extra2-performance-button {
+            padding: 10px 20px;
+            color: white;
+            background-color: #332D41; /* 다른 버튼의 배경색 */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+        }
+
+        .extra2-performance-button:hover {
+            background-color: #AAAAAA; /* 다른 버튼의 hover 시 배경색 변경 */
+        }
+
+        /*사이드바*/
+        .di {
+
+        }
+
+        .di-content {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-family: '하나2.0 M';
+            font-size: 13px;
+            transition: background-color 0.3s;
+        }
+
+        .di clicked {
+            background-color: #F6EDFF;
+        }
+
+        .portfolio {
+
+        }
+
+        .portfolio-content {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-family: '하나2.0 M';
+            font-size: 13px;
+        }
+
+        .mystrategy {
+
+        }
+
+        .mystrategy-content {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-family: '하나2.0 M';
+            font-size: 13px;
+        }
+
+        .moetest {
+
+        }
+
+        .moetest-content {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-family: '하나2.0 M';
+            font-size: 13px;
+        }
+
+        .backtest {
+
+        }
+
+        .backtest-content {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-family: '하나2.0 M';
+            font-size: 13px;
+        }
+
+        .faq {
+            margin-top : 450px;
+            background-color: #FAFAFA;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-family: '하나2.0 M';
+            font-size: 12px;
+        }
+        .faq-bottom{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            border-color: transparent;
+        }
+
+        .faq-button {
+            margin-top: 10px;
+            border-radius: 40px;
+            border: none;
+            background-color: #332D41;
+            color: white;
+            font-family: "하나2.0 R";
+            font-size: 12px;
+            height: 20px;
+        }
+
+        img {
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="strategy-wrap">
+    <div class="strategy-header">
+        <img class="image-1qpro" src="img/1qpro.png">
+    </div>
+    <div class="main-wrap">
+        <div class="strategy-sidebar">
+
+            <div class="di-content" onclick="changeColor(this)">
+                <img src="img/puzzle2.png" width="20" height="20">
+                다이렉트인덱싱
+            </div>
+
+
+            <div class="portfolio-content" onclick="changeColor(this)">
+                <img src="img/portfolio.png" width="20" height="20">
+                내 포트폴리오
+            </div>
+
+
+            <div class="mystrategy-content" onclick="changeColor(this)">
+                <img src="img/strategy.png" width="20" height="20">
+                내 전략
+            </div>
+
+
+            <div class="moetest-content" onclick="changeColor(this)">
+                <img src="img/chart2.png" width="20" height="20">
+                모의테스트
+            </div>
+
+
+            <div class="backtest-content" onclick="changeColor(this)">
+                <img src="img/chart3.png" width="20" height="20">
+                백테스트
+            </div>
+            <div class="faq">
+                다이렉트 원덱싱이 처음이신가요?
+                <div class="faq-bottom">
+                    <a href="faq.html">
+                        <button class="faq-button">첫 사용 가이드 보기</button>
+                    </a>
+                    <img src="img/faq.png" width="40px" height="40px">
+                </div>
+            </div>
+        </div>
+        <div class="strategy-main">
+            <div style="padding-left: 30px; height : 100px;">
+                <h4>내 포트폴리오로 운용하고 싶은 전략을 선택하세요.</h4>
+            </div>
+            <div class="strategy-container">
+                <div class="line1">
+                    <div class="theme">
+                        <div class="theme-top">
+                            <div class="theme-top-top">
+                     <span class="emoji-with-circle">
+  <span>🇰🇷</span>
+</span>
+
+                                <span class="emoji-with-circle">
+  <span>🔥</span>
+</span>
+                            </div>
+                            <div class="theme-top-bottom">
+                                테마 성장주 집중 전략
+                            </div>
+                        </div>
+                        <div class="theme-bottom">
+                            <div class="theme-bottom-top">
+                                하나 증권이 Pick한 Hot한 테마들에 투자해보세요.
+                            </div>
+                            <div class="theme-bottom-bottom">
+                                <button class="theme-report-button" onclick="showTheme()"> 리포트 더 보기</button>
+                                <button class="theme-performance-button"> 투자 성과 확인하기</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sector">
+                        <div class="sector-top">
+                            <div class="sector-top-top">
+            <span class="emoji-with-circle">
+                <span>🇰🇷</span>
+            </span>
+
+                                <span class="emoji-with-circle">
+                <span>🔥</span>
+            </span>
+                            </div>
+                            <div class="sector-top-bottom">
+                                섹터 성장주 집중 전략
+                            </div>
+                        </div>
+                        <div class="sector-bottom">
+                            <div class="sector-bottom-top">
+                                하나 증권이 Pick한 Hot한 섹터들에 투자해보세요.
+                            </div>
+                            <div class="sector-bottom-bottom">
+                                <button class="sector-report-button"> 리포트 더 보기</button>
+                                <button class="sector-performance-button"> 투자 성과 확인하기</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="daega">
+                        <div class="daega-top">
+                            <div class="daega-top-top">
+            <span class="emoji-with-circle">
+                <span>🇰🇷</span>
+            </span>
+
+                                <span class="emoji-with-circle">
+                <span>🔥</span>
+            </span>
+                            </div>
+                            <div class="daega-top-bottom">
+                                대가 성장주 집중 전략
+                            </div>
+                        </div>
+                        <div class="daega-bottom">
+                            <div class="daega-bottom-top">
+                                하나 증권이 Pick한 Hot한 대가들에 투자해보세요.
+                            </div>
+                            <div class="daega-bottom-bottom">
+                                <button class="daega-report-button"> 리포트 더 보기</button>
+                                <button class="daega-performance-button"> 투자 성과 확인하기</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="line2">
+                    <div class="mine">
+                        <div class="mine-top">
+                            <div class="mine-top-top">
+            <span class="emoji-with-circle">
+                <span>🇰🇷</span>
+            </span>
+
+                                <span class="emoji-with-circle">
+                <span>🔥</span>
+            </span>
+                            </div>
+                            <div class="mine-top-bottom">
+                                나만의 성장주 집중 전략
+                            </div>
+                        </div>
+                        <div class="mine-bottom">
+                            <div class="mine-bottom-top">
+                                하나 증권이 Pick한 Hot한 항목들에 투자해보세요.
+                            </div>
+                            <div class="mine-bottom-bottom">
+                                <button class="mine-report-button"> 리포트 더 보기</button>
+                                <button class="mine-performance-button"> 투자 성과 확인하기</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="extra1">
+                        <div class="extra1-top">
+                            <div class="extra1-top-top">
+            <span class="emoji-with-circle">
+                <span>✍️</span>
+            </span>
+
+                                <!--                                <span class="emoji-with-circle">-->
+                                <!--&lt;!&ndash;                <span>🔥</span>&ndash;&gt;-->
+                                <!--            </span>-->
+                            </div>
+                            <div class="extra1-top-bottom">
+                                추가1 성장주 집중 전략
+                            </div>
+                        </div>
+                        <div class="extra1-bottom">
+                            <div class="extra1-bottom-top">
+                                하나 증권이 Pick한 Hot한 추가1 항목들에 투자해보세요.
+                            </div>
+                            <div class="extra1-bottom-bottom">
+                                <!--                                <button class="extra1-report-button"> 리포트 더 보기</button>-->
+                                <button class="extra1-performance-button"> 만들어 보기</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="extra2">
+                        <div class="extra2-top">
+                            <div class="extra2-top-top">
+            <span class="emoji-with-circle">
+                <span>🇰🇷</span>
+            </span>
+
+                                <span class="emoji-with-circle">
+                <span>🔥</span>
+            </span>
+                            </div>
+                            <div class="extra2-top-bottom">
+                                추가2 성장주 집중 전략
+                            </div>
+                        </div>
+                        <div class="extra2-bottom">
+                            <div class="extra2-bottom-top">
+                                하나 증권이 Pick한 Hot한 추가2 항목들에 투자해보세요.
+                            </div>
+                            <div class="extra2-bottom-bottom">
+                                <button class="extra2-report-button"> 리포트 더 보기</button>
+                                <button class="extra2-performance-button"> 투자 성과 확인하기</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="startegy-footer"></div>
+</div>
+<script>
+    let selectedDiv = null;
+
+    function changeColor(div) {
+        if (selectedDiv) {
+            selectedDiv.style.backgroundColor = '';
+        }
+        div.style.backgroundColor = '#F6EDFF';
+        selectedDiv = div;
+    }
+    function showTheme(){
+        window.location.href = "The"
+    }
+</script>
+</body>
+
+</html>
