@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전략 선택 페이지</title>
+    <style>
+        /*헤더*/
+        .theme-wrap {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .strategy-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* 이미지와 버튼 사이의 간격을 최대화하여 배치 */
+            width: 1440px;
+            height: 100px
+        }
+
+        .image-1qpro {
+            width: 60px; /* 원하는 너비 값으로 변경 */
+            height: 66px; /* 높이를 자동으로 조정하여 비율 유지 */
+        }
+
+        /*메인*/
+
+
+        .strategy-main {
+            width: 1440px;
+            height: 800px;
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+        }
+
+        .title {
+            height: 100px;
+            font-family: "하나2.0 B";
+            font-size: 60px;
+            text-align: center;
+            color: black;
+            opacity: 0;
+            animation: txtE 5s infinite;
+        }
+
+        @keyframes txtE {
+
+            100% {
+                transform: translate(0) scale(1);
+                opacity: 1;
+                color: black;
+            }
+        }
+
+
+        .col {
+            /*width: 1440px;*/
+            height: 300px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            width: 420px;
+            height: 280px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.01);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+
+
+        .card-top {
+            width: 100%;
+            height: 140px;
+            /*display: flex;*/
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-top-top {
+            width: 100%;
+            height: 60px;
+            font-family: "하나2.0 M";
+            font-size: 30px;
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .card-top-bottom {
+            width: 380px;
+            height: 80px;
+            font-family: "하나2.0 R";
+            font-size: 15px;
+            display: flex;
+            margin-left: 20px;
+            border-bottom: #e2e3e5 1px solid;
+            align-items: center;
+        }
+
+        .card-body {
+            height: 140px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .threemonths {
+            height: 70px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            font-family: "하나2.0 M";
+            font-size: 17px;
+            justify-content: space-between;
+        }
+
+        .profit {
+            width: 110px;
+            margin-left: 20px;
+        }
+
+        .profit2 {
+            width: 80px;
+            color: red;
+            font-weight: bolder;
+        }
+
+        .byundong {
+            margin-left: 20px;
+            width: 110px;
+        }
+
+        .byundong2 {
+            width: 80px;
+            color: blue;
+            font-weight: bolder;
+        }
+
+        .btn-group {
+            width: 380px;
+            height: 70px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .strategy-detail {
+            padding: 10px 20px;
+            color: white;
+            background-color: #603F83; /* 다른 버튼의 배경색 */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+            font-size: 15px;
+            width: 150px;
+        }
+
+        .strategy-detail:hover {
+            background-color: #AAAAAA; /* 다른 버튼의 hover 시 배경색 변경 */
+        }
+
+        .strategy-select {
+            padding: 10px 20px;
+            color: white;
+            background-color: #7B9ACC; /* 다른 버튼의 배경색 */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+            font-size: 15px;
+            width: 150px;
+        }
+
+        .strategy-select:hover {
+            background-color: #AAAAAA; /* 다른 버튼의 hover 시 배경색 변경 */
+        }
+
+        /* Modal styles */
+        .strategy-modal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* 배경색과 투명도 조절 */
+            z-index: 1000;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            font-family: "하나2.0 B";
+            font-size: 30px;
+            color: black;
+            text-align: center;
+            width: 900px;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button-wrap {
+            width: 380px;
+            height: 70px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .modal-hide {
+            padding: 10px 20px;
+            color: white;
+            background-color: #603F83; /* 다른 버튼의 배경색 */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+            font-size: 15px;
+            width: 150px;
+
+        }
+
+        .modal-hide:hover {
+            background-color: #AAAAAA; /* 다른 버튼의 hover 시 배경색 변경 */
+        }
+
+        .modal-select {
+            padding: 10px 20px;
+            color: white;
+            background-color: #7B9ACC; /* 다른 버튼의 배경색 */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* hover 효과에 애니메이션 추가 */
+            font-family: "하나2.0 M";
+            font-size: 15px;
+            width: 150px;
+
+        }
+
+        .modal-select:hover {
+            background-color: #AAAAAA; /* 다른 버튼의 hover 시 배경색 변경 */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .option-box {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            padding: 10px;
+            margin: 10px 0;
+            cursor: pointer;
+            width: 300px;
+            height: 100px;
+            transition: background-color 0.3s ease;
+            font-family: "하나2.0 M";
+            font-size: 15px;
+        }
+
+        .option-box:hover {
+            background-color: #e2e3e5;
+            color: white;
+        }
+
+        .clicked {
+            color: #0B9B97;
+        }
+
+    </style>
+
+</head>
+    <body>
+    <div class="theme-wrap">
+    <div class="strategy-header">
+
+        <img class="image-1qpro" src="img/1qpro.png">
+
+    </div>
+    <div class="strategy-main">
+        <div class="title">
+            하나 원큐 테마 전략
+        </div>
+        <div>
+            <div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-top">
+                            <div class="card-top-top">
+                                K-반도체 소부장
+                            </div>
+                            <div class="card-top-bottom">
+                                <!--                                <span style="border-bottom: 2px solid black;">-->
+                                반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>
+                                소부장 (소재, 부품, 장비) 대표 기업들에 투자
+                                <!--                                </span>-->
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="threemonths">
+                                <div class="profit">
+                                    3개월 수익률
+                                </div>
+                                <div class="profit2">
+                                    100%
+                                </div>
+                                <div class="byundong">
+                                    3개월 변동성
+                                </div>
+                                <div class="byundong2">
+                                    100%
+                                </div>
+                            </div>
+                            <div class="strategy-button">
+                                <div class="btn-group">
+                                    <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                                    <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                                    <!--                전략 선택 버튼 누르면 모달 팝업-->
+                                    <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-top">
+                            <div class="card-top-top">
+                                하반기 전략 테마
+                            </div>
+                            <div class="card-top-bottom">
+                                <!--                                <span style="border-bottom: 2px solid black;">-->
+                                하반기 유망 테마 전략으로 바텀업 방식을 활용하여 종목 선정
+                                <br>
+
+                                <!--                                </span>-->
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="threemonths">
+                                <div class="profit">
+                                    3개월 수익률
+                                </div>
+                                <div class="profit2">
+                                    100%
+                                </div>
+                                <div class="byundong">
+                                    3개월 변동성
+                                </div>
+                                <div class="byundong2">
+                                    100%
+                                </div>
+                            </div>
+                            <div class="strategy-button">
+                                <div class="btn-group">
+                                    <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                                    <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                                    <!--                전략 선택 버튼 누르면 모달 팝업-->
+                                    <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-top">
+                            <div class="card-top-top">
+                                적자탈출 예상 턴어라운드 전략
+                            </div>
+                            <div class="card-top-bottom">
+                                <!--                                <span style="border-bottom: 2px solid black;">-->
+                                지금까지 영업이익이 적자이거나 역성장하며 부진했으나, <br>
+                                향후 개선될 것으로 기대되는 턴어라운드 종목군
+                                <!--                                </span>-->
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="threemonths">
+                                <div class="profit">
+                                    3개월 수익률
+                                </div>
+                                <div class="profit2">
+                                    100%
+                                </div>
+                                <div class="byundong">
+                                    3개월 변동성
+                                </div>
+                                <div class="byundong2">
+                                    100%
+                                </div>
+                            </div>
+                            <div class="strategy-button">
+                                <div class="btn-group">
+                                    <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                                    <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                                    <!--                전략 선택 버튼 누르면 모달 팝업-->
+                                    <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--2번째줄-->
+                <div class="col">
+                    <div class="card">
+                        <div class="card-top">
+                            <div class="card-top-top">
+                                K-AI & K- 로봇 테마
+                            </div>
+                            <div class="card-top-bottom">
+                                <!--                                <span style="border-bottom: 2px solid black;">-->
+                                AI 및 로봇 관련 사업을 영위하는 기업 중 정량/정성적 평가를<br>
+                                통해 적합한 종목군 선정
+                                <!--                                </span>-->
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="threemonths">
+                                <div class="profit">
+                                    3개월 수익률
+                                </div>
+                                <div class="profit2">
+                                    100%
+                                </div>
+                                <div class="byundong">
+                                    3개월 변동성
+                                </div>
+                                <div class="byundong2">
+                                    100%
+                                </div>
+                            </div>
+                            <div class="strategy-button">
+                                <div class="btn-group">
+                                    <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                                    <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                                    <!--                전략 선택 버튼 누르면 모달 팝업-->
+                                    <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-top">
+                            <div class="card-top-top">
+                                빅파마도 눈독들인 K-바이오
+                            </div>
+                            <div class="card-top-bottom">
+                                <!--                                <span style="border-bottom: 2px solid black;">-->
+                                임상 2상, 3상이 현재 진행 중인 한국 바이오 기업들 중<br>
+                                빅파마와 기술 이전 계약을 체결한 K-바이오 기업군
+
+                                <!--                                </span>-->
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="threemonths">
+                                <div class="profit">
+                                    3개월 수익률
+                                </div>
+                                <div class="profit2">
+                                    100%
+                                </div>
+                                <div class="byundong">
+                                    3개월 변동성
+                                </div>
+                                <div class="byundong2">
+                                    100%
+                                </div>
+                            </div>
+                            <div class="strategy-button">
+                                <div class="btn-group">
+                                    <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                                    <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                                    <!--                전략 선택 버튼 누르면 모달 팝업-->
+                                    <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-top">
+                            <div class="card-top-top">
+                                KOSDAQ 실적 성장주
+                            </div>
+                            <div class="card-top-bottom">
+                                <!--                                <span style="border-bottom: 2px solid black;">-->
+                                코스닥 상장 종목 중 2024년 매출전망치가 과거 5년 <br>평균 대비 15% 이상
+                                증가할 것으로 기대되는 성장주
+                                <!--                                </span>-->
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="threemonths">
+                                <div class="profit">
+                                    3개월 수익률
+                                </div>
+                                <div class="profit2">
+                                    100%
+                                </div>
+                                <div class="byundong">
+                                    3개월 변동성
+                                </div>
+                                <div class="byundong2">
+                                    100%
+                                </div>
+                            </div>
+                            <div class="strategy-button">
+                                <div class="btn-group">
+                                    <!--                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동-->
+                                    <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>
+                                    <!--                전략 선택 버튼 누르면 모달 팝업-->
+                                    <button class="strategy-select" onclick="showModal()">전략 선택</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--        &lt;!&ndash;        3번째줄&ndash;&gt;-->
+                <!--        <div class="col">-->
+                <!--            <div class="card">-->
+                <!--                <div class="card-top">-->
+                <!--                    <div class="card-top-top">-->
+                <!--                        IT 플러스 테마-->
+                <!--                    </div>-->
+                <!--                    <div class="card-top-bottom">-->
+                <!--                        &lt;!&ndash;                                <span style="border-bottom: 2px solid black;">&ndash;&gt;-->
+                <!--                        반도체 사이클 저점 진입 후 수혜가 예상되는 K-반도체 <br>-->
+                <!--                        소부장 (소재, 부품, 장비) 대표 기업들에 투자-->
+                <!--                        &lt;!&ndash;                                </span>&ndash;&gt;-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--                <div class="card-body">-->
+                <!--                    <div class="threemonths">-->
+                <!--                        <div class="profit">-->
+                <!--                            3개월 수익률-->
+                <!--                        </div>-->
+                <!--                        <div class="profit2">-->
+                <!--                            100%-->
+                <!--                        </div>-->
+                <!--                        <div class="byundong">-->
+                <!--                            3개월 변동성-->
+                <!--                        </div>-->
+                <!--                        <div class="byundong2">-->
+                <!--                            100%-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                    <div class="strategy-button">-->
+                <!--                        <div class="btn-group">-->
+                <!--                            &lt;!&ndash;                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동&ndash;&gt;-->
+                <!--                            <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>-->
+                <!--                            &lt;!&ndash;                전략 선택 버튼 누르면 모달 팝업&ndash;&gt;-->
+                <!--                            <button class="strategy-select" onclick="showModal()">전략 선택</button>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--            </div>-->
+
+                <!--            <div class="card">-->
+                <!--                <div class="card-top">-->
+                <!--                    <div class="card-top-top">-->
+                <!--                        하반기 전략 테마-->
+                <!--                    </div>-->
+                <!--                    <div class="card-top-bottom">-->
+                <!--                        &lt;!&ndash;                                <span style="border-bottom: 2px solid black;">&ndash;&gt;-->
+                <!--                        하반기 유망 테마 전략으로 바텀업 방식을 활용하여 종목 선정-->
+                <!--                        <br>-->
+
+                <!--                        &lt;!&ndash;                                </span>&ndash;&gt;-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--                <div class="card-body">-->
+                <!--                    <div class="threemonths">-->
+                <!--                        <div class="profit">-->
+                <!--                            3개월 수익률-->
+                <!--                        </div>-->
+                <!--                        <div class="profit2">-->
+                <!--                            100%-->
+                <!--                        </div>-->
+                <!--                        <div class="byundong">-->
+                <!--                            3개월 변동성-->
+                <!--                        </div>-->
+                <!--                        <div class="byundong2">-->
+                <!--                            100%-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                    <div class="strategy-button">-->
+                <!--                        <div class="btn-group">-->
+                <!--                            &lt;!&ndash;                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동&ndash;&gt;-->
+                <!--                            <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>-->
+                <!--                            &lt;!&ndash;                전략 선택 버튼 누르면 모달 팝업&ndash;&gt;-->
+                <!--                            <button class="strategy-select" onclick="showModal()">전략 선택</button>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--            </div>-->
+
+                <!--            <div class="card">-->
+                <!--                <div class="card-top">-->
+                <!--                    <div class="card-top-top">-->
+                <!--                        적자탈출 예상 턴어라운드 전략-->
+                <!--                    </div>-->
+                <!--                    <div class="card-top-bottom">-->
+                <!--                        &lt;!&ndash;                                <span style="border-bottom: 2px solid black;">&ndash;&gt;-->
+                <!--                        지금까지 영업어익이 적자이거나 역성장하며 부진했으나, <br>-->
+                <!--                        향후 개선될 것으로 기대되는 적자탈출 예상 턴어라운드 종목군-->
+                <!--                        &lt;!&ndash;                                </span>&ndash;&gt;-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--                <div class="card-body">-->
+                <!--                    <div class="threemonths">-->
+                <!--                        <div class="profit">-->
+                <!--                            3개월 수익률-->
+                <!--                        </div>-->
+                <!--                        <div class="profit2">-->
+                <!--                            100%-->
+                <!--                        </div>-->
+                <!--                        <div class="byundong">-->
+                <!--                            3개월 변동성-->
+                <!--                        </div>-->
+                <!--                        <div class="byundong2">-->
+                <!--                            100%-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                    <div class="strategy-button">-->
+                <!--                        <div class="btn-group">-->
+                <!--                            &lt;!&ndash;                전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동&ndash;&gt;-->
+                <!--                            <button class="strategy-detail" onclick="showStrategyDetails()">전략 상세</button>-->
+                <!--                            &lt;!&ndash;                전략 선택 버튼 누르면 모달 팝업&ndash;&gt;-->
+                <!--                            <button class="strategy-select" onclick="showModal()">전략 선택</button>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--            </div>-->
+
+                <!--        </div>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="startegy-footer"></div>
+</div>
+<!-- 모달 코드 추가 -->
+<div id="modal" class="strategy-modal">
+    <div class="modal-content">
+        <h2>편집 방법 선택</h2>
+
+        <div class="option-box" onclick="selectOption(this)">
+            <h3>프리셋(PRE-SET) 투자</h3>
+            제공된 전략을 편집에 대한 고민 없이 그대로 <br>
+            내 투자에 적용할 수 있습니다.
+
+        </div>
+
+        <div class="option-box" onclick="selectOption(this)">
+            <h3>간편 투자</h3>
+            최소한의 선택으로 쉽고 빠르게 투자 전략을 <br>
+            편집할 수 있습니다.
+
+        </div>
+
+        <div class="option-box" onclick="selectOption(this)">
+            <h3>프로(PRO) 투자</h3>
+            전문가를 위한 디테일한 메뉴들이 제공되어 <br>
+            투자 전략을 상세히 편집할 수 있습니다.
+        </div>
+        <div class="button-wrap">
+            <!-- 전략 선택 옵션을 추가하세요. -->
+            <button class="modal-hide" onclick="hideModal()">취소</button>
+            <button class="modal-select" onclick="selectStrategy()">선택 완료</button>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    const modal = document.getElementById('modal');
+    // Show theme content by default
+
+
+    //전략 상세 버튼 누르면 해당 전략 설명 페이지로 이동
+    function showStrategyDetails() {
+        window.location.href = "Strategydetail.html";
+    }
+
+    // 모달을 표시하는 함수
+    function showModal() {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+    }
+
+    function hideModal() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        document.documentElement.style.overflow = 'auto';
+    }
+
+    // 전략 선택 버튼을 누를 때 호출되는 함수
+    function selectStrategy() {
+        if (selectedOption !== null) {
+            const optionText = selectedOption.textContent;
+
+            switch (true) {
+                case optionText.includes("간편 투자"):
+                    window.location.href = "Edit.html";
+                    break;
+                case optionText.includes("프리셋"):
+                    // 프리셋 투자 옵션에 대한 동작 추가
+
+                    window.location.href = "Edit.html";
+                    break;
+                case optionText.includes("프로"):
+                    // 프로 투자 옵션에 대한 동작 추가
+
+                    window.location.href = "Edit.html";
+                    break;
+                default:
+                    console.error("No option selected.");
+                    break;
+            }
+        }
+
+        hideModal();
+    }
+
+
+    let selectedOption = null;
+
+    // 옵션 박스 클릭 이벤트 처리 함수
+    function selectOption(optionBox) {
+        // 이전에 선택된 옵션 박스의 clicked 클래스 제거
+        if (selectedOption !== null) {
+            selectedOption.classList.remove('clicked');
+        }
+
+        // 새로 선택된 옵션 박스에 clicked 클래스 추가
+        optionBox.classList.add('clicked');
+        selectedOption = optionBox;
+    }
+
+    function resetModalStatus() {
+        var modal = document.getElementById("modal");
+        modal.style.display = "none";
+    }
+
+    // 페이지가 로드될 때 resetModalStatus 함수를 호출합니다.
+    window.onload = resetModalStatus;
+
+</script>
+</body>
+</html>
