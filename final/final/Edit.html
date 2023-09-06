@@ -53,12 +53,20 @@
         <h1> 간편편집 <span class="step">1</span>/3단계</h1>
     </div>
     <div class="select-vector">
+<!--        <div class="vector-gachi">-->
+<!--            <h2>가치</h2>-->
+<!--            저평가된 종목들 기준으로<br>-->
+<!--            <button>상위 0~60%</button>-->
+<!--            <button>상위 0~40%</button>-->
+<!--            <button>상위 0~20%</button>-->
+<!--        </div>-->
+
         <div class="vector-gachi">
             <h2>가치</h2>
             저평가된 종목들 기준으로<br>
-            <button>상위 0~60%</button>
-            <button>상위 0~40%</button>
-            <button>상위 0~20%</button>
+            <input type="range" id="slider" min="0" max="100" value="0" step="1">
+            <button id="button1">상위 0%</button>
+            <button id="button2">상위 0%</button>
         </div>
 
         <div class="vector-growth">
@@ -512,6 +520,20 @@
         // Backtest.html로 이동합니다.
         window.location.href = "Backtest.html";
     });
+
+    //슬라이더
+    const slider = document.getElementById("slider");
+    const button1 = document.getElementById("button1");
+    const button2 = document.getElementById("button2");
+
+    slider.addEventListener("input", function() {
+        button1.textContent = `상위 ${this.value}%`;
+        button2.textContent = `상위 ${100 - this.value}%`;
+    });
+
+    // 초기 값 설정
+    button1.textContent = `상위 ${slider.value}%`;
+    button2.textContent = `상위 ${100 - slider.value}%`;
 
 </script>
 </body>
