@@ -222,22 +222,30 @@
         .modal {
             display: none;
             position: fixed;
-            width: 100%; /* 모달의 너비를 조절할 수 있습니다. */
-            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 999;
         }
 
         .modal-content {
-            border: 1px solid red;
-            position: fixed;
-            top: 50%; /* 화면 상단에서 50% 위치에 모달을 배치 */
-            left: 50%; /* 화면 왼쪽에서 50% 위치에 모달을 배치 */
-            transform: translate(-50%, -50%); /* 모달을 정중앙으로 이동 */
-            width: 50%; /* 모달 내부 여백 설정 */
-            height: 50%; /* 모달 내부 높이를 100%로 설정하여 화면 높이에 맞춤 */
-            overflow: auto; /* 내용이 넘칠 경우 스크롤 가능하도록 설정 */
-            background-color: white;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+            position: absolute;
+            overflow: hidden;
+            top: 60%;
+            left: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 100%;
+            width: 600px;
+            height: 800px;
+            animation-name: modalopen;
+            animation-duration: var(--modal-duration);
+
         }
 
         /* 닫기 버튼 스타일 */
@@ -277,6 +285,37 @@
             color: #333; /* 옵션 텍스트 색상 설정 */
         }
 
+        /*모달1*/
+        .modal1-index {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal1-index-main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid red;
+            height: 300px;
+            justify-content: space-around;
+        }
+
+        .index-card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+
+        }
+
+        .index-card:hover {
+            transform: scale(1.01);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /*모달2*/
+        .modal2-checklist {
+            display: flex;
+            flex-direction: column;
+        }
 
     </style>
 </head>
@@ -310,7 +349,9 @@
             <div class="index-left">
                 <div class="market">
                     투자할 시장/지수 선택
-                    <span class="modal-trigger" data-modal-id="modal1">KOSPI <span class="arrow">&#9658;</span></span>
+                    <span class="modal-trigger" data-modal-id="modal1">KOSPI
+                        <span class="arrow">&#9658;</span>
+                    </span>
                 </div>
                 <div class="industry">
                     투자할 산업 선택
@@ -401,36 +442,225 @@
 </div>
 <!-- 모달 1 -->
 <div id="modal1" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <div>
-            <div>
-                투자할 시장/지수 선택<br>
-                투자할 시장 또는 지수를 선택하세요.
+    <div class="modal-content" style="justify-content: space-evenly">
+        <div class="modal1-header"
+             style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; margin-top: 20px;
+             border : 1px solid #0B9B97;">
+            <div style="border: 1px solid #6ea8fe; font-family: '하나2.0 R'; font-size: 15px;">
+                <div style="font-size: 20px; font-family: '하나2.0 B';">투자할 시장/지수 선택</div>
+                투자할 시장 또는 지수를 선택하세요
             </div>
-            <button>선택완료</button>
-            <button>다음</button>
-        </div>
-        <div>
-            <div>지수</div>
-            <div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+            <div style="display: flex; width : 250px; justify-content: space-evenly; align-items: center;">
+                <button style="width: 100px; height:30px; font-family: '하나2.0 M'; font-size:15px; border:none; border-radius: 5px; color:white; background-color: #cccccc">
+                    선택완료
+                </button>
+                <button style="width: 50px; height:30px; font-family: '하나2.0 M'; font-size:15px; background-color:#00857E; border:none; border-radius: 5px; color : white;">
+                    다음
+                </button>
             </div>
         </div>
-        <div>시장</div>
+        <div class="modal1-index">
+            <div class="modal1-index-header" style="font-size: 20px; font-family: '하나2.0 B'; margin-top: 30px;">지수</div>
+            <div class="modal1-index-main">
+                <div style="display: flex; width:550px; flex-direction: row; justify-content: space-between;">
+                    <div class="index-card" id="index-card1" style="width:250px; height: 100px; display: flex; flex-direction: column; font-family: '하나2.0 R'; font-size: 15px;
+                                    justify-content: space-around">
+                        <div style="display: flex; flex-direction: row; justify-content: space-around">
+                            <div class="card-title" style="font-size: 15px; font-family: '하나2.0 M'; font-weight : 700;">
+                                대한민국 TOP 100
+                            </div>
+                            <div style="width:25px; height: 25px; background-color: #CF3540; color: white; display: flex; justify-content: center; align-items: center; border-radius: 5px; font-weight: 700;">
+                                KR
+                            </div>
+                        </div>
+                        <div style="margin-left: 20px">
+                            한국 100개의 대형 기업을 대상으로 하는 지수입니다.
+                        </div>
+                    </div>
+                    <div class="index-card" id="index-card2" style="width:250px; height: 100px; display: flex; flex-direction: column;  font-family: '하나2.0 R'; font-size: 15px;
+                                    justify-content: space-around">
+                        <div style="display: flex; flex-direction: row; justify-content: space-around">
+                            <div class="card-title" style="font-size: 15px; font-family: '하나2.0 M'; font-weight : 700;">
+                                한국시장 대표 기업
+                            </div>
+                            <div style="width:25px; height: 25px; background-color: #CF3540; color: white; display: flex; justify-content: center; align-items: center; border-radius: 5px; font-weight: 700;">
+                                KR
+                            </div>
+                        </div>
+                        <div style="margin-left: 20px">
+                            한국 100개의 대형 기업을 대상으로 하는 지수입니다.
+                        </div>
+                    </div>
+                </div>
+
+
+                <div style="display: flex; width:550px; flex-direction: row; justify-content: space-between;">
+                    <div class="index-card" id="index-card3" style="width:250px; height: 100px; display: flex; flex-direction: column; font-family: '하나2.0 R'; font-size: 15px;
+                                    justify-content: space-around">
+                        <div style="display: flex; flex-direction: row; justify-content: space-around">
+                            <div class="card-title" style="font-size: 15px; font-family: '하나2.0 M'; font-weight : 700;">
+                                KOSPI 상장 대표 기업
+                            </div>
+                            <div style="width:25px; height: 25px; background-color: #CF3540; color: white; display: flex; justify-content: center; align-items: center; border-radius: 5px; font-weight: 700;">
+                                KR
+                            </div>
+                        </div>
+                        <div style="margin-left: 20px">
+                            한국 100개의 대형 기업을 대상으로 하는 지수입니다.
+                        </div>
+                    </div>
+                    <div class="index-card" id="index-card4" style="width:250px; height: 100px; display: flex; flex-direction: column; font-family: '하나2.0 R'; font-size: 15px;
+                                    justify-content: space-around">
+                        <div style="display: flex; flex-direction: row; justify-content: space-around">
+                            <div class="card-title" style="font-size: 15px; font-family: '하나2.0 M'; font-weight : 700;">
+                                KOSDAQ 상장 대표 기업
+                            </div>
+                            <div style="width:25px; height: 25px; background-color: #CF3540; color: white; display: flex; justify-content: center; align-items: center; border-radius: 5px; font-weight: 700;">
+                                KR
+                            </div>
+                        </div>
+                        <div style="margin-left: 20px">
+                            한국 100개의 대형 기업을 대상으로 하는 지수입니다.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--        시장-->
+        <div class="modal1-market">
+            <div class="modal1-index-header" style="font-size: 20px; font-family: '하나2.0 B'; margin-top: 30px;">시장</div>
+            <div class="modal1-index-main" style="height: 200px; ">
+                <div style="display: flex; width:550px; flex-direction: row; justify-content: space-between;">
+                    <div class="index-card" id="index-card5" style="width:250px; height: 100px; display: flex; flex-direction: column; font-family: '하나2.0 R'; font-size: 15px;
+                                    justify-content: space-around">
+                        <div style="display: flex; flex-direction: row; justify-content: space-around">
+                            <div class="card-title" style="font-size: 15px; font-family: '하나2.0 M'; font-weight : 700;">
+                                대한민국
+                            </div>
+                            <div style="width:25px; height: 25px; background-color: #CF3540; color: white; display: flex; justify-content: center; align-items: center; border-radius: 5px; font-weight: 700;">
+                                KR
+                            </div>
+                        </div>
+                        <div style="margin-left: 20px">
+                            대한민국 시장에 상장된 전체 기업을 대상으로 합니다.
+                        </div>
+                    </div>
+                    <div class="index-card" id="index-card6" style="width:250px; height: 100px; display: flex; flex-direction: column;  font-family: '하나2.0 R'; font-size: 15px;
+                                    justify-content: space-around">
+                        <div style="display: flex; flex-direction: row; justify-content: space-around">
+                            <div class="card-title" style="font-size: 15px; font-family: '하나2.0 M'; font-weight : 700;">
+                                미국
+                            </div>
+                            <div style="width:25px; height: 25px; background-color: #0A3161; color: white; display: flex; justify-content: center; align-items: center; border-radius: 5px; font-weight: 700;">
+                                US
+                            </div>
+                        </div>
+                        <div style="margin-left: 20px">
+                            Coming soon.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<!-- 모달 2 -->
+<!-- 모달 2 -->m
 <div id="modal2" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <!-- 모달 2의 내용을 여기에 추가 -->
-        <p>모달 2의 내용을 추가하세요.</p>
+    <div class="modal-content" style="justify-content: space-evenly">
+        <div class="modal2-header"
+             style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; margin-top: 20px;
+             border : 1px solid #0B9B97;">
+            <div style="border: 1px solid #6ea8fe; font-family: '하나2.0 R'; font-size: 15px;">
+                <div style="font-size: 20px; font-family: '하나2.0 B';">투자할 산업 선택</div>
+                투자하고 싶은 산업에 체크하세요.
+            </div>
+            <div style="display: flex; width : 250px; justify-content: space-evenly; align-items: center;">
+                <button style="width: 100px; height:30px; font-family: '하나2.0 M'; font-size:15px; border:none; border-radius: 5px; color:white; background-color: #cccccc">
+                    선택완료
+                </button>
+                <button style="width: 50px; height:30px; font-family: '하나2.0 M'; font-size:15px; background-color:#00857E; border:none; border-radius: 5px; color : white;">
+                    다음
+                </button>
+            </div>
+        </div>
+        <div class="modal2-checklist">
+            <div>
+                <input type='checkbox' name='all' value='all'/>전체선택
+            </div>
+            <div>
+                <input type='checkbox' name='all' value='all'/>에너지
+            </div>
+            <div>
+                <input type='checkbox' name='all' value='all'/>소재
+            </div>
+            <div>
+                <input type='checkbox' name='all' value='all'/>산업재
+                <div>
+                    <input type='checkbox' name='all' value='all'/> 자본재
+                    <input type='checkbox' name='all' value='all'/> 상업서비스와공급품
+                    <input type='checkbox' name='all' value='all'/> 운송
+                </div>
+            </div>
+            <div>
+                <input type='checkbox' name='all' value='all'/>경기관련소비재
+                <div>
+                    <input type='checkbox' name='all' value='all'/> 자동차와부품
+                    <input type='checkbox' name='all' value='all'/> 내구소비재와의류
+                    <input type='checkbox' name='all' value='all'/> 호텔,레스토랑,레저등
+                    <input type='checkbox' name='all' value='all'/> 소매(유통)
+                    <input type='checkbox' name='all' value='all'/> 교육서비스
+                </div>
+            </div>
+            <div>
+                <input type='checkbox' name='all' value='all'/>필수소비재
+                <div>
+                    <input type='checkbox' name='all' value='all'/> 식품과기본식료품소매
+                    <input type='checkbox' name='all' value='all'/> 식품,음료,담배
+                    <input type='checkbox' name='all' value='all'/> 가정용품과개인용품
+                </div>
+            </div>
+        </div>
+        <div>
+            <input type='checkbox' name='all' value='all'/>건강관리
+            <div>
+                <input type='checkbox' name='all' value='all'/> 건강관리장비와서비스
+                <input type='checkbox' name='all' value='all'/> 제약과생물공학
+            </div>
+        </div>
+        <div>
+            <input type='checkbox' name='all' value='all'/>금융
+            <div>
+                <input type='checkbox' name='all' value='all'/> 은행
+                <input type='checkbox' name='all' value='all'/> 증권
+                <input type='checkbox' name='all' value='all'/> 다각화된금융
+                <input type='checkbox' name='all' value='all'/> 보험
+                <input type='checkbox' name='all' value='all'/> 부동산
+            </div>
+        </div>
+        <div>
+            <input type='checkbox' name='all' value='all'/>IT
+            <div>
+                <input type='checkbox' name='all' value='all'/>소프트웨어와서비스
+                <input type='checkbox' name='all' value='all'/> 기술하드웨어와장비
+                <input type='checkbox' name='all' value='all'/> 반도체와반도체장비
+                <input type='checkbox' name='all' value='all'/> 전자와 전기제품
+                <input type='checkbox' name='all' value='all'/> 디스플레이
+            </div>
+        </div>
+        <div>
+            <input type='checkbox' name='all' value='all'/>커뮤니케이션서비스
+            <div>
+                <input type='checkbox' name='all' value='all'/> 전기통신서비스
+                <input type='checkbox' name='all' value='all'/> 미디어와엔터테인먼트
+            </div>
+        </div>
+        <div>
+            <input type='checkbox' name='all' value='all'/>유틸리티
+        </div>
     </div>
+</div>
 </div>
 
 <script>
@@ -446,26 +676,39 @@
         });
     });
 
-    // 닫기 버튼을 누르면 해당 모달 닫기
-    const closeButtons = document.querySelectorAll(".close");
-
-    closeButtons.forEach((closeButton) => {
-        closeButton.addEventListener("click", () => {
-            const modal = closeButton.closest(".modal");
-            modal.style.display = "none";
-            document.body.style.overflow = "auto";
-        });
-    });
-
+    // 모달 바깥을 클릭하여 모달 닫기
     window.addEventListener("click", (event) => {
         modalTriggers.forEach((trigger) => {
             const modalId = trigger.getAttribute("data-modal-id");
             const modal = document.getElementById(modalId);
-            if (event.target == modal) {
+            if (event.target === modal) {
                 modal.style.display = "none";
+                document.body.style.overflow = "auto";
             }
         });
     });
+
+    //
+
+    // 모든 index-card 요소를 선택
+    const indexCards = document.querySelectorAll(".index-card");
+
+    // 각 index-card에 클릭 이벤트 리스너 추가
+    indexCards.forEach((card, index) => {
+        card.addEventListener("click", () => {
+            // 해당 index-card의 card-title 요소를 선택하여 그 내용을 가져옴
+            const cardTitle = card.querySelector(".card-title").textContent;
+
+            // 모달 내의 span 엘리먼트를 선택
+            const modalSpan = document.querySelector(".modal-trigger[data-modal-id='modal1']");
+
+            // span의 텍스트를 선택한 index-card의 card-title 내용으로 변경
+            modalSpan.textContent = cardTitle;
+
+            // 모달을 닫는 등의 추가적인 작업을 할 수 있음
+        });
+    });
+
 
 </script>
 </body>
