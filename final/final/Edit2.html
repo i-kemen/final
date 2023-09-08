@@ -317,6 +317,109 @@
             flex-direction: column;
         }
 
+        /* 모든 div 요소의 기본 스타일 */
+        .modal2-checklist div {
+            margin-bottom: 10px;
+        }
+
+        /* 모든 체크박스 요소의 스타일 */
+        .modal2-checklist input[type='checkbox'] {
+            margin-right: 5px;
+        }
+
+        /* 상위 div 요소의 스타일 */
+        .modal2-checklist > div {
+            font-size: 16px; /* 글씨 크기 조정 */
+            font-weight: bold; /* 굵은 글씨로 설정 */
+        }
+
+        /* 중첩된 div 요소의 스타일 */
+        .modal2-checklist > div > div {
+            margin-left: 20px;
+            font-size: 14px; /* 하위 div의 글씨 크기를 조정 (원하는 크기로 변경 가능) */
+            font-weight: normal; /* 하위 div의 글씨 굵기를 정상으로 복원 */
+        }
+
+
+        #jongmok {
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+            position: absolute;
+            overflow: hidden;
+            top: 60%;
+            left: 70%;
+            transform: translate(-50%, -50%);
+            max-width: 100%;
+            width: 1200px;
+            height: 800px;
+            animation-name: modalopen;
+            animation-duration: var(--modal-duration);
+        }
+
+        .modal3-main {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .modal3-jogun {
+            border: 1px solid red;
+            display: flex;
+            flex-direction: column;
+            width: 600px;
+            height: 800px;
+            overflow: auto;
+        }
+
+        .modal3-graph {
+            border: 1px solid blue;
+            display: flex;
+            flex-direction: column;
+            width: 600px;
+            height: 800px;
+            overflow: auto;
+        }
+
+        .jogun-header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+
+        .score {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .score-header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .score-header > h6 {
+            background-color: #cccccc;
+            color: mediumpurple;
+        }
+
+
+        /* 초기 상태: 숨겨짐 */
+        .dropdown-content {
+            display: none;
+            /* 다른 스타일 속성들 추가 가능 */
+        }
+
+        /* 열린 상태: 보임 */
+        .dropdown-open .dropdown-content {
+            display: block;
+        }
+
+        /* 아이콘의 스타일 설정 */
+        .dropdown-icon {
+            width: 20px;
+            height: 20px;
+        }
     </style>
 </head>
 <body>
@@ -386,9 +489,43 @@
 
                 <div class="rebal">
                     리밸런싱 설정
+                    <div class="rebal-box" style="display: flex; flex-direction: row;justify-content: space-evenly">
+                        <div class="rebal-item">
+                            <label for="num-of-assets">구성 종목 수:</label>
+                            <input type="number" id="num-of-assets" name="num-of-assets" min="5" max="50" value="30">
+                            <div id="error-message" class="error-message"></div>
+                        </div>
+                        <div class="rebal-item">
+                            <label for="rebal-period">포트폴리오 리밸런싱 주기:</label>
+                            <select id="rebal-period" name="rebal-period">
+                                <option value="3months">3개월마다 한 번</option>
+                                <option value="6months">6개월마다 한 번</option>
+                                <option value="1year">1년마다 한 번</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <div class="whghl">
 
+
+                <div class="sungga">
+                    투자 성과 조회 기준 설정
+                </div>
+                <div class="sungga-box">
+                    <div class="sungga-item">
+                        <div id="calendar"></div>
+                    </div>
+                    <div class="sungga-item">
+                        <label for="end-date">종료:</label>
+                        <input type="date" id="end-date" name="end-date">
+                    </div>
+                    <div class="sungga-item">
+                        <label for="benchmark">벤치마크:</label>
+                        <select id="benchmark" name="benchmark">
+                            <option value="benchmark1">벤치마크 1</option>
+                            <option value="benchmark2">벤치마크 2</option>
+                            <option value="benchmark3">벤치마크 3</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="ansa">
                     투자하지 않을 종목
@@ -454,7 +591,8 @@
                 <button style="width: 100px; height:30px; font-family: '하나2.0 M'; font-size:15px; border:none; border-radius: 5px; color:white; background-color: #cccccc">
                     선택완료
                 </button>
-                <button style="width: 50px; height:30px; font-family: '하나2.0 M'; font-size:15px; background-color:#00857E; border:none; border-radius: 5px; color : white;">
+                <button id="nextModal1"
+                        style="width: 50px; height:30px; font-family: '하나2.0 M'; font-size:15px; background-color:#00857E; border:none; border-radius: 5px; color : white;">
                     다음
                 </button>
             </div>
@@ -566,7 +704,7 @@
     </div>
 </div>
 
-<!-- 모달 2 -->m
+<!-- 모달 2 -->
 <div id="modal2" class="modal">
     <div class="modal-content" style="justify-content: space-evenly">
         <div class="modal2-header"
@@ -580,7 +718,8 @@
                 <button style="width: 100px; height:30px; font-family: '하나2.0 M'; font-size:15px; border:none; border-radius: 5px; color:white; background-color: #cccccc">
                     선택완료
                 </button>
-                <button style="width: 50px; height:30px; font-family: '하나2.0 M'; font-size:15px; background-color:#00857E; border:none; border-radius: 5px; color : white;">
+                <button id="nextModal2"
+                        style="width: 50px; height:30px; font-family: '하나2.0 M'; font-size:15px; background-color:#00857E; border:none; border-radius: 5px; color : white;">
                     다음
                 </button>
             </div>
@@ -621,46 +760,92 @@
                     <input type='checkbox' name='all' value='all'/> 가정용품과개인용품
                 </div>
             </div>
-        </div>
-        <div>
-            <input type='checkbox' name='all' value='all'/>건강관리
             <div>
-                <input type='checkbox' name='all' value='all'/> 건강관리장비와서비스
-                <input type='checkbox' name='all' value='all'/> 제약과생물공학
+                <input type='checkbox' name='all' value='all'/>건강관리
+                <div>
+                    <input type='checkbox' name='all' value='all'/> 건강관리장비와서비스
+                    <input type='checkbox' name='all' value='all'/> 제약과생물공학
+                </div>
             </div>
-        </div>
-        <div>
-            <input type='checkbox' name='all' value='all'/>금융
             <div>
-                <input type='checkbox' name='all' value='all'/> 은행
-                <input type='checkbox' name='all' value='all'/> 증권
-                <input type='checkbox' name='all' value='all'/> 다각화된금융
-                <input type='checkbox' name='all' value='all'/> 보험
-                <input type='checkbox' name='all' value='all'/> 부동산
+                <input type='checkbox' name='all' value='all'/>금융
+                <div>
+                    <input type='checkbox' name='all' value='all'/> 은행
+                    <input type='checkbox' name='all' value='all'/> 증권
+                    <input type='checkbox' name='all' value='all'/> 다각화된금융
+                    <input type='checkbox' name='all' value='all'/> 보험
+                    <input type='checkbox' name='all' value='all'/> 부동산
+                </div>
             </div>
-        </div>
-        <div>
-            <input type='checkbox' name='all' value='all'/>IT
             <div>
-                <input type='checkbox' name='all' value='all'/>소프트웨어와서비스
-                <input type='checkbox' name='all' value='all'/> 기술하드웨어와장비
-                <input type='checkbox' name='all' value='all'/> 반도체와반도체장비
-                <input type='checkbox' name='all' value='all'/> 전자와 전기제품
-                <input type='checkbox' name='all' value='all'/> 디스플레이
+                <input type='checkbox' name='all' value='all'/>IT
+                <div>
+                    <input type='checkbox' name='all' value='all'/>소프트웨어와서비스
+                    <input type='checkbox' name='all' value='all'/> 기술하드웨어와장비
+                    <input type='checkbox' name='all' value='all'/> 반도체와반도체장비
+                    <input type='checkbox' name='all' value='all'/> 전자와 전기제품
+                    <input type='checkbox' name='all' value='all'/> 디스플레이
+                </div>
             </div>
-        </div>
-        <div>
-            <input type='checkbox' name='all' value='all'/>커뮤니케이션서비스
             <div>
-                <input type='checkbox' name='all' value='all'/> 전기통신서비스
-                <input type='checkbox' name='all' value='all'/> 미디어와엔터테인먼트
+                <input type='checkbox' name='all' value='all'/>커뮤니케이션서비스
+                <div>
+                    <input type='checkbox' name='all' value='all'/> 전기통신서비스
+                    <input type='checkbox' name='all' value='all'/> 미디어와엔터테인먼트
+                </div>
             </div>
-        </div>
-        <div>
-            <input type='checkbox' name='all' value='all'/>유틸리티
+            <div>
+                <input type='checkbox' name='all' value='all'/>유틸리티
+            </div>
         </div>
     </div>
 </div>
+
+<!--모달3-->
+<div id="modal3" class="modal">
+    <div class="modal-content" id="jongmok" style="justify-content: space-evenly">
+        <div class="modal3-header"
+             style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; margin-top: 20px;
+             border : 1px solid #0B9B97;">
+            <div style="border: 1px solid #6ea8fe; font-family: '하나2.0 R'; font-size: 15px;">
+                <div style="font-size: 20px; font-family: '하나2.0 B';">종목 선정 조건 선택</div>
+                아래 여러 조건들을 활용하여 조금 더 세밀하게 투자할 종목을 선정 해볼 수 있습니다.<br>
+                조건을 지정하고 싶지 않다면, [조건 선택 안함] 을 체크해주세요.
+            </div>
+            <div style="display: flex; width : 250px; justify-content: space-evenly; align-items: center;">
+                <button style="width: 100px; height:30px; font-family: '하나2.0 M'; font-size:15px; border:none; border-radius: 5px; color:white; background-color: #cccccc">
+                    선택완료
+                </button>
+            </div>
+        </div>
+        <div class="modal3-main">
+            <div class="modal3-jogun">
+                <div class="jogun-header">
+                    <div style="font-size: 20px; font-family: '하나2.0 B';">종목 선정 조건 선택</div>
+                    <div style="font-size: 20px; font-family: '하나2.0 B'; display: flex; flex-direction: row; justify-content: space-between; align-items: center">
+                        <img src="img/reset.png" style="height: 20px; width: 20px;">
+                        초기화
+                    </div>
+                </div>
+                <div>
+                    <input type='checkbox' name='all' value='all'/>조건선택안함
+                </div>
+                <div class="score">
+                    <div class="score-header">
+                        <img class="dropdown-icon" src="img/right.png" onclick="toggleDropdown(this)">
+                        투자 전략 스코어
+                        <h6>11</h6>
+                    </div>
+                    <div class="dropdown-content">
+                        <div>시발년아</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal3-graph">
+
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -710,6 +895,69 @@
     });
 
 
+    // modal1의 "다음" 버튼 클릭 이벤트 핸들러
+    document.getElementById("nextModal1").addEventListener("click", function () {
+        // modal1을 닫고 modal2를 엽니다.
+        document.getElementById("modal1").style.display = "none";
+        document.getElementById("modal2").style.display = "block";
+    });
+
+    // modal2의 "다음" 버튼 클릭 이벤트 핸들러
+    document.getElementById("nextModal2").addEventListener("click", function () {
+        // modal2를 닫고 modal3을 엽니다.
+        document.getElementById("modal2").style.display = "none";
+        document.getElementById("modal3").style.display = "block";
+    });
+
+    function toggleDropdown(element) {
+        var scoreHeader = element.parentElement;
+        var dropdownContent = scoreHeader.nextElementSibling; // .dropdown-content 선택
+
+        if (dropdownContent.style.display === "none" || dropdownContent.style.display === "") {
+            // 드롭다운을 엽니다.
+            dropdownContent.style.display = "block";
+            element.src = "img/down.png"; // 이미지를 열린 상태로 변경
+        } else {
+            // 드롭다운을 닫습니다.
+            dropdownContent.style.display = "none";
+            element.src = "img/right.png"; // 이미지를 닫힌 상태로 변경
+        }
+    }
+
+    // 입력 필드와 에러 메시지 요소를 가져옵니다.
+    var numOfAssetsInput = document.getElementById("num-of-assets");
+    var errorMessage = document.getElementById("error-message");
+
+    // 입력 필드의 값이 변경될 때 이벤트 리스너를 추가합니다.
+    numOfAssetsInput.addEventListener("change", function () {
+        var inputValue = parseInt(numOfAssetsInput.value);
+
+        // 입력값이 5부터 50 사이에 있는지 확인합니다.
+        if (inputValue >= 5 && inputValue <= 50) {
+            errorMessage.textContent = ""; // 에러 메시지를 지웁니다.
+            numOfAssetsInput.style.borderColor = ""; // 입력 필드의 테두리 색상 초기화
+        } else {
+            // 입력값이 범위를 벗어나면 에러 메시지를 표시하고 입력 필드를 강조합니다.
+            errorMessage.textContent = "5부터 50 사이의 값을 입력하세요.";
+            errorMessage.style.color = "red";
+            numOfAssetsInput.style.borderColor = "red";
+        }
+    });
+
+
+    $('#demo').daterangepicker({
+        "singleDatePicker": true,
+        "startDate": "02/01/2005",
+        "endDate": "09/08/2023"
+    }, function(start, end, label) {
+        console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+    });
+
 </script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
 </body>
 </html>
